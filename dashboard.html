@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economic Complexity Explorer — Screened results</title>
+<script src="https://cdn.plot.ly/plotly-3.3.0.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --text1: #0b0b0b; --text2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10); --accent: #2a78d6; --divmid: #f0efec;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --text1: #ffffff; --text2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --accent: #3987e5; --divmid: #383835;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--text1); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 20px 0; }
+  .brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .brand h1 { font-size: 18px; margin: 0; font-weight: 650; }
+  .brand .sub { color: var(--text2); font-size: 12.5px; }
+  .brand .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  nav { display: flex; gap: 4px; margin-top: 8px; overflow-x: auto; }
+  nav button { background: none; border: 0; border-bottom: 2px solid transparent; color: var(--text2); padding: 8px 12px; font: inherit; font-weight: 550; cursor: pointer; }
+  nav button.on { color: var(--text1); border-bottom-color: var(--accent); }
+  nav button:hover { color: var(--text1); }
+  main { padding: 14px 20px 40px; max-width: 1800px; margin: 0 auto; }
+  section.tab { display: none; }
+  section.tab.on { display: block; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: end; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; }
+  .f { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--text2); }
+  .f > span { font-weight: 550; }
+  .f select, .f input[type=text], .f input[type=search] { font: inherit; font-size: 13px; color: var(--text1); background: var(--page); border: 1px solid var(--axis); border-radius: 6px; padding: 5px 8px; min-width: 150px; }
+  .f input[type=range] { width: 260px; accent-color: var(--accent); }
+  .yr { display: flex; align-items: center; gap: 10px; }
+  .yr b { font-size: 16px; min-width: 44px; color: var(--text1); font-variant-numeric: tabular-nums; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-width: 620px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); border-radius: 999px; padding: 2px 8px 2px 6px; font-size: 12px; background: var(--page); color: var(--text1); }
+  .chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .chip button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; }
+  .chip button:hover { color: var(--text1); }
+  .btn { font: inherit; font-size: 12.5px; padding: 5px 10px; border-radius: 6px; border: 1px solid var(--axis); background: var(--page); color: var(--text1); cursor: pointer; }
+  .btn:hover { border-color: var(--muted); }
+  .btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); margin-bottom: 14px; }
+  .grid.three { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  .grid.two { grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px 8px; min-width: 0; }
+  .card.wide { grid-column: 1 / -1; }
+  .card h3 { margin: 0 0 2px; font-size: 13.5px; font-weight: 600; }
+  .card .note { color: var(--text2); font-size: 12px; margin-bottom: 6px; }
+  .plot { width: 100%; min-height: 300px; }
+  .plot.tall { min-height: 460px; }
+  .plot.short { min-height: 240px; }
+  .empty { color: var(--muted); font-size: 13px; padding: 40px 0; text-align: center; }
+  .rowbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 2px 0 10px; }
+  .tbl { display: none; overflow: auto; max-height: 520px; border-top: 1px solid var(--grid); margin-top: 6px; }
+  .tbl.on { display: block; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  th { position: sticky; top: 0; background: var(--surface); color: var(--text2); font-weight: 600; cursor: pointer; user-select: none; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  iframe { width: 100%; height: 720px; border: 1px solid var(--grid); border-radius: 8px; background: #fff; }
+  iframe.mat { height: 620px; }
+  img.static { width: 100%; border: 1px solid var(--grid); border-radius: 8px; background: #fff; }
+  .caption { font-size: 12px; color: var(--text2); margin: 6px 0 0; }
+  .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .kpi .card { padding: 10px 14px; }
+  .kpi .v { font-size: 24px; font-weight: 600; color: var(--text1); }
+  .kpi .l { font-size: 12px; color: var(--text2); }
+  footer { color: var(--muted); font-size: 12px; padding: 0 20px 30px; max-width: 1800px; margin: 0 auto; }
+  @media (max-width: 800px) { .grid, .grid.two, .grid.three { grid-template-columns: minmax(0, 1fr); } main {padding:12px;} nav button {white-space:nowrap;} .f {max-width:100%;}  .f input[type=range] { width: 180px; } iframe { height: 520px; } }
+.load-status {padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);color:var(--text2)} .load-status.error {color:#b94040} .snapshot {font-weight:600;font-size:14px;color:var(--text1)} .figure-view {min-height:180px} .figure-image {display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#fff;border-radius:6px} .figure-toolbar {display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:10px 0} .figure-toolbar a {text-decoration:none} [hidden] {display:none!important}
+.screened-badge {display:inline-block;font-size:11px;font-weight:650;vertical-align:middle;padding:3px 8px;border-radius:999px;color:var(--accent);border:1px solid var(--accent);margin-left:6px} .screening-card p {margin:5px 0} #screeningRules li {margin:5px 0} #screeningAudit {color:var(--accent)}
+</style>
+</head>
+<body>
+<div id="loadStatus" role="status" class="load-status">Loading Parquet metrics…</div>
+<header>
+  <div class="brand">
+    <h1>Economic Complexity Explorer <span class="screened-badge">Screened</span></h1>
+    <span class="sub">Product (BACI HS4) · Technology (PatentsView CPC) · Knowledge (OpenAlex subfield)</span>
+    <div class="right">
+      <button class="btn" id="themeBtn" title="Light / dark">◐ Theme</button>
+    </div>
+  </div>
+  <nav id="nav">
+    <button data-tab="eci" class="on">Country ECI</button>
+    <button data-tab="aci">Activity complexity (PCI)</button>
+    <button data-tab="space">Activity space</button>
+    <button data-tab="nest">Nestedness</button>
+    <button data-tab="cross">Cross-domain</button>
+  </nav>
+</header>
+
+<main>
+<div class="card screening-card" style="margin-bottom:14px"><h3>Screened results</h3><p id="screeningSummary">Loading annual screening rules…</p><p class="note">All metrics and figures use the retained country–activity cohort in each year. Cohort changes affect comparisons over time. Screening removes small samples; it does not establish ranking stability or complete recent patent filing cohorts.</p></div>
+<details class="card" style="margin-bottom:14px"><summary style="cursor:pointer;font-weight:600">How to explore this dashboard · definitions and coverage</summary>
+<div id="screeningRules"></div><p><a id="screeningAudit" target="_blank" rel="noopener">View screening rules and cohort audit</a></p>
+<p>Start with <b>Country ECI</b> to compare countries and years. Use <b>Activity complexity (PCI)</b> for products, technology classes and knowledge subfields. Explore annual networks in <b>Activity space</b>, for the latest two available years in each dataset, then inspect sorted country–activity matrices and null-model comparisons in <b>Nestedness</b>.</p>
+<p><b>ECI</b> describes country complexity in each domain. <b>PCI</b> is product complexity; this project stores the equivalent activity index for all three domains as <b>ACI</b>. Scores are relative to each dataset and year, so changes do not measure absolute capability growth. Missing observations remain missing. Knowledge corresponds to the Science datasets; technology reflects the project's PatentsView data coverage.</p>
+<p>Latest means latest available, not necessarily complete: recent patent and publication years can have incomplete coverage. Product activity descriptions are representative HS6 descriptions within each HS4 code.</p>
+<p><b>RCA ≥ 1</b> identifies specialization within the screened reference population. Diversity counts a country's specialized activities; ubiquity counts countries specialized in an activity. Activity-space links represent proximity; the displayed network uses a maximum spanning forest plus strong links. Detailed figures cover only the latest two available years per dataset: Product 2023–2024; Technology and Knowledge 2024–2025. Metric trajectories retain all available years.</p>
+<p><b>Nestedness</b> examines whether less diversified countries' activity baskets tend to be subsets of more diversified baskets. Read each observed measure against its own null model. sNODF includes equal-degree pairs; temperature score is 1 − T/100 (higher is more nested); nSNES is the leading singular value divided by the square root of the number of links. Data availability and country coverage vary by year and dataset. RCA, ECI/ACI, fitness, proximity and nestedness are recalculated after annual screening of the upstream activity matrices. These are project estimates, not official country rankings. Parquet files and figures are loaded from the EC repository. Latest years can differ across domains; the year is displayed beside every detailed view.</p>
+</details>
+<!-- ============================================================ 1. Country ECI -->
+<section class="tab on" id="tab-eci">
+  <div class="filters">
+    <div class="f"><span>Year</span><div class="yr"><input type="range" id="eciYear"><b id="eciYearLbl"></b></div></div>
+    <div class="f"><span>Technology dataset</span><select id="eciTech"></select></div>
+    <div class="f"><span>Knowledge dataset</span><select id="eciSci"></select></div>
+    <div class="f" style="flex:1"><span>Highlight countries (up to 8; enter a code or name)</span>
+      <div class="chips" id="eciChips"></div>
+      <input type="search" id="eciAdd" list="countryList" placeholder="e.g. KR, Korea" style="margin-top:4px">
+      <datalist id="countryList"></datalist>
+    </div>
+  </div>
+  <div class="kpi" id="eciKpi"></div>
+  <div class="grid three">
+    <div class="card"><h3>Product ECI rank</h3><div class="note" id="rkP-note"></div><div class="plot tall" id="rkP"></div></div>
+    <div class="card"><h3>Technology ECI rank</h3><div class="note" id="rkT-note"></div><div class="plot tall" id="rkT"></div></div>
+    <div class="card"><h3>Knowledge ECI rank</h3><div class="note" id="rkS-note"></div><div class="plot tall" id="rkS"></div></div>
+  </div>
+  <div class="grid three">
+    <div class="card"><h3>Product ECI over time</h3><div class="note">Selected countries</div><div class="plot" id="tsP"></div></div>
+    <div class="card"><h3>Technology ECI over time</h3><div class="note">Selected countries</div><div class="plot" id="tsT"></div></div>
+    <div class="card"><h3>Knowledge ECI over time</h3><div class="note">Selected countries</div><div class="plot" id="tsS"></div></div>
+  </div>
+  <div class="grid three">
+    <div class="card"><h3>Product vs Technology</h3><div class="note" id="scPT-note"></div><div class="plot" id="scPT"></div></div>
+    <div class="card"><h3>Product vs Knowledge</h3><div class="note" id="scPS-note"></div><div class="plot" id="scPS"></div></div>
+    <div class="card"><h3>Technology vs Knowledge</h3><div class="note" id="scTS-note"></div><div class="plot" id="scTS"></div></div>
+  </div>
+  <div class="grid three">
+    <div class="card"><h3>Product ECI map</h3><div class="plot" id="mpP"></div></div>
+    <div class="card"><h3>Technology ECI map</h3><div class="plot" id="mpT"></div></div>
+    <div class="card"><h3>Knowledge ECI map</h3><div class="plot" id="mpS"></div></div>
+  </div>
+  <div class="card">
+    <div class="rowbar"><h3>Country data for the selected year: ECI, rank, fitness and diversity</h3>
+      <div><input type="search" id="eciTblQ" placeholder="Search" style="font:inherit;font-size:12.5px;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--page);color:var(--text1)"> <button class="btn" data-toggle="eciTbl">Show table</button></div></div>
+    <div class="tbl" id="eciTbl"></div>
+  </div>
+</section>
+
+<!-- ============================================================ 2. Activity complexity -->
+<section class="tab" id="tab-aci">
+  <div class="filters">
+    <div class="f"><span>Dataset</span><select id="aciTree"></select></div>
+    <div class="f"><span>Year</span><div class="yr"><input type="range" id="aciYear"><b id="aciYearLbl"></b></div></div>
+    <div class="f" style="flex:1"><span>Highlight activities (up to 8; enter a code or name)</span>
+      <div class="chips" id="aciChips"></div>
+      <input type="search" id="aciAdd" list="actList" placeholder="e.g. 8542, Semiconductor" style="margin-top:4px">
+      <datalist id="actList"></datalist>
+    </div>
+  </div>
+  <div class="kpi" id="aciKpi"></div>
+  <div class="grid two">
+    <div class="card"><h3>20 most complex activities</h3><div class="note" id="acTop-note"></div><div class="plot tall" id="acTop"></div></div>
+    <div class="card"><h3>20 least complex activities</h3><div class="note" id="acBot-note"></div><div class="plot tall" id="acBot"></div></div>
+  </div>
+  <div class="grid two">
+    <div class="card"><h3>Complexity distribution by sector</h3><div class="note">Activity complexity within each sector, ordered by median</div><div class="plot" id="acBox"></div></div>
+    <div class="card"><h3>Ubiquity vs complexity</h3><div class="note">Ubiquity = number of countries with RCA ≥ 1 in the activity</div><div class="plot" id="acUb"></div></div>
+  </div>
+  <div class="card"><h3>Complexity trajectories of selected activities</h3><div class="note">Annual activity complexity (ACI; PCI for products)</div><div class="plot" id="acTs"></div></div>
+  <div class="card" style="margin-top:14px">
+    <div class="rowbar"><h3>Activity complexity for the selected year</h3>
+      <div><input type="search" id="aciTblQ" placeholder="Search" style="font:inherit;font-size:12.5px;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--page);color:var(--text1)"> <button class="btn" data-toggle="aciTbl">Show table</button></div></div>
+    <div class="tbl" id="aciTbl"></div>
+  </div>
+</section>
+
+<!-- ============================================================ 3. Activity space -->
+<section class="tab" id="tab-space">
+  <div class="filters">
+    <div class="f"><span>Dataset</span><select id="spTree"></select></div>
+    <div class="f"><span>Figure year · latest two</span><select id="spYear"></select></div>
+    <div class="f"><span>View</span><select id="spFig"></select></div>
+  </div>
+  <div class="card"><h3 id="spTitle">Activity space</h3><div class="note" id="spNote"></div><div id="spNetwork" class="figure-view"></div></div>
+  <div class="grid three" style="margin-top:14px">
+    <div class="card"><h3>Activities over time</h3><div class="plot short" id="spN"></div></div>
+    <div class="card"><h3>Edges over time</h3><div class="plot short" id="spE"></div></div>
+    <div class="card"><h3>Communities over time</h3><div class="plot short" id="spC"></div></div>
+  </div>
+</section>
+
+<!-- ============================================================ 4. Nestedness -->
+<section class="tab" id="tab-nest">
+  <div class="filters">
+    <div class="f"><span>Measure</span><select id="nMeasure"></select></div>
+    <div class="f"><span>Matrix dataset</span><select id="nTree"></select></div>
+    <div class="f"><span>Figure year · latest two</span><select id="nYear"></select></div>
+    <div class="f"><span>Matrix view</span><select id="nFig"></select></div>
+  </div>
+  <div class="grid two">
+    <div class="card"><h3>Nestedness z-score over time</h3><div class="note">Standard deviations from the fixed-fixed null model (Curveball, R=100). Reference lines at ±1.96 are guides, not empirical significance thresholds.</div><div class="plot" id="nZ"></div></div>
+    <div class="card"><h3>Excess relative to null model (%)</h3><div class="note">(Observed − null mean) / null mean × 100</div><div class="plot" id="nEx"></div></div>
+  </div>
+  <div class="grid three" id="nSmall"></div>
+  <div class="card" style="margin-bottom:14px">
+    <h3 id="nMatTitle">Nestedness matrix</h3><div class="note" id="nMatNote"></div>
+    <div id="nMat" class="figure-view"></div>
+    <p class="caption">Rows are active countries; columns are active activities. Filled cells indicate specialization (RCA ≥ 1). Open the full-size figure to inspect the structure. Source figures exclude empty rows and columns; fitness comparisons also exclude entities without fitness or fitness-complexity values. These figures are regenerated from the screened matrices and preserved with lossless compression. Nestedness statistics exclude empty rows and columns, as in the original computation.</p>
+  </div>
+  <div class="card">
+    <div class="rowbar"><h3>Observed and null-model values by dataset, year and measure</h3><button class="btn" data-toggle="nTbl">Show table</button></div>
+    <div class="tbl" id="nTbl"></div>
+  </div>
+</section>
+
+<!-- ============================================================ 5. Cross-domain -->
+<section class="tab" id="tab-cross">
+  <div class="filters">
+    <div class="f"><span>Technology dataset</span><select id="xTech"></select></div>
+    <div class="f"><span>Knowledge dataset</span><select id="xSci"></select></div>
+    <div class="f"><span>Year</span><div class="yr"><input type="range" id="xYear"><b id="xYearLbl"></b></div></div>
+  </div>
+  <div class="grid two">
+    <div class="card"><h3>Cross-domain ECI rank correlation (Spearman ρ)</h3><div class="note">How similarly two domains rank countries in the same year</div><div class="plot" id="xRho"></div></div>
+    <div class="card"><h3>Cross-domain ECI in the selected year</h3><div class="note">Countries with ECI in all three selected domains; color shows knowledge ECI</div><div class="plot" id="xEci"></div></div>
+  </div>
+</section>
+</main>
+<footer id="foot"></footer>
+
+<script src="assets/dashboard.bundle.js?v=0f032f36f18fb9c1"></script>
+<noscript>This dashboard requires JavaScript to read Parquet data and render the charts.</noscript>
+</body>
+</html>

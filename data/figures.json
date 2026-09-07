@@ -1,0 +1,2751 @@
+{
+  "schema_version": 1,
+  "years_per_dataset": 2,
+  "profile": {
+    "id": "screened-v1",
+    "kind": "screened",
+    "label": "Screened",
+    "description": "Project-defined annual minimum-support screen; not a validated quality guarantee.",
+    "country_min_positive_activities": 3,
+    "activity_min_positive_countries": 3,
+    "rules": {
+      "Product": {
+        "min_country_mass": 1000000.0,
+        "min_activity_mass": 10000.0,
+        "min_country_activities": 3,
+        "min_activity_countries": 3,
+        "unit": "current thousand USD",
+        "country_threshold_label": "US$1 billion",
+        "activity_threshold_label": "US$10 million"
+      },
+      "Technology": {
+        "min_country_mass": 10.0,
+        "min_activity_mass": 10.0,
+        "min_country_activities": 3,
+        "min_activity_countries": 3,
+        "unit": "fractional patent equivalents"
+      },
+      "Science": {
+        "min_country_mass": 100.0,
+        "min_activity_mass": 100.0,
+        "min_country_activities": 3,
+        "min_activity_countries": 3,
+        "unit": "fractional publication equivalents"
+      }
+    },
+    "algorithm": "Simultaneously remove failing rows and columns; recompute retained-X totals and positive-cell support until no axis fails.",
+    "reference": "RCA is recomputed from the retained country/activity cohort separately in every domain-year.",
+    "positive_support": "Count strictly positive raw X cells, not RCA degrees or distinct documents.",
+    "selection": "No country names, ECI values, ranks, sign directions or spectral gaps enter eligibility.",
+    "missing_values": "Undefined spectral ECI/ACI remains missing, including disconnected or unseparated modes.",
+    "limitations": [
+      "Annual cohorts can change over time.",
+      "Fractional output mass is not a distinct-document count.",
+      "Screening does not correct recent filing-year right censoring or source coverage bias.",
+      "Threshold and spectral sensitivity can remain after screening."
+    ]
+  },
+  "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+  "encoding": "Lossless WebP when smaller than PNG; decoded RGBA pixels preserved exactly.",
+  "selection": "Seven general activity-space and nestedness views. Country-specific examples are excluded.",
+  "views": {
+    "space": {
+      "label": "Activity space",
+      "category": "space"
+    },
+    "space_communities": {
+      "label": "Activity space by community",
+      "category": "space"
+    },
+    "umap": {
+      "label": "UMAP activity map",
+      "category": "space"
+    },
+    "proximity_matrix_by_cluster": {
+      "label": "Proximity matrix by cluster",
+      "category": "space"
+    },
+    "proximity_matrix_by_community": {
+      "label": "Proximity matrix by community",
+      "category": "space"
+    },
+    "matrix_sorted": {
+      "label": "Nestedness matrix: diversity and ubiquity",
+      "category": "matrix",
+      "description": "Countries ordered by decreasing diversification; activities ordered by decreasing ubiquity."
+    },
+    "matrix_fitness_sorted": {
+      "label": "Fitness ordering comparison",
+      "category": "matrix",
+      "description": "Two panels with countries ordered by decreasing fitness. Left: decreasing ubiquity. Right: increasing fitness complexity."
+    }
+  },
+  "datasets": {
+    "Product": {
+      "slug": "Product",
+      "years": [
+        2023,
+        2024
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2023": {
+          "space": {
+            "path": "figures/Product/2023/space.webp",
+            "bytes": 194938,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "24ed0567a0833f412ca7e9066c8ff9277d82e694192604ca4428bf4232836332",
+            "source_bytes": 480663
+          },
+          "space_communities": {
+            "path": "figures/Product/2023/space_communities.webp",
+            "bytes": 282656,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "94b848ec2d8bf9bacabc9a9a81d22a662b080351fe14dd4b4af9ae897017f022",
+            "source_bytes": 526701
+          },
+          "umap": {
+            "path": "figures/Product/2023/umap.webp",
+            "bytes": 287032,
+            "width": 1695,
+            "height": 1311,
+            "sha256": "3f3381665496cafbbfc0d673b26f725cd2d0b97a3a85702126e3713029968b2d",
+            "source_bytes": 629247
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Product/2023/proximity_matrix_by_cluster.webp",
+            "bytes": 1006708,
+            "width": 1146,
+            "height": 1157,
+            "sha256": "3f3506e0643376535ae8b4da4acdcf157ef556273b2f9cb12ece75eae0d8069e",
+            "source_bytes": 2891836
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Product/2023/proximity_matrix_by_community.webp",
+            "bytes": 993582,
+            "width": 1213,
+            "height": 1157,
+            "sha256": "2990ee9f47deab37e9af97325e3536f4cb0cc98b595b757dfc48a334ee1d3b81",
+            "source_bytes": 2922038
+          },
+          "matrix_sorted": {
+            "path": "figures/Product/2023/matrix_sorted.webp",
+            "bytes": 22430,
+            "width": 1314,
+            "height": 788,
+            "sha256": "e65420689b69613ff4670139eae1516cc09f1e8100140e20be14210ac35418a3",
+            "source_bytes": 56678
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Product/2023/matrix_fitness_sorted.webp",
+            "bytes": 45356,
+            "width": 1992,
+            "height": 914,
+            "sha256": "ea70fbbaf1551efc471427753be1803658c07ff0fb128415285e435f8a8109fc",
+            "source_bytes": 110069
+          }
+        },
+        "2024": {
+          "space": {
+            "path": "figures/Product/2024/space.webp",
+            "bytes": 222896,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "2d7d616bc0fbcee8da0562896cfcba75ad2587c385967e940d840c95a928d4c6",
+            "source_bytes": 560156
+          },
+          "space_communities": {
+            "path": "figures/Product/2024/space_communities.webp",
+            "bytes": 344546,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "91df4c0a8ff94b4d71ed6dba8e2c333e68567ad961f70c0098105f3fc691a125",
+            "source_bytes": 632144
+          },
+          "umap": {
+            "path": "figures/Product/2024/umap.webp",
+            "bytes": 300318,
+            "width": 1695,
+            "height": 1311,
+            "sha256": "1af8c0c6be12ed5f78da68bdba2890bbfda5f6e563cc0609b02b979a2122a323",
+            "source_bytes": 634453
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Product/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 993576,
+            "width": 1146,
+            "height": 1157,
+            "sha256": "240d7d3d66eeb76b0f8a5b956c3bc27881a3b4023e97a05c1c133cd12b67060f",
+            "source_bytes": 2874209
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Product/2024/proximity_matrix_by_community.webp",
+            "bytes": 968016,
+            "width": 1213,
+            "height": 1157,
+            "sha256": "4f6fb124b69c6ce71c72168c9db70710b09431c5cd58db06e6bd14627a4ffc2c",
+            "source_bytes": 2904991
+          },
+          "matrix_sorted": {
+            "path": "figures/Product/2024/matrix_sorted.webp",
+            "bytes": 21776,
+            "width": 1314,
+            "height": 788,
+            "sha256": "cbec6ca30348f917ff3dee4377f334de22d990f4a62c7ffa46b69f0c4286f444",
+            "source_bytes": 54691
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Product/2024/matrix_fitness_sorted.webp",
+            "bytes": 44130,
+            "width": 1992,
+            "height": 914,
+            "sha256": "1b679ba388384ef44dba538172a952d1e7dbe298cf85d1a5cecc240f3246c495",
+            "source_bytes": 107255
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/primary/grant": {
+      "slug": "Technology-primary-grant",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-primary-grant/2024/space.webp",
+            "bytes": 438582,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "ee04287df379b69e88569fdda1ec983bb6c2840c8a7f7996f9cd147cfacf0cf7",
+            "source_bytes": 1159059
+          },
+          "space_communities": {
+            "path": "figures/Technology-primary-grant/2024/space_communities.webp",
+            "bytes": 477450,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "a6dd4007e06bb6ab6c9fa36a4bd3759228f156a94ee8fdd9a55000fcec757e26",
+            "source_bytes": 1232631
+          },
+          "umap": {
+            "path": "figures/Technology-primary-grant/2024/umap.webp",
+            "bytes": 205418,
+            "width": 1968,
+            "height": 1311,
+            "sha256": "f6e3fc5303244fccad9c79cfa2016da6e51e81dda886a850077c06eff54087b0",
+            "source_bytes": 486696
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-primary-grant/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 270662,
+            "width": 1419,
+            "height": 1157,
+            "sha256": "51eef16c80a5ba19556f923c544ea93a80804aca7ecbf9385a416c710205c9ca",
+            "source_bytes": 882709
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-primary-grant/2024/proximity_matrix_by_community.webp",
+            "bytes": 246212,
+            "width": 1486,
+            "height": 1157,
+            "sha256": "48f235681b48296a2efc1d4eb2630c10fc5087d03cb192694e4c0bd3cd2b9312",
+            "source_bytes": 794128
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-primary-grant/2024/matrix_sorted.webp",
+            "bytes": 14536,
+            "width": 1586,
+            "height": 788,
+            "sha256": "5f6312b052fc0d66be96171817e8dd975e5d9070122b0967a3c24c53d8f058dd",
+            "source_bytes": 45968
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-primary-grant/2024/matrix_fitness_sorted.webp",
+            "bytes": 27674,
+            "width": 1992,
+            "height": 914,
+            "sha256": "b3c3d2116df610168c19c26323c95f13a11460cb7f82d250a84b3791b0588060",
+            "source_bytes": 79796
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-primary-grant/2025/space.webp",
+            "bytes": 440468,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "df5b54c2d13912c6fe4541c23dfecd3a76f7ad626865f26b24b104b366c6141f",
+            "source_bytes": 1105103
+          },
+          "space_communities": {
+            "path": "figures/Technology-primary-grant/2025/space_communities.webp",
+            "bytes": 478924,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "be1df9d4b0677093cee5742270cc427127822f35ab7b46e193ad7bf99314638d",
+            "source_bytes": 1234602
+          },
+          "umap": {
+            "path": "figures/Technology-primary-grant/2025/umap.webp",
+            "bytes": 201516,
+            "width": 1968,
+            "height": 1311,
+            "sha256": "96c8374fbc58f9fb4b61bfe4973cae3372e6c79cb7f1d5f138d686aba686a291",
+            "source_bytes": 492311
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-primary-grant/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 275108,
+            "width": 1419,
+            "height": 1157,
+            "sha256": "325b62bf7580fee0fc178f24047ede8228512386c07de011434139e46892bffd",
+            "source_bytes": 876970
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-primary-grant/2025/proximity_matrix_by_community.webp",
+            "bytes": 250008,
+            "width": 1486,
+            "height": 1157,
+            "sha256": "769284d778e2b2e85ca432a542e0b5d8a76e819c7c5638855e0ed7726d875ded",
+            "source_bytes": 796510
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-primary-grant/2025/matrix_sorted.webp",
+            "bytes": 14828,
+            "width": 1586,
+            "height": 788,
+            "sha256": "7f53e93ac147b0787da6e3ada0fe1e59826fb87f035ebac3ffc58ad8ad5365f4",
+            "source_bytes": 46629
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-primary-grant/2025/matrix_fitness_sorted.webp",
+            "bytes": 28164,
+            "width": 1992,
+            "height": 914,
+            "sha256": "7395a91368c11697bcb1cee1a76ce9a29d82166f9bd4bcfaabab2a64a5deccb0",
+            "source_bytes": 80946
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/primary/filing": {
+      "slug": "Technology-primary-filing",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-primary-filing/2024/space.webp",
+            "bytes": 566654,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "081941a608f05b020c94d6c5638bf67e008b589781382c95db0c72791c4df665",
+            "source_bytes": 1474253
+          },
+          "space_communities": {
+            "path": "figures/Technology-primary-filing/2024/space_communities.webp",
+            "bytes": 596786,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "62a1da644c70e90ab8d461a7cef9a3f27399bdeabe4c072e769b4720496db3bd",
+            "source_bytes": 1520416
+          },
+          "umap": {
+            "path": "figures/Technology-primary-filing/2024/umap.webp",
+            "bytes": 124922,
+            "width": 1961,
+            "height": 1311,
+            "sha256": "1b899f631708f628fcab4decb88c4bb557ade5f9c30688f20244d96c5023c451",
+            "source_bytes": 365482
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-primary-filing/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 107426,
+            "width": 1412,
+            "height": 1157,
+            "sha256": "6e593055a9337efe5be47e109396483de06203adb3981558d24608fcb0fd708c",
+            "source_bytes": 369812
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-primary-filing/2024/proximity_matrix_by_community.webp",
+            "bytes": 102776,
+            "width": 1479,
+            "height": 1157,
+            "sha256": "cfe0f673aad42af9b95b36e6ad501162da5624394ce275d037b3f3b027374fec",
+            "source_bytes": 352599
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-primary-filing/2024/matrix_sorted.webp",
+            "bytes": 11784,
+            "width": 1580,
+            "height": 788,
+            "sha256": "1687aadc071fb9f8bdda325fb57cd2058c8d3438da1e1d0f5a6ad062bd638abd",
+            "source_bytes": 39535
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-primary-filing/2024/matrix_fitness_sorted.webp",
+            "bytes": 22552,
+            "width": 1992,
+            "height": 914,
+            "sha256": "791f37a99aba64e0f33169c3408b657311c087f7eb2bee484633910a501476f5",
+            "source_bytes": 68423
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-primary-filing/2025/space.webp",
+            "bytes": 513562,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "9e55859ea76dd4249cefa9385d8924493cbfec79cae2262e878b4104405a2c2a",
+            "source_bytes": 1491627
+          },
+          "space_communities": {
+            "path": "figures/Technology-primary-filing/2025/space_communities.webp",
+            "bytes": 526730,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d28abb424293bc84617267d20e9de343be452fe2b06169d873eb7e119d0065da",
+            "source_bytes": 1503088
+          },
+          "umap": {
+            "path": "figures/Technology-primary-filing/2025/umap.webp",
+            "bytes": 44740,
+            "width": 1942,
+            "height": 1311,
+            "sha256": "caa657400b47cbb1595e2ee70d1183efa9843ad192650392e9546bdbb79b7b3c",
+            "source_bytes": 135083
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-primary-filing/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 16820,
+            "width": 1412,
+            "height": 1157,
+            "sha256": "62adc12e1ccf22855a8abc7728e3944d9a8e3fb90aec697edae660d2252f0570",
+            "source_bytes": 63257
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-primary-filing/2025/proximity_matrix_by_community.webp",
+            "bytes": 17224,
+            "width": 1479,
+            "height": 1157,
+            "sha256": "c2c22ed730475d9ac73a724feb01074465bd5536cb1215605cde4ae3812f05b5",
+            "source_bytes": 64240
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-primary-filing/2025/matrix_sorted.webp",
+            "bytes": 9620,
+            "width": 1580,
+            "height": 788,
+            "sha256": "1d7382c6e42342b7223d1c56206365705ec3684341f40158f69a01cf642c323e",
+            "source_bytes": 34084
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-primary-filing/2025/matrix_fitness_sorted.webp",
+            "bytes": 18540,
+            "width": 1992,
+            "height": 914,
+            "sha256": "016be19c759ea5911fe22b6722c3538f9cb3f381edec7a13a007c4ed07d4d325",
+            "source_bytes": 59365
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/all/grant": {
+      "slug": "Technology-all-grant",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-all-grant/2024/space.webp",
+            "bytes": 440168,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "cf8f9f035fa5bcaa457309a4cc53fa04a4b49769c59f5935d178329b1f274b29",
+            "source_bytes": 1139611
+          },
+          "space_communities": {
+            "path": "figures/Technology-all-grant/2024/space_communities.webp",
+            "bytes": 482692,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "294b7066db51c8c0d607586968759e0154e8129254da20a5363351504d5433ab",
+            "source_bytes": 1228541
+          },
+          "umap": {
+            "path": "figures/Technology-all-grant/2024/umap.webp",
+            "bytes": 143976,
+            "width": 1886,
+            "height": 1311,
+            "sha256": "27ac1b869abec1d4ebd16a3842a81b3858f2234c635315fb0cd9c007f7def1c9",
+            "source_bytes": 430801
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-all-grant/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 322976,
+            "width": 1337,
+            "height": 1157,
+            "sha256": "c6a53840613e0af1e5820441dc79b3d9ad1337ea2f65e87c6ece13350dc05187",
+            "source_bytes": 1004797
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-all-grant/2024/proximity_matrix_by_community.webp",
+            "bytes": 298750,
+            "width": 1404,
+            "height": 1157,
+            "sha256": "80c515fc0a46e4379bb6cd25612ac869076d913b2c7c9828cf6656cd475631e2",
+            "source_bytes": 950688
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-all-grant/2024/matrix_sorted.webp",
+            "bytes": 15232,
+            "width": 1504,
+            "height": 788,
+            "sha256": "d2a5d97c1ef9bb2aa88f291fa5ffd4027e696bdca873886993e108c7f0f3382a",
+            "source_bytes": 46750
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-all-grant/2024/matrix_fitness_sorted.webp",
+            "bytes": 29804,
+            "width": 1992,
+            "height": 914,
+            "sha256": "917c039b39b7e510ea457b84ca375ea82d19cc8a8f5249e9b9c2ae3799559b0f",
+            "source_bytes": 84177
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-all-grant/2025/space.webp",
+            "bytes": 393544,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "29fcca17353e36c8bdcfbd43a9290da86d86f9bb4507d948b8479b0172c0dd69",
+            "source_bytes": 1041512
+          },
+          "space_communities": {
+            "path": "figures/Technology-all-grant/2025/space_communities.webp",
+            "bytes": 439300,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "943ad2e28dd38f13a74b366c59fd35e998c51313d0119ce84deb9bdb6e3503a6",
+            "source_bytes": 1134794
+          },
+          "umap": {
+            "path": "figures/Technology-all-grant/2025/umap.webp",
+            "bytes": 216336,
+            "width": 1886,
+            "height": 1311,
+            "sha256": "79e58cc7477bdf1d4838366979673c6cac8527cf05ba5caa357cf3f5dcdeddaf",
+            "source_bytes": 509691
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-all-grant/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 322808,
+            "width": 1337,
+            "height": 1157,
+            "sha256": "b6f178b238883a894db20b1d06e21e341faa43f6750bbb03f586b89601d79c7f",
+            "source_bytes": 998041
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-all-grant/2025/proximity_matrix_by_community.webp",
+            "bytes": 299104,
+            "width": 1404,
+            "height": 1157,
+            "sha256": "96f55c022eefd7bd268d5f2c4558a04f969f794562ddb0d44a7e22e93ed6c87d",
+            "source_bytes": 939176
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-all-grant/2025/matrix_sorted.webp",
+            "bytes": 15462,
+            "width": 1504,
+            "height": 788,
+            "sha256": "4297618f5fe6e3909345ef2ab3d61625676914ac52ff99ed6ef01d142ebc858b",
+            "source_bytes": 47191
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-all-grant/2025/matrix_fitness_sorted.webp",
+            "bytes": 30006,
+            "width": 1992,
+            "height": 914,
+            "sha256": "1088736683fcb804aa9e1f25796fd46eaba0eaa59ca849672e474f62bc2463a8",
+            "source_bytes": 84828
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/all/filing": {
+      "slug": "Technology-all-filing",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-all-filing/2024/space.webp",
+            "bytes": 654702,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "3e40238b2f12e611a8bc01e8b142f145de686e9426d8dd65dd08f6ba61e45b1a",
+            "source_bytes": 1713893
+          },
+          "space_communities": {
+            "path": "figures/Technology-all-filing/2024/space_communities.webp",
+            "bytes": 707318,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "1c140a0f8865c43d51fc4fc546afaa98c0d92febb890890a7bdd7c4b30330dba",
+            "source_bytes": 1743993
+          },
+          "umap": {
+            "path": "figures/Technology-all-filing/2024/umap.webp",
+            "bytes": 134006,
+            "width": 1879,
+            "height": 1311,
+            "sha256": "fc07b85a785fcfeced6c89ed23763dd7c7a4c3237155ab650fdb2eb3221f25fe",
+            "source_bytes": 383016
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-all-filing/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 135394,
+            "width": 1330,
+            "height": 1157,
+            "sha256": "aa5c0924306ff6f72984b7b888e74beac4bde6f997ae3789242b62ee95a791b5",
+            "source_bytes": 450899
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-all-filing/2024/proximity_matrix_by_community.webp",
+            "bytes": 129394,
+            "width": 1397,
+            "height": 1157,
+            "sha256": "431a3d38181b606cbf03841ed490afcb5c078f7536563ac94974a100c7bd7b1d",
+            "source_bytes": 432625
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-all-filing/2024/matrix_sorted.webp",
+            "bytes": 11862,
+            "width": 1498,
+            "height": 788,
+            "sha256": "9d920301b989a28cd55862029b6192108a17f63af2cd3549059f2bf1c567f2d6",
+            "source_bytes": 39263
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-all-filing/2024/matrix_fitness_sorted.webp",
+            "bytes": 23216,
+            "width": 1992,
+            "height": 914,
+            "sha256": "67b809ba1210879df9728f86cd7b6e5e9fb611eb7f831c9a3654ed8c5e96a99a",
+            "source_bytes": 70155
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-all-filing/2025/space.webp",
+            "bytes": 489992,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e8d4e81f111dcc64b94a9b803550f82cf812fddd96fb22a0cadb13e993b4855f",
+            "source_bytes": 1393235
+          },
+          "space_communities": {
+            "path": "figures/Technology-all-filing/2025/space_communities.webp",
+            "bytes": 499988,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "4dae4712cb9da3ecc8f07d5bbc5cea2f0426b0fd6c938960b2fda85d0b21ed67",
+            "source_bytes": 1401926
+          },
+          "umap": {
+            "path": "figures/Technology-all-filing/2025/umap.webp",
+            "bytes": 50636,
+            "width": 1860,
+            "height": 1311,
+            "sha256": "f3b84f56f95b2de6506da95dfb9fb3dfafe3e0e2145334078b539a9298261200",
+            "source_bytes": 147843
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-all-filing/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 16660,
+            "width": 1330,
+            "height": 1157,
+            "sha256": "347bdeb29b46d7179c5d00b9c839063a12e106adb8f63eb63fcc3dd4d0415de6",
+            "source_bytes": 63531
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-all-filing/2025/proximity_matrix_by_community.webp",
+            "bytes": 17196,
+            "width": 1397,
+            "height": 1157,
+            "sha256": "2b5f97d858ab352bdd0ac85234b376537de545684a915702b7c2ce5375d1b5e0",
+            "source_bytes": 63631
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-all-filing/2025/matrix_sorted.webp",
+            "bytes": 9202,
+            "width": 1498,
+            "height": 788,
+            "sha256": "d64ebab3724e4e351226f6623bfb79f14162df56d1d48c7b0d34ffc5b7419f52",
+            "source_bytes": 32695
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-all-filing/2025/matrix_fitness_sorted.webp",
+            "bytes": 18128,
+            "width": 1992,
+            "height": 914,
+            "sha256": "51a4b7d925ca1092105b7b79b62e495fc4cb8236878146f398198efd2d07d957",
+            "source_bytes": 58632
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/assignee_primary/grant": {
+      "slug": "Technology-assignee_primary-grant",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-assignee_primary-grant/2024/space.webp",
+            "bytes": 498588,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "ffe53975e24e27c05ccec9f3a05f0d0d538e42f042324a2427ed4f79de4e8ffe",
+            "source_bytes": 1307085
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_primary-grant/2024/space_communities.webp",
+            "bytes": 555716,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "836d50a08e5bc66f3b0c04d6a4eec7199084e771ea9dc2c0daf922eada65c142",
+            "source_bytes": 1427032
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_primary-grant/2024/umap.webp",
+            "bytes": 199802,
+            "width": 2116,
+            "height": 1311,
+            "sha256": "555d4e44b40cb4f6fb64a4ee911d2d126cfb97b2afd19d73d1861e07b6d32008",
+            "source_bytes": 501339
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_primary-grant/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 247404,
+            "width": 1567,
+            "height": 1157,
+            "sha256": "3dc1aab73f060f5415c00623886ae6c6ccd8de7bb457e0e90e89660131ebdb85",
+            "source_bytes": 811929
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_primary-grant/2024/proximity_matrix_by_community.webp",
+            "bytes": 233664,
+            "width": 1634,
+            "height": 1157,
+            "sha256": "766ced9abd8fe0e1f2e349b28285241e6731661351aafa4d2e2b87a621bca592",
+            "source_bytes": 775497
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_primary-grant/2024/matrix_sorted.webp",
+            "bytes": 15090,
+            "width": 1735,
+            "height": 788,
+            "sha256": "e45ee17556dd05e43337dc283f66e44737ff716f566785edab6f6c1a236bde91",
+            "source_bytes": 47749
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-assignee_primary-grant/2025/space.webp",
+            "bytes": 409244,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "415af487c537ac4978bd3cf237b57cefb0454844f6898f1b4747995d11d42df6",
+            "source_bytes": 1071361
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_primary-grant/2025/space_communities.webp",
+            "bytes": 456320,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d2417df655dae360b8415c0580037459a542a6eb56eab482eaa19c99feae69f2",
+            "source_bytes": 1191155
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_primary-grant/2025/umap.webp",
+            "bytes": 206710,
+            "width": 2116,
+            "height": 1311,
+            "sha256": "ee08f33ba89df937e6d85bebf99d986034946e8145df2c5fc79b15d4e2bd2d54",
+            "source_bytes": 509609
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_primary-grant/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 250330,
+            "width": 1567,
+            "height": 1157,
+            "sha256": "d45d04b27c6063c35fa514e2e8195bda360a8d91462a14944039b692a3c68fb2",
+            "source_bytes": 826307
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_primary-grant/2025/proximity_matrix_by_community.webp",
+            "bytes": 232386,
+            "width": 1634,
+            "height": 1157,
+            "sha256": "a4345904d47dca494466b7063ffec4fa474980264e61221bb0d15df9ca917060",
+            "source_bytes": 760810
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_primary-grant/2025/matrix_sorted.webp",
+            "bytes": 14954,
+            "width": 1735,
+            "height": 788,
+            "sha256": "35c3b6a39aaa67bc2dd1f951d453f16dc5fcd4b20daa347e7270ce37a8551545",
+            "source_bytes": 47528
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_primary-grant/2025/matrix_fitness_sorted.webp",
+            "bytes": 26906,
+            "width": 1992,
+            "height": 914,
+            "sha256": "fc26931de1210e7c1d30a3fde610f15090f2a4519b5b7e5189d0aaa946a6326b",
+            "source_bytes": 78108
+          }
+        }
+      },
+      "missing": [
+        {
+          "year": 2024,
+          "view": "matrix_fitness_sorted",
+          "reason": "No finite screened fitness/complexity ordering."
+        }
+      ]
+    },
+    "Technology/assignee_primary/filing": {
+      "slug": "Technology-assignee_primary-filing",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-assignee_primary-filing/2024/space.webp",
+            "bytes": 709602,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e1cd9e102d40067c98c100007b3adeda8ca7520b3dba96dfc1568251791413f5",
+            "source_bytes": 1838493
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_primary-filing/2024/space_communities.webp",
+            "bytes": 742386,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "89c75d64d344b12ae22fa97e42fb78a9edae42cdb7caf68b82c2924bb3a61e86",
+            "source_bytes": 1898228
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_primary-filing/2024/umap.webp",
+            "bytes": 106904,
+            "width": 2109,
+            "height": 1311,
+            "sha256": "8b6349c85b6ed2ebd0cace3e92636f17ebc616794d8e724498e72e20f3b80f2d",
+            "source_bytes": 345318
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_primary-filing/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 89536,
+            "width": 1560,
+            "height": 1157,
+            "sha256": "22ee588363798a6b6526df94562011ab0e73a9cc4113e5af5f2f4d6cc6c8ef5c",
+            "source_bytes": 316845
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_primary-filing/2024/proximity_matrix_by_community.webp",
+            "bytes": 85250,
+            "width": 1628,
+            "height": 1157,
+            "sha256": "76a7ea52f2dc58c314b777818686704aa132c427c05c901a379afec3fbaad8aa",
+            "source_bytes": 302119
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_primary-filing/2024/matrix_sorted.webp",
+            "bytes": 12252,
+            "width": 1728,
+            "height": 788,
+            "sha256": "56132d2d988049efaa8269257c8ccf793b5da7d25a660e8c948c5c2a4c269201",
+            "source_bytes": 41401
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-assignee_primary-filing/2025/space.webp",
+            "bytes": 294794,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "788bd35db00e3b33a7c4018ee857d6906b5bb90b0eb5656f118888c767fc7d71",
+            "source_bytes": 861053
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_primary-filing/2025/space_communities.webp",
+            "bytes": 299340,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e6ced4ea2bb2ad8c283d6770131fa9ad15fb1f32e48a7239cbda56245e3573ea",
+            "source_bytes": 865471
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_primary-filing/2025/umap.webp",
+            "bytes": 48476,
+            "width": 2090,
+            "height": 1311,
+            "sha256": "9276020d9ba90fb456d3e6cb7c929e23cbda87b7fc9e2ca43815b26141af463d",
+            "source_bytes": 144700
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_primary-filing/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 14936,
+            "width": 1560,
+            "height": 1157,
+            "sha256": "301021e3bcd21c7e12cbb14eba0d5818c6710fd2b15ac71d0e5bb435e6455d17",
+            "source_bytes": 55055
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_primary-filing/2025/proximity_matrix_by_community.webp",
+            "bytes": 15024,
+            "width": 1628,
+            "height": 1157,
+            "sha256": "3a96f3d0fa3b98c4ab17f384e83e540459e10048fdf02aa60dfc3378a5dae8b3",
+            "source_bytes": 56364
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_primary-filing/2025/matrix_sorted.webp",
+            "bytes": 10554,
+            "width": 1728,
+            "height": 788,
+            "sha256": "0ad051276799d522f4f73c1adba9e649a4d7660da53bb28925b5c70a2a1e00aa",
+            "source_bytes": 37627
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_primary-filing/2025/matrix_fitness_sorted.webp",
+            "bytes": 19036,
+            "width": 1992,
+            "height": 914,
+            "sha256": "23b35c84a52d89cc733196777569323111dd9b1f38665e599a74c38fd7a63284",
+            "source_bytes": 60378
+          }
+        }
+      },
+      "missing": [
+        {
+          "year": 2024,
+          "view": "matrix_fitness_sorted",
+          "reason": "No finite screened fitness/complexity ordering."
+        }
+      ]
+    },
+    "Technology/assignee_all/grant": {
+      "slug": "Technology-assignee_all-grant",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-assignee_all-grant/2024/space.webp",
+            "bytes": 335936,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "849226b82a1b62e5cc4fdbbdfc970ed67925886896a4d3d458a069d31c20cd64",
+            "source_bytes": 882631
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_all-grant/2024/space_communities.webp",
+            "bytes": 389558,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "c33ef77a9f2e65526c3809436f29d0b9f6d98bbf5475cbd659224c886763b7e0",
+            "source_bytes": 1012617
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_all-grant/2024/umap.webp",
+            "bytes": 194188,
+            "width": 2034,
+            "height": 1311,
+            "sha256": "fac3e90365dd6b3b2b38a1f09f569c691683709e1dc3cc0a629052a00dc38b32",
+            "source_bytes": 478101
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_all-grant/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 296408,
+            "width": 1485,
+            "height": 1157,
+            "sha256": "80519c06e6576371341aeb617858ab2028fa50871bfff0abeaad9c4e00c8df1b",
+            "source_bytes": 937527
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_all-grant/2024/proximity_matrix_by_community.webp",
+            "bytes": 273556,
+            "width": 1552,
+            "height": 1157,
+            "sha256": "e939669e78a9ac5e994fcc4d12251d13b6ce47efc5bb3f32d42bf59917c5edc9",
+            "source_bytes": 868076
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_all-grant/2024/matrix_sorted.webp",
+            "bytes": 15560,
+            "width": 1653,
+            "height": 788,
+            "sha256": "ae3dda5b8950756ee5351d99a9511f6b299d957a534d0bda09c6583656c6f0ea",
+            "source_bytes": 48538
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_all-grant/2024/matrix_fitness_sorted.webp",
+            "bytes": 28988,
+            "width": 1992,
+            "height": 914,
+            "sha256": "37ae6fc77df7ff2b988ecc00beaed3429b2f369027e2e01f6de031c6f1ae26bd",
+            "source_bytes": 82886
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-assignee_all-grant/2025/space.webp",
+            "bytes": 331954,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "366365ddd34ba569153657719bfc5ac649fed4a67dae92acc5b9ad2ff96bb5c1",
+            "source_bytes": 856137
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_all-grant/2025/space_communities.webp",
+            "bytes": 385454,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "4505b8f18ab29b6b1da517a4cae03a722b5dcef002e466498b5b567c5d581ecb",
+            "source_bytes": 987534
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_all-grant/2025/umap.webp",
+            "bytes": 215042,
+            "width": 2034,
+            "height": 1311,
+            "sha256": "9558d10874ac78cc5748b411443c86181b0d5532ff3ea00467fd30371c73ff4d",
+            "source_bytes": 507135
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_all-grant/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 291412,
+            "width": 1485,
+            "height": 1157,
+            "sha256": "b51364f35e6d588d06f0eb0f4f8eb2823d2dcdbbb437c7f848e3b238149218f7",
+            "source_bytes": 914269
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_all-grant/2025/proximity_matrix_by_community.webp",
+            "bytes": 266608,
+            "width": 1552,
+            "height": 1157,
+            "sha256": "c0a064cda16d83283c4f2c570b34c1e7c90b90c512ddf42c094fb1666787800f",
+            "source_bytes": 858392
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_all-grant/2025/matrix_sorted.webp",
+            "bytes": 15436,
+            "width": 1653,
+            "height": 788,
+            "sha256": "6615a20347a6b1b2e95343f832d1827d29d00b9470edc42198623501a4a4f178",
+            "source_bytes": 48078
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_all-grant/2025/matrix_fitness_sorted.webp",
+            "bytes": 28684,
+            "width": 1992,
+            "height": 914,
+            "sha256": "89d0974956b2b05f1f3c258cec432d562f17a9d06104d60edea4b6814198dc94",
+            "source_bytes": 81931
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology/assignee_all/filing": {
+      "slug": "Technology-assignee_all-filing",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Technology-assignee_all-filing/2024/space.webp",
+            "bytes": 638738,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "b533022df68316621ac01fd7d08383b19c1a00dc99f8076ce17c5483036fcba7",
+            "source_bytes": 1644322
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_all-filing/2024/space_communities.webp",
+            "bytes": 667284,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d77184f3b4a2141952b14fb4d4df89a45f57907ee968a9472d94600f5860f853",
+            "source_bytes": 1683423
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_all-filing/2024/umap.webp",
+            "bytes": 108392,
+            "width": 2027,
+            "height": 1311,
+            "sha256": "894252198261590ff7f8f73549ac73183d2866719b50db64d9991589735e5ddf",
+            "source_bytes": 337967
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_all-filing/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 111510,
+            "width": 1478,
+            "height": 1157,
+            "sha256": "e5f4e7027ad436c9449f38541ed1533c156ef6db7f49e9bc1e7078172c98e0a1",
+            "source_bytes": 388980
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_all-filing/2024/proximity_matrix_by_community.webp",
+            "bytes": 105058,
+            "width": 1546,
+            "height": 1157,
+            "sha256": "4f7a9de5e86ef8ebfcc3db811fd11317ff374711e204fc65d67b3eb0ea37e20f",
+            "source_bytes": 357878
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_all-filing/2024/matrix_sorted.webp",
+            "bytes": 12324,
+            "width": 1646,
+            "height": 788,
+            "sha256": "b81f37d8615cde0073d3c48ee88ab61b6dd6d90feccae67717077e6ffee30522",
+            "source_bytes": 41367
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_all-filing/2024/matrix_fitness_sorted.webp",
+            "bytes": 22478,
+            "width": 1992,
+            "height": 914,
+            "sha256": "e804e8d2e0ac8ac5084b16982e9398891f0c7a63997499c21681fb2609767661",
+            "source_bytes": 68444
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Technology-assignee_all-filing/2025/space.webp",
+            "bytes": 325748,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "c3457fd187d2b6bef92afed49a434f6dc48afa6842a1e146fa63ebfa6d51dcd7",
+            "source_bytes": 974697
+          },
+          "space_communities": {
+            "path": "figures/Technology-assignee_all-filing/2025/space_communities.webp",
+            "bytes": 333298,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "46d9fe72a737b81648148012c0486c022a315e8bb11ce1153692e1e6cbbb8530",
+            "source_bytes": 973783
+          },
+          "umap": {
+            "path": "figures/Technology-assignee_all-filing/2025/umap.webp",
+            "bytes": 40996,
+            "width": 2008,
+            "height": 1311,
+            "sha256": "5e01842562e3d4b1b0ed57566a630da11d0e09b5a9a1704539fccb9754b35933",
+            "source_bytes": 125532
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology-assignee_all-filing/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 14756,
+            "width": 1478,
+            "height": 1157,
+            "sha256": "9e83fb3a4f3be675fd928e005ed8c4b34075b9dfa7419b369ad8fe8a7e29850c",
+            "source_bytes": 54692
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology-assignee_all-filing/2025/proximity_matrix_by_community.webp",
+            "bytes": 14706,
+            "width": 1546,
+            "height": 1157,
+            "sha256": "5e5ddd3082cce6f66682252369f6c22d15a23d4505725e235666f968ae431eaa",
+            "source_bytes": 54422
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology-assignee_all-filing/2025/matrix_sorted.webp",
+            "bytes": 10440,
+            "width": 1646,
+            "height": 788,
+            "sha256": "15adfc76a69a156f16eec5d3f5a0fbf28f7e5da695e0511033417fd95602c036",
+            "source_bytes": 36211
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology-assignee_all-filing/2025/matrix_fitness_sorted.webp",
+            "bytes": 18462,
+            "width": 1992,
+            "height": 914,
+            "sha256": "60ee27a9d8bf962e070ba3048046e21bacac31d1fc49cb4d7a41b9d96f6f9748",
+            "source_bytes": 59625
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/inventor/primary/filing": {
+      "slug": "Technology_PATSTAT-inventor-primary-filing",
+      "years": [
+        2021,
+        2022
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2021": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/space.webp",
+            "bytes": 369240,
+            "width": 1820,
+            "height": 1465,
+            "sha256": "98354d6fb8c993236979cbfdd78455dfea6515397f6b8db7cfc1ae8f664fcd1e",
+            "source_bytes": 970927
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/space_communities.webp",
+            "bytes": 412252,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "4ffe46a46092c571b1e97722e58b5de1b381b34ada5b63c5c045396b9874b4c2",
+            "source_bytes": 1068013
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/umap.webp",
+            "bytes": 211506,
+            "width": 2232,
+            "height": 1311,
+            "sha256": "a6497935572b6f299811fb113098340366f5b7dd5c7da678d781f71cabe601fd",
+            "source_bytes": 505187
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/proximity_matrix_by_cluster.webp",
+            "bytes": 346050,
+            "width": 1683,
+            "height": 1157,
+            "sha256": "1b61e6c3da7704bceaa04f18675766cde829bc94579b90eb5ce375abc4eef2e6",
+            "source_bytes": 1069159
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/proximity_matrix_by_community.webp",
+            "bytes": 317540,
+            "width": 1750,
+            "height": 1157,
+            "sha256": "9973d66008482b3f38686c63b3b5b82575ebdc4d9c3c2cefc6788654a779e351",
+            "source_bytes": 998990
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/matrix_sorted.webp",
+            "bytes": 17424,
+            "width": 1850,
+            "height": 788,
+            "sha256": "e33ef4f3da1c5664ae85bc8a196b4b15ac06aa96a4f22eb9c0cd400fa19ae519",
+            "source_bytes": 54131
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2021/matrix_fitness_sorted.webp",
+            "bytes": 31856,
+            "width": 1992,
+            "height": 914,
+            "sha256": "85a7cc3191aeb3a3d3ed12cf8033ad953222929f604c9116e3596fd393104efc",
+            "source_bytes": 89242
+          }
+        },
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/space.webp",
+            "bytes": 620198,
+            "width": 1820,
+            "height": 1465,
+            "sha256": "dd4d088191cdbb7c6e5e9714a41810595f3db11b3029b002886ed3f6ec48938d",
+            "source_bytes": 1644001
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/space_communities.webp",
+            "bytes": 663748,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "c2340ca9a34e96a0edf4a0895b2768e43e7e473bac8642682b82675350698ab6",
+            "source_bytes": 1656727
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/umap.webp",
+            "bytes": 144552,
+            "width": 2232,
+            "height": 1311,
+            "sha256": "1d381630deccdfb16ba43b0b430c22b67f790b368054f266e991eddd3988a9e0",
+            "source_bytes": 363615
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 112530,
+            "width": 1683,
+            "height": 1157,
+            "sha256": "119c650eaa7671be1a3c3a9ff91e1e6efad28b5021e9e4149b5a20db8a6e8bd2",
+            "source_bytes": 373149
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/proximity_matrix_by_community.webp",
+            "bytes": 107036,
+            "width": 1750,
+            "height": 1157,
+            "sha256": "12f4d24c3b9ce9b351098796345cc09b3292efd7d0827edaf474f1185caac76b",
+            "source_bytes": 354807
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/matrix_sorted.webp",
+            "bytes": 13334,
+            "width": 1850,
+            "height": 788,
+            "sha256": "5c22dc3915710cad6da114df16082c11ed7d3e942d2caad9cab612e7b9da1b5c",
+            "source_bytes": 44246
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-filing/2022/matrix_fitness_sorted.webp",
+            "bytes": 23714,
+            "width": 1992,
+            "height": 914,
+            "sha256": "ba1914be82fbcf88e01071c225a28358fcf437d42bfb153a8c22c46fe9f9cc59",
+            "source_bytes": 71117
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/inventor/primary/grant": {
+      "slug": "Technology_PATSTAT-inventor-primary-grant",
+      "years": [
+        2022,
+        2023
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/space.webp",
+            "bytes": 442892,
+            "width": 1827,
+            "height": 1465,
+            "sha256": "15b94095dce19c0450a1ebdff2ea12261a0bec494cb027f45427368d73286184",
+            "source_bytes": 1157537
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/space_communities.webp",
+            "bytes": 498294,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "8a4c7b52e8a0eafbab2a3158f47ff445a5c3e0da9a52aef62aae266703d77a02",
+            "source_bytes": 1272825
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/umap.webp",
+            "bytes": 205310,
+            "width": 2239,
+            "height": 1311,
+            "sha256": "de805b51006f5af6dc1a7e4f930a779cbea1d08fa4f0ab61bc5b422f6633a395",
+            "source_bytes": 512631
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 337036,
+            "width": 1690,
+            "height": 1157,
+            "sha256": "37d5736ae62f0c756915aec4a9172971145520d5781717f9e3a2ba179b5c84f7",
+            "source_bytes": 1044677
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/proximity_matrix_by_community.webp",
+            "bytes": 311214,
+            "width": 1757,
+            "height": 1157,
+            "sha256": "dd54eb5cc49f4fe7a6fd5dbd53b905b6ad56fdc8032fc4f348301b6bb4bc1532",
+            "source_bytes": 983478
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/matrix_sorted.webp",
+            "bytes": 17160,
+            "width": 1857,
+            "height": 788,
+            "sha256": "064fb8d763fd069af834f51ba5abd4873f252cd15af4a92b719ba0aaafb9f611",
+            "source_bytes": 53019
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2022/matrix_fitness_sorted.webp",
+            "bytes": 30850,
+            "width": 1992,
+            "height": 914,
+            "sha256": "e2885afcda61f97704030e4d61ec5b024bab57aae33813d68ecd37abb4d88144",
+            "source_bytes": 87127
+          }
+        },
+        "2023": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/space.webp",
+            "bytes": 369054,
+            "width": 1827,
+            "height": 1465,
+            "sha256": "5780d427d3ecf933b7b2fb22e3636489e62cbc5dee7c1f13da372e9de4da2512",
+            "source_bytes": 969014
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/space_communities.webp",
+            "bytes": 403176,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "9409abc8485e3f9dda3b1eb3549e0f889f9f8d7ea616caa90291b4eb30030734",
+            "source_bytes": 1067197
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/umap.webp",
+            "bytes": 188522,
+            "width": 2239,
+            "height": 1311,
+            "sha256": "0b4093e42e02681222a42b42ac5b55544f614e8eef02b895ea261a39d45a5022",
+            "source_bytes": 490936
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/proximity_matrix_by_cluster.webp",
+            "bytes": 283162,
+            "width": 1690,
+            "height": 1157,
+            "sha256": "8ab4119f2b1e5e2673f7f59b8eac3081c544f74af1d42d10283d775db5c36c1d",
+            "source_bytes": 901807
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/proximity_matrix_by_community.webp",
+            "bytes": 263666,
+            "width": 1757,
+            "height": 1157,
+            "sha256": "6b95af76b1627219a4d990725aedd96f8c537b59cacd5bba41fc93082d18db4e",
+            "source_bytes": 839993
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/matrix_sorted.webp",
+            "bytes": 16126,
+            "width": 1857,
+            "height": 788,
+            "sha256": "d50ff426255b234a0286d9b52cea86ca3c860c34d635c09863f82f7872797bc8",
+            "source_bytes": 50889
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-primary-grant/2023/matrix_fitness_sorted.webp",
+            "bytes": 29076,
+            "width": 1992,
+            "height": 914,
+            "sha256": "7dcb4aa01b930eeed8234d1cf294c5a2340e9c86000459df1e4827d0b453f320",
+            "source_bytes": 83205
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/inventor/all/filing": {
+      "slug": "Technology_PATSTAT-inventor-all-filing",
+      "years": [
+        2021,
+        2022
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2021": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/space.webp",
+            "bytes": 265004,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "97cd6297b87e5cb8063f40a25d9b32568d55c2183b8730dc839f9bab468dc00d",
+            "source_bytes": 709995
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/space_communities.webp",
+            "bytes": 309172,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "0daa3e9fe12bd5865dd62a71ee7696ed7dc37d10b2b8787035070ec6c4f9c712",
+            "source_bytes": 789009
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/umap.webp",
+            "bytes": 213480,
+            "width": 2150,
+            "height": 1311,
+            "sha256": "c6a66797bb5895c0cc40c5cd469e04083b1e54542c6671392b80e6f15da9adf8",
+            "source_bytes": 517705
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/proximity_matrix_by_cluster.webp",
+            "bytes": 415562,
+            "width": 1601,
+            "height": 1157,
+            "sha256": "bea5cff85d8ba1aef337d8f5c2ec7b41b3e713dcd0d50d3626c8feaf9b733df9",
+            "source_bytes": 1205652
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/proximity_matrix_by_community.webp",
+            "bytes": 384704,
+            "width": 1668,
+            "height": 1157,
+            "sha256": "0664396f1ff81adcc9a1c312a0421a4280520735a215d0f424b5326b5ca73253",
+            "source_bytes": 1148870
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/matrix_sorted.webp",
+            "bytes": 18462,
+            "width": 1768,
+            "height": 788,
+            "sha256": "eca090853f053e356e6c2a5ba3254fb7f64dc0de523c5a8b546d7b5ed9a64e51",
+            "source_bytes": 55602
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2021/matrix_fitness_sorted.webp",
+            "bytes": 34398,
+            "width": 1992,
+            "height": 914,
+            "sha256": "a8bab0ddc12f0866fd3407b6a0321402a1cebd611397320eb2cac7d489510b44",
+            "source_bytes": 94800
+          }
+        },
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/space.webp",
+            "bytes": 506836,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "483a6f489815729f29f41dc44f75a19ca50a39c138c772ba68f92a118600fd38",
+            "source_bytes": 1245633
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/space_communities.webp",
+            "bytes": 520630,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "b25007c0a047f3f5319398bbe7bc6f9993f91b7b1537e4079fac1f84e164c833",
+            "source_bytes": 1321793
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/umap.webp",
+            "bytes": 176032,
+            "width": 2150,
+            "height": 1311,
+            "sha256": "749f26256b43637b657cb228cc46507027cfc866413ccd001f2aabe26e8b97fc",
+            "source_bytes": 427809
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 125720,
+            "width": 1601,
+            "height": 1157,
+            "sha256": "3968d6fab2c9f61fa3235784423a84fdf069e188686268d60991e90dcfad76a8",
+            "source_bytes": 414967
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/proximity_matrix_by_community.webp",
+            "bytes": 118602,
+            "width": 1668,
+            "height": 1157,
+            "sha256": "6d87d3c58f9a7fa4cc0df9cddf99895bd386bd089624780f2235c192fbfebf68",
+            "source_bytes": 390408
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/matrix_sorted.webp",
+            "bytes": 13314,
+            "width": 1768,
+            "height": 788,
+            "sha256": "15bb6d0dc915ec420bd8ada6f2058935ae200c446588a782dfd42aafa5a75123",
+            "source_bytes": 43935
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/matrix_fitness_sorted.webp",
+            "bytes": 24258,
+            "width": 1992,
+            "height": 914,
+            "sha256": "3143e8ff3ecaba18f13cff7e39a7b499450bc2b6c29a0c6816b92e3324965bf8",
+            "source_bytes": 72444
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/inventor/all/grant": {
+      "slug": "Technology_PATSTAT-inventor-all-grant",
+      "years": [
+        2022,
+        2023
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/space.webp",
+            "bytes": 245312,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d87e1ccf0277c08e6eb0c99961f004fdbb1efae560f0c8fee07efde08fa75aca",
+            "source_bytes": 647654
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/space_communities.webp",
+            "bytes": 304312,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "7b1a34a9553f2b2ee0e34567ceb79d729f8a652096ef212f77a8679c1f04e2b1",
+            "source_bytes": 773389
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/umap.webp",
+            "bytes": 210696,
+            "width": 2157,
+            "height": 1311,
+            "sha256": "3c15d7f78684e020675d59b3993ca4922066a275c64c71ddeaf178f2b8623695",
+            "source_bytes": 514454
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 394084,
+            "width": 1608,
+            "height": 1157,
+            "sha256": "ae218d656cd68435d09e290d41a55a2f1be13fd72e449120d18dc27d23244c80",
+            "source_bytes": 1174859
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/proximity_matrix_by_community.webp",
+            "bytes": 362076,
+            "width": 1675,
+            "height": 1157,
+            "sha256": "50a30834fa2e7e4ec02e0be0df101c027fe5a15b31c89d51dddef1dfbd9319dd",
+            "source_bytes": 1111451
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/matrix_sorted.webp",
+            "bytes": 17710,
+            "width": 1775,
+            "height": 788,
+            "sha256": "25118c20039bc6f58cf0a4734453b9418ac828bfe93fb1a79e1b287c29970da2",
+            "source_bytes": 53643
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2022/matrix_fitness_sorted.webp",
+            "bytes": 32902,
+            "width": 1992,
+            "height": 914,
+            "sha256": "d9827daefc5fb1c77a316958f4a5d32238ec50f3b14aa23147d780e983c8d015",
+            "source_bytes": 91277
+          }
+        },
+        "2023": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/space.webp",
+            "bytes": 309502,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "a519d1de87f7ddf9631b806914cfa9c86e2a1dadf1d8325b6271ca9d6d205877",
+            "source_bytes": 820090
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/space_communities.webp",
+            "bytes": 367194,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "03dad7f9e0f9ccb24d08c8f7772780e2e2885969b39385ce1ff45955de40e44a",
+            "source_bytes": 962675
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/umap.webp",
+            "bytes": 208394,
+            "width": 2157,
+            "height": 1311,
+            "sha256": "172544301045572e37a2891beb3d78545e8367d2ac767d38dd7ee0a40ec40588",
+            "source_bytes": 508176
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/proximity_matrix_by_cluster.webp",
+            "bytes": 319580,
+            "width": 1608,
+            "height": 1157,
+            "sha256": "9fbb2c4fddd36dd45051bbbd809ed656639218a030e6ea505101ddb5fe8e05d1",
+            "source_bytes": 998179
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/proximity_matrix_by_community.webp",
+            "bytes": 297264,
+            "width": 1675,
+            "height": 1157,
+            "sha256": "edbd40a5f9ff5fb6e14b62f40dd9f4fcd1f0ceaabf722917cfad60adc89a4f67",
+            "source_bytes": 947875
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/matrix_sorted.webp",
+            "bytes": 16422,
+            "width": 1775,
+            "height": 788,
+            "sha256": "99977682f6e54fac7d6b43947d39f6b8cd1f177e4296d1f4bb0d3d9a01ffbc97",
+            "source_bytes": 50713
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-inventor-all-grant/2023/matrix_fitness_sorted.webp",
+            "bytes": 30244,
+            "width": 1992,
+            "height": 914,
+            "sha256": "3da507b8ceb0a86ae08881daefce5764bcc21dab0ed5d131db3ce36606120676",
+            "source_bytes": 85451
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/applicant/primary/filing": {
+      "slug": "Technology_PATSTAT-applicant-primary-filing",
+      "years": [
+        2021,
+        2022
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2021": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/space.webp",
+            "bytes": 314082,
+            "width": 1836,
+            "height": 1465,
+            "sha256": "ffebe58ce60f2cc53f4c0b01b5adbeadfbe66b59453d042f58fc3965f4357a17",
+            "source_bytes": 820833
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/space_communities.webp",
+            "bytes": 345864,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "61bc6d235aed2ca2f1ff335e70fdd98a99864d1c38eea125ad68cccb283a48ec",
+            "source_bytes": 898462
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/umap.webp",
+            "bytes": 201072,
+            "width": 2248,
+            "height": 1311,
+            "sha256": "cefb6fb7ede508356be63c4016ed8cb3409f0561bdab33c77ebcd7ebca404a9c",
+            "source_bytes": 509302
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/proximity_matrix_by_cluster.webp",
+            "bytes": 344220,
+            "width": 1699,
+            "height": 1157,
+            "sha256": "92c3ed1059dc9b99728acd896a0e094108ee80486a3b68312e3dc92ac97967a5",
+            "source_bytes": 1066229
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/proximity_matrix_by_community.webp",
+            "bytes": 316042,
+            "width": 1766,
+            "height": 1157,
+            "sha256": "e6b9132ae05ca597c6f530fc9fa5478a57c6cd292ed784d5240c1e638da4939b",
+            "source_bytes": 987541
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/matrix_sorted.webp",
+            "bytes": 17252,
+            "width": 1866,
+            "height": 788,
+            "sha256": "dd28a750a00333318323bda06a8199cad54e96ea9b6316ac6536063176522a5e",
+            "source_bytes": 53154
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2021/matrix_fitness_sorted.webp",
+            "bytes": 31694,
+            "width": 1992,
+            "height": 914,
+            "sha256": "c151b16d3cd3ae3c9fc9628eef5769f83d11e06deadf02241f9cfb4815a13edc",
+            "source_bytes": 89035
+          }
+        },
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/space.webp",
+            "bytes": 647114,
+            "width": 1836,
+            "height": 1465,
+            "sha256": "8de339b87c612055fb6eb13d5e9402b1993104a2aee30712b4488d5d8b7801f6",
+            "source_bytes": 1708358
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/space_communities.webp",
+            "bytes": 688952,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "44bb6c92b37e1dff4517e93386bf6544c99b31c1590d9f84dab07ec09e15f605",
+            "source_bytes": 1738181
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/umap.webp",
+            "bytes": 144026,
+            "width": 2248,
+            "height": 1311,
+            "sha256": "3c100f0a9f46004ca50c2dbdbb312a8bcc614d7f34bc5de55b3dc632f0b26331",
+            "source_bytes": 428564
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 111934,
+            "width": 1699,
+            "height": 1157,
+            "sha256": "bf06f4348e11222771efd3ae5ba88ea0483e6aac3a5b45c7b5d6d70d4c1fc29b",
+            "source_bytes": 372881
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/proximity_matrix_by_community.webp",
+            "bytes": 105614,
+            "width": 1766,
+            "height": 1157,
+            "sha256": "8dcf038d645e8a0b3323b1b56c1dac60abfbd30c638f8a75310334bf67269ac6",
+            "source_bytes": 349977
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/matrix_sorted.webp",
+            "bytes": 13220,
+            "width": 1866,
+            "height": 788,
+            "sha256": "ff17fde2f06663bdf1da7439b84728c508b5eb9f5f889847cc47c5a00a64331a",
+            "source_bytes": 43900
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-filing/2022/matrix_fitness_sorted.webp",
+            "bytes": 23694,
+            "width": 1992,
+            "height": 914,
+            "sha256": "6b724e5aa05537a669e7c2e674e1534dc0c18dc57270efddba74e78dfe3231ac",
+            "source_bytes": 71405
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/applicant/primary/grant": {
+      "slug": "Technology_PATSTAT-applicant-primary-grant",
+      "years": [
+        2022,
+        2023
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/space.webp",
+            "bytes": 368232,
+            "width": 1843,
+            "height": 1465,
+            "sha256": "49ac3a9277dd870f8a71e5c1b83d02479a923d6187d11fbac75128fa67beb801",
+            "source_bytes": 962301
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/space_communities.webp",
+            "bytes": 420112,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "9ace1dcdda5477f3c226f9667ee482f7475a18561c458dfb1de1f4cfb4594324",
+            "source_bytes": 1110199
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/umap.webp",
+            "bytes": 208186,
+            "width": 2255,
+            "height": 1311,
+            "sha256": "afd8547e0f4391b969694857767dfb1d905b4744d7b1c433f0b632fafe06c985",
+            "source_bytes": 515075
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 339424,
+            "width": 1706,
+            "height": 1157,
+            "sha256": "b70221f66e54d19eb3ddb4e86ef9b04b1d346acbdf18b98aebed79398b324abf",
+            "source_bytes": 1053028
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/proximity_matrix_by_community.webp",
+            "bytes": 305796,
+            "width": 1773,
+            "height": 1157,
+            "sha256": "07bb5adcc838c77068993df61433016e2be35255142d413bb4dc76a12f5c16f9",
+            "source_bytes": 970828
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/matrix_sorted.webp",
+            "bytes": 16400,
+            "width": 1873,
+            "height": 788,
+            "sha256": "b0d29aebb70b7eafa7f65e01b2dfdea4f446c7537d76972e904b60f3c9bdee4b",
+            "source_bytes": 50725
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2022/matrix_fitness_sorted.webp",
+            "bytes": 30714,
+            "width": 1992,
+            "height": 914,
+            "sha256": "e8ac1586c34e45c440e6162a3eb802f0ffb90f4968a404583310c95805bb9cac",
+            "source_bytes": 86801
+          }
+        },
+        "2023": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/space.webp",
+            "bytes": 378928,
+            "width": 1843,
+            "height": 1465,
+            "sha256": "9625789ca2c4b19fb956ca87824464be9ece825550a06dd3f8fee57deaa26806",
+            "source_bytes": 991349
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/space_communities.webp",
+            "bytes": 424352,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "6d0f1d46f8cae11e8f4f11f06dbd828c79d4edb156c8b092a4198ae1fab31c2d",
+            "source_bytes": 1105512
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/umap.webp",
+            "bytes": 208234,
+            "width": 2255,
+            "height": 1311,
+            "sha256": "c5111d38b3b9bda22000b8c1ea3763eb17950a22b76fb24396d9f1d457e9a62b",
+            "source_bytes": 511898
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/proximity_matrix_by_cluster.webp",
+            "bytes": 277996,
+            "width": 1706,
+            "height": 1157,
+            "sha256": "8b1db014c9b5203cf5ace13b8b9acade66ce6ef82e2ea4ad26fca13dd477330b",
+            "source_bytes": 896502
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/proximity_matrix_by_community.webp",
+            "bytes": 256710,
+            "width": 1773,
+            "height": 1157,
+            "sha256": "d7b407b91214efafdbc7cd58e875d36412a22fb12d05eaf36d85b477839750fe",
+            "source_bytes": 827600
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/matrix_sorted.webp",
+            "bytes": 15354,
+            "width": 1873,
+            "height": 788,
+            "sha256": "f711404caf58ef97c74cd2c5fe021224aee417dfe2726ee86c968c3e7c4ea474",
+            "source_bytes": 48044
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-primary-grant/2023/matrix_fitness_sorted.webp",
+            "bytes": 28764,
+            "width": 1992,
+            "height": 914,
+            "sha256": "8e2d79573237f32bfe6106a78fefb2879520dd1ac4c8589172fe8431dab59a74",
+            "source_bytes": 82439
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/applicant/all/filing": {
+      "slug": "Technology_PATSTAT-applicant-all-filing",
+      "years": [
+        2021,
+        2022
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2021": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/space.webp",
+            "bytes": 247562,
+            "width": 1754,
+            "height": 1465,
+            "sha256": "0a4500c0e718b11c674036f1c7224640456d8492a05f515cda442333910a89fb",
+            "source_bytes": 657948
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/space_communities.webp",
+            "bytes": 308244,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d2d41133283625394517cdb5f1e4223fb0bbd2fbd585c88c52137c9f160b5122",
+            "source_bytes": 786182
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/umap.webp",
+            "bytes": 210692,
+            "width": 2166,
+            "height": 1311,
+            "sha256": "d4b76ff7266117819c7acf50c72555f8f7a93afc77166419d06bd4803a997d65",
+            "source_bytes": 518166
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/proximity_matrix_by_cluster.webp",
+            "bytes": 418794,
+            "width": 1617,
+            "height": 1157,
+            "sha256": "dbb5477ffa71d33c879fcdb57278c47df1216b18b23057c63b5b017359c1b93f",
+            "source_bytes": 1219626
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/proximity_matrix_by_community.webp",
+            "bytes": 391560,
+            "width": 1684,
+            "height": 1157,
+            "sha256": "853f993a1542b429c596a720a2cacbc2da2d6e16f161b646f7d50c9cc185d74f",
+            "source_bytes": 1188489
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/matrix_sorted.webp",
+            "bytes": 18298,
+            "width": 1784,
+            "height": 788,
+            "sha256": "f17e9e1ca4436b03244191b6877a879ae0cba44b9a543e9f8f2486100f775f37",
+            "source_bytes": 55405
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2021/matrix_fitness_sorted.webp",
+            "bytes": 34358,
+            "width": 1992,
+            "height": 914,
+            "sha256": "2877e3b3039313841aaa6da68ef34f9d5c3d35cf8cfbe72c6e7155db387d2c18",
+            "source_bytes": 94671
+          }
+        },
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/space.webp",
+            "bytes": 393744,
+            "width": 1754,
+            "height": 1465,
+            "sha256": "26d7f495c9488ce59f191925de879c4836db0381e501aed2af63d027d8a13d3f",
+            "source_bytes": 1042119
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/space_communities.webp",
+            "bytes": 435274,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "71e2c06da6ed828a3be06f2515296b16980aefe01cfa71ada6c253b70c606bcf",
+            "source_bytes": 1096200
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/umap.webp",
+            "bytes": 166514,
+            "width": 2166,
+            "height": 1311,
+            "sha256": "f6078df712446b81cca4524c6936a4718285d88bfef4f8bbbc70cf429caa1e3c",
+            "source_bytes": 424707
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 125208,
+            "width": 1617,
+            "height": 1157,
+            "sha256": "8fdc26ab17fd6a1ea73ec3a20892d1d30059cae8dae938375a7ac6fc5634d877",
+            "source_bytes": 408707
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/proximity_matrix_by_community.webp",
+            "bytes": 120604,
+            "width": 1684,
+            "height": 1157,
+            "sha256": "0842aa0cf10fb5d6ae74c677e4d7cfbf90676c2d0dbd368c29172a9e7d7f2e93",
+            "source_bytes": 398754
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/matrix_sorted.webp",
+            "bytes": 13298,
+            "width": 1784,
+            "height": 788,
+            "sha256": "22cf3023c7eaad25bff0a4473776cefe000aff5b03387b371e94026226a1e812",
+            "source_bytes": 43829
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/matrix_fitness_sorted.webp",
+            "bytes": 24512,
+            "width": 1992,
+            "height": 914,
+            "sha256": "9b8b551b42d1ba5b9884951b61f7cddaf1991051089a7f2205d247f99d3ccd99",
+            "source_bytes": 72930
+          }
+        }
+      },
+      "missing": []
+    },
+    "Technology_PATSTAT/applicant/all/grant": {
+      "slug": "Technology_PATSTAT-applicant-all-grant",
+      "years": [
+        2022,
+        2023
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2022": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/space.webp",
+            "bytes": 298832,
+            "width": 1761,
+            "height": 1465,
+            "sha256": "21272155d40565b0ac4daa9638847d7367a36dce6015b2ed0bb4c63ff5198a2c",
+            "source_bytes": 807927
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/space_communities.webp",
+            "bytes": 384404,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d2b35efd743bbe5f296b201281c0befce4c6eec93e576004a30ffb14e093c5f7",
+            "source_bytes": 961979
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/umap.webp",
+            "bytes": 206352,
+            "width": 2173,
+            "height": 1311,
+            "sha256": "723a5eb2f7d131f33f683b4ffa84428b86be74c67582490b356294aa89428a41",
+            "source_bytes": 510217
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/proximity_matrix_by_cluster.webp",
+            "bytes": 394758,
+            "width": 1624,
+            "height": 1157,
+            "sha256": "aa0fbb5508403b4ff3b4fc4db0569a0fe8428464632b9cdeefeaf463681dd437",
+            "source_bytes": 1177718
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/proximity_matrix_by_community.webp",
+            "bytes": 358878,
+            "width": 1691,
+            "height": 1157,
+            "sha256": "c2d1733caa97dd5b350e5beb59e08024f4db10784c90f5d4148cf9de919985cb",
+            "source_bytes": 1099510
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/matrix_sorted.webp",
+            "bytes": 16910,
+            "width": 1791,
+            "height": 788,
+            "sha256": "b7f5af73478e38c82ffb19b3f8fc480bc91cb39957a02030dc94c3d38d44823b",
+            "source_bytes": 51388
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2022/matrix_fitness_sorted.webp",
+            "bytes": 32436,
+            "width": 1992,
+            "height": 914,
+            "sha256": "40e13aecd79536174e232e9e79bbfadaa914f3d21c3cbeb228d3fdd1f31af14f",
+            "source_bytes": 90393
+          }
+        },
+        "2023": {
+          "space": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/space.webp",
+            "bytes": 288114,
+            "width": 1761,
+            "height": 1465,
+            "sha256": "7266b1e661819606d2f68685ca31addebc3392e080507b39377e4fa0a5976322",
+            "source_bytes": 774904
+          },
+          "space_communities": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/space_communities.webp",
+            "bytes": 357632,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e229ad1513d88d750f71932976d658d0a52bd428c7bca7c0000b0e2181dea004",
+            "source_bytes": 937540
+          },
+          "umap": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/umap.webp",
+            "bytes": 210112,
+            "width": 2173,
+            "height": 1311,
+            "sha256": "e434e6ab7cc7e45e2142a22dfc5e877d4928d9acc52e0d800d975d2d2930ea81",
+            "source_bytes": 503803
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/proximity_matrix_by_cluster.webp",
+            "bytes": 322438,
+            "width": 1624,
+            "height": 1157,
+            "sha256": "fd6e6f9d99386e5624cc86d9a48faaa67c4616c20f83efb3eb285cfdec2e529a",
+            "source_bytes": 1008304
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/proximity_matrix_by_community.webp",
+            "bytes": 296176,
+            "width": 1691,
+            "height": 1157,
+            "sha256": "26843be4edae4e88d9e8d25c7da5eab542b66dfc4a62566749651c79e80ade76",
+            "source_bytes": 947525
+          },
+          "matrix_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/matrix_sorted.webp",
+            "bytes": 15428,
+            "width": 1791,
+            "height": 788,
+            "sha256": "51dc1e484d3acc1496cac6dfde2427bce65bc61c04347aa542a8ad20ae49a0de",
+            "source_bytes": 48079
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Technology_PATSTAT-applicant-all-grant/2023/matrix_fitness_sorted.webp",
+            "bytes": 29760,
+            "width": 1992,
+            "height": 914,
+            "sha256": "89ad133503309d4051d8b66056d875f1fc24a3e88bc757e694ab295c4a05129c",
+            "source_bytes": 84593
+          }
+        }
+      },
+      "missing": []
+    },
+    "Science/primary": {
+      "slug": "Science-primary",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Science-primary/2024/space.webp",
+            "bytes": 495976,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e7e3303e3dc92c9b204b866ebb62aea8260e3052cb1019fc3d8decd4cd698667",
+            "source_bytes": 1336494
+          },
+          "space_communities": {
+            "path": "figures/Science-primary/2024/space_communities.webp",
+            "bytes": 509078,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "9c52c2d05f785cecf1121495ab07a955c4d72666aae4e60ae2a41098624975ae",
+            "source_bytes": 1346332
+          },
+          "umap": {
+            "path": "figures/Science-primary/2024/umap.webp",
+            "bytes": 86210,
+            "width": 1826,
+            "height": 1311,
+            "sha256": "f8ba53164b12e590f96836f001c64ae3c7574b5488086c9b12c5d7482ecce63c",
+            "source_bytes": 261596
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science-primary/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 120974,
+            "width": 1277,
+            "height": 1157,
+            "sha256": "fc86aba0a161b60b0a91e9c9e33130c716568a750751f32ce83ba84f8307a115",
+            "source_bytes": 288600
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science-primary/2024/proximity_matrix_by_community.webp",
+            "bytes": 117392,
+            "width": 1344,
+            "height": 1157,
+            "sha256": "88e070d1334f174db2930680016df5d4ee98ec230108de76b3edc0ed11f1e894",
+            "source_bytes": 281843
+          },
+          "matrix_sorted": {
+            "path": "figures/Science-primary/2024/matrix_sorted.webp",
+            "bytes": 17802,
+            "width": 1445,
+            "height": 788,
+            "sha256": "52c15f59eec7c60ccc8b33b6d7b4e5f5eb0d4986e1eee14f9d35717e96ff95c5",
+            "source_bytes": 49569
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science-primary/2024/matrix_fitness_sorted.webp",
+            "bytes": 35058,
+            "width": 1992,
+            "height": 914,
+            "sha256": "c4b9dc229937cb92cc00247b9fcce89a82dde5ffd2b0077c63a38db78cf0804f",
+            "source_bytes": 97066
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Science-primary/2025/space.webp",
+            "bytes": 542730,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "7b25bacbfd645bbb832073f0dab541c8a7dadb452d6a5c48b41ab407af03e61d",
+            "source_bytes": 1392461
+          },
+          "space_communities": {
+            "path": "figures/Science-primary/2025/space_communities.webp",
+            "bytes": 564890,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "992ffba8498a34b999f2cf2910fa7ec1ebd21768b1ef4180d19e03e8f6661ab9",
+            "source_bytes": 1432108
+          },
+          "umap": {
+            "path": "figures/Science-primary/2025/umap.webp",
+            "bytes": 85974,
+            "width": 1826,
+            "height": 1311,
+            "sha256": "c5fb41410e5e2f347210b65d3845007ff6554314da39cd9cf410c7576a384f1b",
+            "source_bytes": 259197
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science-primary/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 121738,
+            "width": 1277,
+            "height": 1157,
+            "sha256": "6b42271f64bccc8b7bdb679f45ebe12052effb9c96f84311244a27214ab1ea4a",
+            "source_bytes": 289104
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science-primary/2025/proximity_matrix_by_community.webp",
+            "bytes": 116516,
+            "width": 1344,
+            "height": 1157,
+            "sha256": "aeb057a57664e9cf3b346f23db0999a00396a3e326846fb31befe1b6530b1bdc",
+            "source_bytes": 282477
+          },
+          "matrix_sorted": {
+            "path": "figures/Science-primary/2025/matrix_sorted.webp",
+            "bytes": 18056,
+            "width": 1445,
+            "height": 788,
+            "sha256": "3d7725e893bebfc3a5738d3605ef784ff812fe10b99a818155e2fbb27c10e8ab",
+            "source_bytes": 50154
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science-primary/2025/matrix_fitness_sorted.webp",
+            "bytes": 35556,
+            "width": 1992,
+            "height": 914,
+            "sha256": "d82aa97334fc01c8efb14b52a9f77d3fe8195c4a73ca7fdb26205fbf3c0633ca",
+            "source_bytes": 98373
+          }
+        }
+      },
+      "missing": []
+    },
+    "Science/all_score": {
+      "slug": "Science-all_score",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Science-all_score/2024/space.webp",
+            "bytes": 403150,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "e623476b5caaf4f58a79aceacd28bb75f659a3dbcabf522af380715a96866c3a",
+            "source_bytes": 1063384
+          },
+          "space_communities": {
+            "path": "figures/Science-all_score/2024/space_communities.webp",
+            "bytes": 407950,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "51c64f94f0626471b3cbf1d5e110d2082ab8fa3d2045bbba2bef450cdc9c1e67",
+            "source_bytes": 1074703
+          },
+          "umap": {
+            "path": "figures/Science-all_score/2024/umap.webp",
+            "bytes": 71480,
+            "width": 1839,
+            "height": 1311,
+            "sha256": "7dbc829d2c05cd7efa7f9f7f6d93e4896867aa0d602f0fa02f9371d673c5eb47",
+            "source_bytes": 221062
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science-all_score/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 122450,
+            "width": 1291,
+            "height": 1157,
+            "sha256": "508517d867c92312d5372a452a32c34dba6ae5a607b42e18ec1e05bcd024f033",
+            "source_bytes": 288476
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science-all_score/2024/proximity_matrix_by_community.webp",
+            "bytes": 117768,
+            "width": 1358,
+            "height": 1157,
+            "sha256": "7a42654427302020431371ca7131921ce7c0940b4608b1c7dd1f5158a63f7dcb",
+            "source_bytes": 281902
+          },
+          "matrix_sorted": {
+            "path": "figures/Science-all_score/2024/matrix_sorted.webp",
+            "bytes": 18034,
+            "width": 1458,
+            "height": 788,
+            "sha256": "e00818f5fd008faa9cade8075ab1aec5f721039793a6e97c88f8f5402b142cad",
+            "source_bytes": 50654
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science-all_score/2024/matrix_fitness_sorted.webp",
+            "bytes": 34842,
+            "width": 1992,
+            "height": 914,
+            "sha256": "f5bbef15ece1b6b4dc9b514250ca758e9bd5046b2b3a33adcaf99a58f1165d13",
+            "source_bytes": 96923
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Science-all_score/2025/space.webp",
+            "bytes": 532128,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "a0c5ec954cb38d2034bd03802dd907e88eab5d618f295729d44411fe67e7e4dd",
+            "source_bytes": 1427343
+          },
+          "space_communities": {
+            "path": "figures/Science-all_score/2025/space_communities.webp",
+            "bytes": 540584,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "84fab3095ee3891478cac1d8895e293d1de8d697c81cbb4d13328c9dd29d3441",
+            "source_bytes": 1435489
+          },
+          "umap": {
+            "path": "figures/Science-all_score/2025/umap.webp",
+            "bytes": 83214,
+            "width": 1839,
+            "height": 1311,
+            "sha256": "764144c4e476ed0f2ce2353bb1634de4aeba6e74309e4e8d75a34034427edccc",
+            "source_bytes": 254444
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science-all_score/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 124126,
+            "width": 1291,
+            "height": 1157,
+            "sha256": "0d54d94b99f19e02626e4312ed07af5ad11b15a747ef41d52f9a76f7324e110b",
+            "source_bytes": 293179
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science-all_score/2025/proximity_matrix_by_community.webp",
+            "bytes": 118108,
+            "width": 1358,
+            "height": 1157,
+            "sha256": "b790f211885d22f0b4857f734b751e8cf549f99cf0b749cc169eb9d012dda0a3",
+            "source_bytes": 282490
+          },
+          "matrix_sorted": {
+            "path": "figures/Science-all_score/2025/matrix_sorted.webp",
+            "bytes": 18270,
+            "width": 1458,
+            "height": 788,
+            "sha256": "a6de56c3661a1818f4d24e60a0d0be1e1d02d17ed49e3dcbd0c488c398d11649",
+            "source_bytes": 50730
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science-all_score/2025/matrix_fitness_sorted.webp",
+            "bytes": 35164,
+            "width": 1992,
+            "height": 914,
+            "sha256": "6a6855f88fb167d0a0dbc5ab1a07c6bbe6a1f47680cc932697d79cf625883450",
+            "source_bytes": 97326
+          }
+        }
+      },
+      "missing": []
+    },
+    "Science_Dimensions/for_group": {
+      "slug": "Science_Dimensions-for_group",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Science_Dimensions-for_group/2024/space.webp",
+            "bytes": 406038,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "d12492eb344aedb7605d3225ed2625d4309c1fb2e9fbaf1e4bac312013fe57ff",
+            "source_bytes": 1149223
+          },
+          "space_communities": {
+            "path": "figures/Science_Dimensions-for_group/2024/space_communities.webp",
+            "bytes": 441154,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "92f9c17a1a100a5e45f5c69a1f7e22dedaa40afb9848bf5846924bf5e75aba5b",
+            "source_bytes": 1177483
+          },
+          "umap": {
+            "path": "figures/Science_Dimensions-for_group/2024/umap.webp",
+            "bytes": 78630,
+            "width": 2042,
+            "height": 1311,
+            "sha256": "c38e09b056e55b06c2710eb5d949da9472dbddffa110a9f578efcc3b6d4a23c8",
+            "source_bytes": 194549
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science_Dimensions-for_group/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 64234,
+            "width": 1493,
+            "height": 1157,
+            "sha256": "9c3913a8e2efceecd212df2c2e02deea10a5b8041def741d2791a73682098d5b",
+            "source_bytes": 162543
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science_Dimensions-for_group/2024/proximity_matrix_by_community.webp",
+            "bytes": 59028,
+            "width": 1561,
+            "height": 1157,
+            "sha256": "e5eb698157e94f6f3e75a42c58274a5eea14e9f0f63ffdf6411d113390fd7dde",
+            "source_bytes": 157157
+          },
+          "matrix_sorted": {
+            "path": "figures/Science_Dimensions-for_group/2024/matrix_sorted.webp",
+            "bytes": 17024,
+            "width": 1661,
+            "height": 788,
+            "sha256": "6a10737775f688f036f75bc4752761cfd875ed5936996d48f13b816ada005ef9",
+            "source_bytes": 50401
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science_Dimensions-for_group/2024/matrix_fitness_sorted.webp",
+            "bytes": 30782,
+            "width": 1992,
+            "height": 914,
+            "sha256": "84529d11d276d90f015ccc467629b1be811c02dfc1826458061b38289836190d",
+            "source_bytes": 88832
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Science_Dimensions-for_group/2025/space.webp",
+            "bytes": 311044,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "eff05b5cf0b2dbb4c135d5dfd0b8c8acaaa2353cffa1e3289c4cf25ad2d68960",
+            "source_bytes": 828334
+          },
+          "space_communities": {
+            "path": "figures/Science_Dimensions-for_group/2025/space_communities.webp",
+            "bytes": 344262,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "39b7592cbb4e23782ab482dcc53a1d5eedbf1a83cfe5e82269c94153eadcbe68",
+            "source_bytes": 875079
+          },
+          "umap": {
+            "path": "figures/Science_Dimensions-for_group/2025/umap.webp",
+            "bytes": 69800,
+            "width": 2042,
+            "height": 1311,
+            "sha256": "a23b0f8f67b3398e9ca62a6f9c3ed223206e1c63ab5ebb27c5d95aaa039d8bb1",
+            "source_bytes": 197622
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science_Dimensions-for_group/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 63228,
+            "width": 1493,
+            "height": 1157,
+            "sha256": "270b0fd66a1a5dfcb26a7e89047cc281c9f5c08a664cfcf9b5ebf1d575f6d0a3",
+            "source_bytes": 161399
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science_Dimensions-for_group/2025/proximity_matrix_by_community.webp",
+            "bytes": 58392,
+            "width": 1561,
+            "height": 1157,
+            "sha256": "65f4aef37a51d9166453a3cb74bea69e62d009fa6f6a10983bd2ad2febe02127",
+            "source_bytes": 155625
+          },
+          "matrix_sorted": {
+            "path": "figures/Science_Dimensions-for_group/2025/matrix_sorted.webp",
+            "bytes": 15848,
+            "width": 1661,
+            "height": 788,
+            "sha256": "efba63053dca854fee6acdf59b3d4701e99c482db769b161e2d49413ace0198c",
+            "source_bytes": 49982
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science_Dimensions-for_group/2025/matrix_fitness_sorted.webp",
+            "bytes": 29738,
+            "width": 1992,
+            "height": 914,
+            "sha256": "74ca449c1f98d7350d23e0631c4d4681daac5479bbdc904362b7faa79d272b39",
+            "source_bytes": 86877
+          }
+        }
+      },
+      "missing": []
+    },
+    "Science_Dimensions/for_division": {
+      "slug": "Science_Dimensions-for_division",
+      "years": [
+        2024,
+        2025
+      ],
+      "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
+      "figures": {
+        "2024": {
+          "space": {
+            "path": "figures/Science_Dimensions-for_division/2024/space.webp",
+            "bytes": 107382,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "14e37fd8158e81117041bc57b616c83c70797b73de1fcb5b2e9172d2c8158370",
+            "source_bytes": 366582
+          },
+          "space_communities": {
+            "path": "figures/Science_Dimensions-for_division/2024/space_communities.webp",
+            "bytes": 112830,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "8416085c6eefcb35be0d8656b3fbeb8269379c4b1f1af3e84f0b5588a47ef939",
+            "source_bytes": 350374
+          },
+          "umap": {
+            "path": "figures/Science_Dimensions-for_division/2024/umap.webp",
+            "bytes": 22482,
+            "width": 2051,
+            "height": 1311,
+            "sha256": "d5b568887cebd0041d74a78a6478d90b03b49bb0706981ca97f07733c8699d0b",
+            "source_bytes": 74700
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science_Dimensions-for_division/2024/proximity_matrix_by_cluster.webp",
+            "bytes": 10850,
+            "width": 1521,
+            "height": 1157,
+            "sha256": "839a41ed0e93bc08f26a116cd2dc888677316e3a765ad34869f0e3857d068b5c",
+            "source_bytes": 37393
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science_Dimensions-for_division/2024/proximity_matrix_by_community.webp",
+            "bytes": 11186,
+            "width": 1588,
+            "height": 1157,
+            "sha256": "8098de308930bb7198365e7c88c55bcd37448d0772bebaec764f661535f29acc",
+            "source_bytes": 39153
+          },
+          "matrix_sorted": {
+            "path": "figures/Science_Dimensions-for_division/2024/matrix_sorted.webp",
+            "bytes": 10890,
+            "width": 1689,
+            "height": 788,
+            "sha256": "cd25320ae957887148632d9d3df9e9ee2625b7b7f55c8cb743de5d3226854f07",
+            "source_bytes": 38321
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science_Dimensions-for_division/2024/matrix_fitness_sorted.webp",
+            "bytes": 20750,
+            "width": 1992,
+            "height": 914,
+            "sha256": "0f13e1e2f942e0ea592175d7dfc97030ef908158f694901f1102c7dd10b71996",
+            "source_bytes": 67785
+          }
+        },
+        "2025": {
+          "space": {
+            "path": "figures/Science_Dimensions-for_division/2025/space.webp",
+            "bytes": 129260,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "208918de2e5fed77d2704d4a2cdbfdc5f56587101140a0539ddb90550495cfca",
+            "source_bytes": 434719
+          },
+          "space_communities": {
+            "path": "figures/Science_Dimensions-for_division/2025/space_communities.webp",
+            "bytes": 133232,
+            "width": 1745,
+            "height": 1465,
+            "sha256": "f55b7724efd902c844ffdd7884337b9717c4759bb783bcc9011d1ddb37541507",
+            "source_bytes": 417903
+          },
+          "umap": {
+            "path": "figures/Science_Dimensions-for_division/2025/umap.webp",
+            "bytes": 17418,
+            "width": 2051,
+            "height": 1311,
+            "sha256": "6da3910027c4bcd7639d6255f7459ad320a208867c28d37b7a0c2b866291f211",
+            "source_bytes": 62014
+          },
+          "proximity_matrix_by_cluster": {
+            "path": "figures/Science_Dimensions-for_division/2025/proximity_matrix_by_cluster.webp",
+            "bytes": 10636,
+            "width": 1521,
+            "height": 1157,
+            "sha256": "6c5e2cca4fa46b1cf88ed3d88a65657fafbe6028a182bc3d192d81bed8214961",
+            "source_bytes": 37193
+          },
+          "proximity_matrix_by_community": {
+            "path": "figures/Science_Dimensions-for_division/2025/proximity_matrix_by_community.webp",
+            "bytes": 11292,
+            "width": 1588,
+            "height": 1157,
+            "sha256": "68a4b698b425b4c2d716a257c86c11127cde9c207f766b02136aa36c05c7868d",
+            "source_bytes": 39153
+          },
+          "matrix_sorted": {
+            "path": "figures/Science_Dimensions-for_division/2025/matrix_sorted.webp",
+            "bytes": 10718,
+            "width": 1689,
+            "height": 788,
+            "sha256": "9b2151a6795d78c36a4b5cf6a7e3e643d3e14459b71e4cd82f2945067c318986",
+            "source_bytes": 38040
+          },
+          "matrix_fitness_sorted": {
+            "path": "figures/Science_Dimensions-for_division/2025/matrix_fitness_sorted.webp",
+            "bytes": 20636,
+            "width": 1992,
+            "height": 914,
+            "sha256": "0b1036eea85ceabf3640568970a31e55c48cd30a22c67f6f0ce4511dd01e37ff",
+            "source_bytes": 66817
+          }
+        }
+      },
+      "missing": []
+    }
+  },
+  "figure_count": 292,
+  "total_bytes": 63260916,
+  "total_source_bytes": 174526766
+}
