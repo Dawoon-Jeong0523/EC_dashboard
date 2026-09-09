@@ -47,7 +47,7 @@
   },
   "profile_sha256": "a6ecddca8e7ba93fb0554b30e2cb3c6cf6fdf308a9bbe59fe061db46a282ab4f",
   "screening_audit": "data/screening.json",
-  "built_utc": "2026-09-07T20:50:16Z",
+  "built_utc": "2026-09-08T23:47:38Z",
   "datasets": [
     {
       "id": "Product",
@@ -1483,9 +1483,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:10:33",
+        "written_utc": "2026-09-08 23:27:50",
         "settings_id": "574577e49ba1",
-        "inputs_id": "0c69192757b7",
+        "inputs_id": "54f2d46959fe",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -1509,7 +1509,7 @@
         "diag.links": "25543",
         "diag.fill": "0.13468068502973804",
         "diag.isocline_p": "2.7375080558670057",
-        "diag.seconds": "59.3"
+        "diag.seconds": "77.2"
       }
     },
     {
@@ -2211,9 +2211,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:10:54",
+        "written_utc": "2026-09-08 23:28:21",
         "settings_id": "574577e49ba1",
-        "inputs_id": "a872987c4990",
+        "inputs_id": "213926e90a6c",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -2237,7 +2237,7 @@
         "diag.links": "6423",
         "diag.fill": "0.16193525615167406",
         "diag.isocline_p": "2.4260043980541752",
-        "diag.seconds": "7.5"
+        "diag.seconds": "10.2"
       }
     },
     {
@@ -2447,9 +2447,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:11:26",
+        "written_utc": "2026-09-08 23:29:02",
         "settings_id": "574577e49ba1",
-        "inputs_id": "ba7ffcd72d42",
+        "inputs_id": "858164d4d1c8",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -2473,7 +2473,7 @@
         "diag.links": "393",
         "diag.fill": "0.24080882352941177",
         "diag.isocline_p": "1.841284297651728",
-        "diag.seconds": "0.2"
+        "diag.seconds": "0.3"
       }
     },
     {
@@ -3195,9 +3195,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:12:19",
+        "written_utc": "2026-09-08 23:30:11",
         "settings_id": "574577e49ba1",
-        "inputs_id": "cfb537dc7586",
+        "inputs_id": "238c590e5981",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -3221,7 +3221,7 @@
         "diag.links": "8187",
         "diag.fill": "0.1989840559984445",
         "diag.isocline_p": "2.108804286337679",
-        "diag.seconds": "11.1"
+        "diag.seconds": "14.9"
       }
     },
     {
@@ -3434,9 +3434,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:12:59",
+        "written_utc": "2026-09-08 23:31:04",
         "settings_id": "574577e49ba1",
-        "inputs_id": "6f70bae13595",
+        "inputs_id": "861a7876562a",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -3460,7 +3460,7 @@
         "diag.links": "431",
         "diag.fill": "0.256547619047619",
         "diag.isocline_p": "1.757587395120985",
-        "diag.seconds": "0.2"
+        "diag.seconds": "0.3"
       }
     },
     {
@@ -4147,9 +4147,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:13:32",
+        "written_utc": "2026-09-08 23:31:48",
         "settings_id": "574577e49ba1",
-        "inputs_id": "e8fc513a9ec4",
+        "inputs_id": "b30a2adf7e58",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -4173,7 +4173,7 @@
         "diag.links": "5357",
         "diag.fill": "0.15763300376647835",
         "diag.isocline_p": "2.46981273183986",
-        "diag.seconds": "6.2"
+        "diag.seconds": "8.4"
       }
     },
     {
@@ -4365,9 +4365,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:13:56",
+        "written_utc": "2026-09-08 23:32:19",
         "settings_id": "574577e49ba1",
-        "inputs_id": "3d23723d85f8",
+        "inputs_id": "802c2c0852bb",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -4391,7 +4391,7 @@
         "diag.links": "304",
         "diag.fill": "0.21545003543586108",
         "diag.isocline_p": "1.9944247659913727",
-        "diag.seconds": "0.1"
+        "diag.seconds": "0.2"
       }
     },
     {
@@ -5091,9 +5091,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:14:37",
+        "written_utc": "2026-09-08 23:33:14",
         "settings_id": "574577e49ba1",
-        "inputs_id": "37f5f66a2d37",
+        "inputs_id": "a926103811d4",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -5117,7 +5117,7 @@
         "diag.links": "6982",
         "diag.fill": "0.20053998161764705",
         "diag.isocline_p": "2.0974092307603107",
-        "diag.seconds": "9.2"
+        "diag.seconds": "12.5"
       }
     },
     {
@@ -5305,9 +5305,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:15:09",
+        "written_utc": "2026-09-08 23:33:56",
         "settings_id": "574577e49ba1",
-        "inputs_id": "257e1adfeb02",
+        "inputs_id": "6ef0da761a1b",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -5331,7 +5331,7 @@
         "diag.links": "309",
         "diag.fill": "0.254320987654321",
         "diag.isocline_p": "1.7689685731804043",
-        "diag.seconds": "0.1"
+        "diag.seconds": "0.2"
       }
     },
     {
@@ -5791,9 +5791,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:15:59",
+        "written_utc": "2026-09-08 23:35:02",
         "settings_id": "574577e49ba1",
-        "inputs_id": "7254869a8b1f",
+        "inputs_id": "38565de9c5d8",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -5817,7 +5817,7 @@
         "diag.links": "2573",
         "diag.fill": "0.17210702341137124",
         "diag.isocline_p": "2.328952420450348",
-        "diag.seconds": "2.1"
+        "diag.seconds": "2.9"
       }
     },
     {
@@ -6504,9 +6504,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:16:52",
+        "written_utc": "2026-09-08 23:36:13",
         "settings_id": "574577e49ba1",
-        "inputs_id": "88bc18e9f285",
+        "inputs_id": "107eee1076c7",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -6530,7 +6530,7 @@
         "diag.links": "6525",
         "diag.fill": "0.17910079051383399",
         "diag.isocline_p": "2.267004458850631",
-        "diag.seconds": "8.1"
+        "diag.seconds": "10.8"
       }
     },
     {
@@ -7002,9 +7002,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:17:50",
+        "written_utc": "2026-09-08 23:37:30",
         "settings_id": "574577e49ba1",
-        "inputs_id": "88624c648b22",
+        "inputs_id": "af58878e2e6f",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -7028,7 +7028,7 @@
         "diag.links": "3103",
         "diag.fill": "0.1964918946301925",
         "diag.isocline_p": "2.1273317158619722",
-        "diag.seconds": "2.8"
+        "diag.seconds": "3.7"
       }
     },
     {
@@ -7732,9 +7732,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:18:54",
+        "written_utc": "2026-09-08 23:38:56",
         "settings_id": "574577e49ba1",
-        "inputs_id": "357f89821984",
+        "inputs_id": "489570077844",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -7758,7 +7758,7 @@
         "diag.links": "7761",
         "diag.fill": "0.20638213003589947",
         "diag.isocline_p": "2.0557570669864638",
-        "diag.seconds": "10.7"
+        "diag.seconds": "14.2"
       }
     },
     {
@@ -8219,9 +8219,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:19:37",
+        "written_utc": "2026-09-08 23:39:56",
         "settings_id": "574577e49ba1",
-        "inputs_id": "ca68ba9c934d",
+        "inputs_id": "d82774fca53c",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -8245,7 +8245,7 @@
         "diag.links": "2467",
         "diag.fill": "0.17438326146886265",
         "diag.isocline_p": "2.3083882519150545",
-        "diag.seconds": "2.1"
+        "diag.seconds": "2.8"
       }
     },
     {
@@ -8932,9 +8932,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:20:29",
+        "written_utc": "2026-09-08 23:41:05",
         "settings_id": "574577e49ba1",
-        "inputs_id": "a080b188529a",
+        "inputs_id": "3a82fc3e2917",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -8958,7 +8958,7 @@
         "diag.links": "6238",
         "diag.fill": "0.17799463562175427",
         "diag.isocline_p": "2.276562556427234",
-        "diag.seconds": "7.8"
+        "diag.seconds": "10.4"
       }
     },
     {
@@ -9433,9 +9433,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:21:27",
+        "written_utc": "2026-09-08 23:42:22",
         "settings_id": "574577e49ba1",
-        "inputs_id": "edf74f2a4af5",
+        "inputs_id": "dac8cf2bd29d",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -9459,7 +9459,7 @@
         "diag.links": "3081",
         "diag.fill": "0.19699488491048595",
         "diag.isocline_p": "2.123564590140353",
-        "diag.seconds": "2.8"
+        "diag.seconds": "3.8"
       }
     },
     {
@@ -10171,9 +10171,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:22:30",
+        "written_utc": "2026-09-08 23:43:47",
         "settings_id": "574577e49ba1",
-        "inputs_id": "379289e06b82",
+        "inputs_id": "cb6f58b53aea",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -10197,7 +10197,7 @@
         "diag.links": "7455",
         "diag.fill": "0.20591078580306588",
         "diag.isocline_p": "2.0590530297512077",
-        "diag.seconds": "10.3"
+        "diag.seconds": "13.9"
       }
     },
     {
@@ -10687,9 +10687,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:23:12",
+        "written_utc": "2026-09-08 23:44:44",
         "settings_id": "574577e49ba1",
-        "inputs_id": "a0d03c979d1d",
+        "inputs_id": "e795024f9f3c",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -10713,7 +10713,7 @@
         "diag.links": "13294",
         "diag.fill": "0.3564361744912459",
         "diag.isocline_p": "1.358766407029892",
-        "diag.seconds": "10.5"
+        "diag.seconds": "14.3"
       }
     },
     {
@@ -11204,9 +11204,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:23:55",
+        "written_utc": "2026-09-08 23:45:42",
         "settings_id": "574577e49ba1",
-        "inputs_id": "d2b64ed80ea1",
+        "inputs_id": "3ce66423a2e7",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -11230,7 +11230,7 @@
         "diag.links": "13884",
         "diag.fill": "0.3707541123691519",
         "diag.isocline_p": "1.3146319192872933",
-        "diag.seconds": "11.1"
+        "diag.seconds": "15.1"
       }
     },
     {
@@ -11619,9 +11619,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:24:13",
+        "written_utc": "2026-09-08 23:46:05",
         "settings_id": "574577e49ba1",
-        "inputs_id": "d1eb8407b128",
+        "inputs_id": "6c492da2ca94",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -11645,7 +11645,7 @@
         "diag.links": "8799",
         "diag.fill": "0.40754979157017135",
         "diag.isocline_p": "1.2113673338771578",
-        "diag.seconds": "5.0"
+        "diag.seconds": "6.7"
       }
     },
     {
@@ -11887,9 +11887,9 @@
       },
       "nestedness_settings": {
         "notebook": "15_nestedness.ipynb",
-        "written_utc": "2026-09-07 20:24:12",
+        "written_utc": "2026-09-08 23:46:05",
         "settings_id": "574577e49ba1",
-        "inputs_id": "b233c935beec",
+        "inputs_id": "46807ef1f908",
         "setting.notebook": "15_nestedness.ipynb",
         "setting.measures": "['NODF', 'sNODF', 'Temperature_score', 'nSNES']",
         "setting.null_model": "fixed-fixed curveball",
@@ -11913,7 +11913,7 @@
         "diag.links": "1425",
         "diag.fill": "0.5060369318181818",
         "diag.isocline_p": "0.9880191234700941",
-        "diag.seconds": "0.3"
+        "diag.seconds": "0.4"
       }
     }
   ],
@@ -12482,7 +12482,7 @@
       "path": "data/Technology-primary-grant/activity_metrics.parquet",
       "rows": 25984,
       "bytes": 536524,
-      "sha256": "3d4748884dfcf15688ce94f468d5fc01be33c2ebf7e1136772262c46e64078e4",
+      "sha256": "4598570d83f8db87b1c69b50bcd2c20d6031e2bdd34a772a0a9cdc7234e4bca0",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -12583,7 +12583,7 @@
       "path": "data/Technology-primary-filing/activity_metrics.parquet",
       "rows": 25530,
       "bytes": 537087,
-      "sha256": "43123800a419895dab1b4cc9fe9e8c20678551ac7d2530ddeb36165d447f3ba2",
+      "sha256": "24bd3676c106ff2e48b86eca6f1ebddd3cfcdea465740ab99d756ae37cfc538d",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -12684,7 +12684,7 @@
       "path": "data/Technology-all-grant/activity_metrics.parquet",
       "rows": 26839,
       "bytes": 578923,
-      "sha256": "8d0e471876be2877dc7530b7b9af07ad88669ab7be910440089f1c57787fc887",
+      "sha256": "8fc2d6f753d5eda59553aa7dd860e582bb93efcf33d33a53d3d6d291900f62c7",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -12785,7 +12785,7 @@
       "path": "data/Technology-all-filing/activity_metrics.parquet",
       "rows": 26353,
       "bytes": 570566,
-      "sha256": "b290d17452af57b363989f896850d15571d1e28d5b69ef3f3af1465068107a97",
+      "sha256": "48ebc209717e68b97a41738a034f232d0945c4b6b2c89ebfcba2ddb4b3ba7e25",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -12886,7 +12886,7 @@
       "path": "data/Technology-assignee_primary-grant/activity_metrics.parquet",
       "rows": 24567,
       "bytes": 439873,
-      "sha256": "3cb30f2730058f20e7c6257ea5b832a43bc6028c50c265044e5bb5e8a75f424a",
+      "sha256": "1741670e7df7cf055760a5a0aa4d3096638d2759b0c34e34c53bf23e543a86d9",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -12987,7 +12987,7 @@
       "path": "data/Technology-assignee_primary-filing/activity_metrics.parquet",
       "rows": 24298,
       "bytes": 439290,
-      "sha256": "f8009ebac5502cee328be233f29eba03c692b60872130e23fff1c99355d12b9c",
+      "sha256": "13d14230964a3a6158507353b19d88809c3f7a66f2b4802cf914d7398896d996",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13088,7 +13088,7 @@
       "path": "data/Technology-assignee_all-grant/activity_metrics.parquet",
       "rows": 25364,
       "bytes": 535482,
-      "sha256": "5b99504c9d46ddc1dbe529dc0d022d940bf8750b259acd03bba8c4c54ecd4607",
+      "sha256": "9d42b72d4fe48a7208b5615589c6841eb03e64276059f59e2e4807194739332e",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13189,7 +13189,7 @@
       "path": "data/Technology-assignee_all-filing/activity_metrics.parquet",
       "rows": 24966,
       "bytes": 533614,
-      "sha256": "63778ca376b4e02f8ca54e93507a5ffdbb517d99cc4c40b61be41cd4c925d777",
+      "sha256": "9416f938dbd88e5facc5a3ebeee15eadff689655aded64c854fa3151110de951",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13290,7 +13290,7 @@
       "path": "data/Technology_PATSTAT-inventor-primary-filing/activity_metrics.parquet",
       "rows": 26504,
       "bytes": 560236,
-      "sha256": "56fa354e15d20af2e733b07f5c1e051334d0d6bd2635e388650ed5be7cccfa1a",
+      "sha256": "18de2f436968c02456377b7c83c1b01f0fe5de2b567d1ae6e5bafdbf74bc7c08",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13391,7 +13391,7 @@
       "path": "data/Technology_PATSTAT-inventor-primary-grant/activity_metrics.parquet",
       "rows": 26493,
       "bytes": 563144,
-      "sha256": "04f81750e1809d712b0cd3acfd5893f967016789a4d3c7b470b4f3af24060000",
+      "sha256": "d250b2e1e59ae4d4735997e2157125ef765679c397595ecfd20bc7e13d670101",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13492,7 +13492,7 @@
       "path": "data/Technology_PATSTAT-inventor-all-filing/activity_metrics.parquet",
       "rows": 27584,
       "bytes": 592143,
-      "sha256": "7b7df9960a3a938776b12b439971ba5bf2e19d8be5f879af273d11466b59d85b",
+      "sha256": "e0665282745c2d2e26f927b2f8514952918d0a13dde6cf890d0b8a2fd2031e51",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13540,7 +13540,7 @@
       "path": "data/Technology_PATSTAT-inventor-all-filing/space_nodes.parquet",
       "rows": 336,
       "bytes": 26686,
-      "sha256": "f5f1ab45758e78b58a43be51ccafb3907660f07d5193edf4b862841589d400e3",
+      "sha256": "f51ce95ced0ddc713fcfe7219bb162721de7b0aad0ccd347d65c56592c2f7430",
       "schema": {
         "activity": "string",
         "x": "double",
@@ -13593,7 +13593,7 @@
       "path": "data/Technology_PATSTAT-inventor-all-grant/activity_metrics.parquet",
       "rows": 27452,
       "bytes": 590395,
-      "sha256": "d21bd0440630b266cb3a71571d346d8bb4ba574fdbf3d10fe8d7401ecac298df",
+      "sha256": "c0d8d39fefd4881b44cfcb08ed5f200e6be9fa93e5f8487ef803f02fb1897202",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13694,7 +13694,7 @@
       "path": "data/Technology_PATSTAT-applicant-primary-filing/activity_metrics.parquet",
       "rows": 26693,
       "bytes": 559832,
-      "sha256": "beb8e03952f8ca493bdd897b30ae3d628e2866e0753f6bdd357926862b19acf5",
+      "sha256": "9cf26ee48b76b1e3931b1cd1352077e694209889508e4a1d0afdc0c376fefd5b",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13795,7 +13795,7 @@
       "path": "data/Technology_PATSTAT-applicant-primary-grant/activity_metrics.parquet",
       "rows": 26762,
       "bytes": 547584,
-      "sha256": "0bc204f2feab5e7865245201030e6df8d28d0833e89f061ebdc537b328d97c57",
+      "sha256": "e844881771ff6a57460eec3006e70275f5edcce2cedab137973e7f6604bb6c4e",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13896,7 +13896,7 @@
       "path": "data/Technology_PATSTAT-applicant-all-filing/activity_metrics.parquet",
       "rows": 27819,
       "bytes": 573856,
-      "sha256": "63df20f7d9ee5d30f42c82a403cc49ccf947ab6aff060d003b2f6a4857000e4c",
+      "sha256": "f881abed6d9d4511887b214d9e56979386c3ad1d7f03728168a33e47000c1aee",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -13944,7 +13944,7 @@
       "path": "data/Technology_PATSTAT-applicant-all-filing/space_nodes.parquet",
       "rows": 340,
       "bytes": 26967,
-      "sha256": "6841537da10bdda210e3e3d64c4a0bb5a04ef7a51799f5308f7b09c141467615",
+      "sha256": "6fd2f517f50ac04c38615f4eb334d017e14822b05744db0c71a6492eae9dc3f9",
       "schema": {
         "activity": "string",
         "x": "double",
@@ -13997,7 +13997,7 @@
       "path": "data/Technology_PATSTAT-applicant-all-grant/activity_metrics.parquet",
       "rows": 27772,
       "bytes": 590071,
-      "sha256": "8c2fe7c2b9ffe288636c9edea4c19a9fd019500ace4c7dc4f72d274099eb9e95",
+      "sha256": "96277f166779c8c6fe9ebc6686e93112c2fff3e2455cc7c4f6ed2b26e6a8b945",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -14098,7 +14098,7 @@
       "path": "data/Science-primary/activity_metrics.parquet",
       "rows": 11634,
       "bytes": 250478,
-      "sha256": "2ca07e0051b76df437a2c2e7193c31f631fff31321cddb9eeb6fb980acbe9646",
+      "sha256": "34d2c6de3676f85f6205b94c38a589bbbde4bc75ff68a21fc668f711875b618e",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -14199,7 +14199,7 @@
       "path": "data/Science-all_score/activity_metrics.parquet",
       "rows": 11683,
       "bytes": 251336,
-      "sha256": "fe8f886dd5a52f862cffd9cc2c40fa61e9ad59c3966fc8db4fa3b89a09312850",
+      "sha256": "6cba64feb72e99b6f1ca51e22086ebe5542503b7c47a21df8c47570f3c35e899",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -14300,7 +14300,7 @@
       "path": "data/Science_Dimensions-for_group/activity_metrics.parquet",
       "rows": 8317,
       "bytes": 177804,
-      "sha256": "f2c4086cd8826612fa92536f6a33bd32b2a8d6fbe81947560f15641aa1085677",
+      "sha256": "149428d2f2199abd28cb5d64324cbdecf1a46e017c905209db856040a5a8596f",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -14348,7 +14348,7 @@
       "path": "data/Science_Dimensions-for_group/space_nodes.parquet",
       "rows": 170,
       "bytes": 16543,
-      "sha256": "a9a5118bb24e023b4d218ae4aa00eaee95c13e818ec4c0d0087f34ac446a4128",
+      "sha256": "05391292537d92d9377bb3fb7df2d04d33bb007c472d0184effd17fe212942cd",
       "schema": {
         "activity": "string",
         "x": "double",
@@ -14401,7 +14401,7 @@
       "path": "data/Science_Dimensions-for_division/activity_metrics.parquet",
       "rows": 1100,
       "bytes": 27166,
-      "sha256": "9d7edae217632a1375ea0a51304afe2a15121a43cd7e6ca41004021b21f532fe",
+      "sha256": "4027b55280b620e6911351154f30daa5e5d6ecb35f23fbece73f338ca6af5b5d",
       "schema": {
         "year": "int32",
         "activity": "string",
@@ -14449,7 +14449,7 @@
       "path": "data/Science_Dimensions-for_division/space_nodes.parquet",
       "rows": 22,
       "bytes": 7648,
-      "sha256": "da372baaf206bb3060d195aaccf5227bffdd0dc54dad65632d25f01c4d2ad260",
+      "sha256": "b5efe4d47af8ab00bf01adb79c8167f2283590f755a5548c44a3f68cd2a443be",
       "schema": {
         "activity": "string",
         "x": "double",

@@ -1551,19 +1551,19 @@
           },
           "space_communities": {
             "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/space_communities.webp",
-            "bytes": 520630,
+            "bytes": 489686,
             "width": 1745,
             "height": 1465,
-            "sha256": "b25007c0a047f3f5319398bbe7bc6f9993f91b7b1537e4079fac1f84e164c833",
-            "source_bytes": 1321793
+            "sha256": "d77f1ba279e267c2a90e039136ca127043171c05023c2258c4dc4c5d6e269f4a",
+            "source_bytes": 1272477
           },
           "umap": {
             "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/umap.webp",
-            "bytes": 176032,
+            "bytes": 89718,
             "width": 2150,
             "height": 1311,
-            "sha256": "749f26256b43637b657cb228cc46507027cfc866413ccd001f2aabe26e8b97fc",
-            "source_bytes": 427809
+            "sha256": "18aa7474c5405482182ac4c4d8f88c81010ff863c347eb251bfe223c6712dab0",
+            "source_bytes": 300938
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Technology_PATSTAT-inventor-all-filing/2022/proximity_matrix_by_cluster.webp",
@@ -2059,19 +2059,19 @@
           },
           "space_communities": {
             "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/space_communities.webp",
-            "bytes": 435274,
+            "bytes": 382460,
             "width": 1745,
             "height": 1465,
-            "sha256": "71e2c06da6ed828a3be06f2515296b16980aefe01cfa71ada6c253b70c606bcf",
-            "source_bytes": 1096200
+            "sha256": "5ab2c4672136c2b9f5db617463c632a359d767f0f4ebcbe5b66f06fd85330dda",
+            "source_bytes": 1012562
           },
           "umap": {
             "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/umap.webp",
-            "bytes": 166514,
+            "bytes": 69700,
             "width": 2166,
             "height": 1311,
-            "sha256": "f6078df712446b81cca4524c6936a4718285d88bfef4f8bbbc70cf429caa1e3c",
-            "source_bytes": 424707
+            "sha256": "cd05440a9d6a04d9370d861bfd0e6bd127f8a2659a6d2c2cfe497c79f6ac515d",
+            "source_bytes": 262582
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Technology_PATSTAT-applicant-all-filing/2022/proximity_matrix_by_cluster.webp",
@@ -2509,19 +2509,19 @@
           },
           "space_communities": {
             "path": "figures/Science_Dimensions-for_group/2024/space_communities.webp",
-            "bytes": 441154,
+            "bytes": 414602,
             "width": 1745,
             "height": 1465,
-            "sha256": "92f9c17a1a100a5e45f5c69a1f7e22dedaa40afb9848bf5846924bf5e75aba5b",
-            "source_bytes": 1177483
+            "sha256": "788e9298b465bd0cdbba1ec4579234a0c5138fb072f0073be7a54d1bcdf4b0d2",
+            "source_bytes": 1134488
           },
           "umap": {
             "path": "figures/Science_Dimensions-for_group/2024/umap.webp",
-            "bytes": 78630,
+            "bytes": 50376,
             "width": 2042,
             "height": 1311,
-            "sha256": "c38e09b056e55b06c2710eb5d949da9472dbddffa110a9f578efcc3b6d4a23c8",
-            "source_bytes": 194549
+            "sha256": "84649df5f445bf644e1613939b4843188cbed780cd4d66c27ead6b1c9799da84",
+            "source_bytes": 152085
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Science_Dimensions-for_group/2024/proximity_matrix_by_cluster.webp",
@@ -2567,19 +2567,19 @@
           },
           "space_communities": {
             "path": "figures/Science_Dimensions-for_group/2025/space_communities.webp",
-            "bytes": 344262,
+            "bytes": 316428,
             "width": 1745,
             "height": 1465,
-            "sha256": "39b7592cbb4e23782ab482dcc53a1d5eedbf1a83cfe5e82269c94153eadcbe68",
-            "source_bytes": 875079
+            "sha256": "06d86017e11c7e0682fda0696089bf6059ef3360f7e58699edc507ae6bbe7651",
+            "source_bytes": 812447
           },
           "umap": {
             "path": "figures/Science_Dimensions-for_group/2025/umap.webp",
-            "bytes": 69800,
+            "bytes": 49838,
             "width": 2042,
             "height": 1311,
-            "sha256": "a23b0f8f67b3398e9ca62a6f9c3ed223206e1c63ab5ebb27c5d95aaa039d8bb1",
-            "source_bytes": 197622
+            "sha256": "7432f85b60871099fe208252b52bc395293f9bc79e564a454c964b1f345ae4d7",
+            "source_bytes": 150176
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Science_Dimensions-for_group/2025/proximity_matrix_by_cluster.webp",
@@ -2636,19 +2636,19 @@
           },
           "space_communities": {
             "path": "figures/Science_Dimensions-for_division/2024/space_communities.webp",
-            "bytes": 112830,
+            "bytes": 108762,
             "width": 1745,
             "height": 1465,
-            "sha256": "8416085c6eefcb35be0d8656b3fbeb8269379c4b1f1af3e84f0b5588a47ef939",
-            "source_bytes": 350374
+            "sha256": "be8d9ed45f508b10828c3c39607aea4b945ba56fcbb8f25f2d2814e1c8aa7b20",
+            "source_bytes": 347678
           },
           "umap": {
             "path": "figures/Science_Dimensions-for_division/2024/umap.webp",
-            "bytes": 22482,
+            "bytes": 19088,
             "width": 2051,
             "height": 1311,
-            "sha256": "d5b568887cebd0041d74a78a6478d90b03b49bb0706981ca97f07733c8699d0b",
-            "source_bytes": 74700
+            "sha256": "d2f039d9f00b18c181846729808dc624fe13ef32cafd8256f99e32f17b43f0d1",
+            "source_bytes": 65959
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Science_Dimensions-for_division/2024/proximity_matrix_by_cluster.webp",
@@ -2694,19 +2694,19 @@
           },
           "space_communities": {
             "path": "figures/Science_Dimensions-for_division/2025/space_communities.webp",
-            "bytes": 133232,
+            "bytes": 130138,
             "width": 1745,
             "height": 1465,
-            "sha256": "f55b7724efd902c844ffdd7884337b9717c4759bb783bcc9011d1ddb37541507",
-            "source_bytes": 417903
+            "sha256": "2fbd0bc5df184a13910e69c471fd6a89865dbf726330674651519d14beb5e7d6",
+            "source_bytes": 415810
           },
           "umap": {
             "path": "figures/Science_Dimensions-for_division/2025/umap.webp",
-            "bytes": 17418,
+            "bytes": 15102,
             "width": 2051,
             "height": 1311,
-            "sha256": "6da3910027c4bcd7639d6255f7459ad320a208867c28d37b7a0c2b866291f211",
-            "source_bytes": 62014
+            "sha256": "90bfe9abb30dccf927420aa2ea9c4f832f596202e01ec7b5cae1664257071ab1",
+            "source_bytes": 55074
           },
           "proximity_matrix_by_cluster": {
             "path": "figures/Science_Dimensions-for_division/2025/proximity_matrix_by_cluster.webp",
@@ -2746,6 +2746,6 @@
     }
   },
   "figure_count": 292,
-  "total_bytes": 63260916,
-  "total_source_bytes": 174526766
+  "total_bytes": 62878556,
+  "total_source_bytes": 173888809
 }
