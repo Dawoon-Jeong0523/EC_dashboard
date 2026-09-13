@@ -27827,8 +27827,8 @@
   "data/ai/country_year.parquet": {
    "path": "data/ai/country_year.parquet",
    "rows": 3876,
-   "bytes": 507682,
-   "sha256": "b0a5a98853df59918150676d0279827c650c282d58dd2d63ee852ae550dc8054",
+   "bytes": 533232,
+   "sha256": "893d2b25041550c463680bd4b5b6d0fe96232c4702869904161b0be7b636e661",
    "schema": {
     "year": "int32",
     "country": "string",
@@ -27857,8 +27857,8 @@
   "data/ai/goods_year.parquet": {
    "path": "data/ai/goods_year.parquet",
    "rows": 1751,
-   "bytes": 61373,
-   "sha256": "edce40d8183086a4b3ae210d413249161b6bd958ff2bfdc821eb245fdef0b29b",
+   "bytes": 64897,
+   "sha256": "a7728bb85cbee84af8c161f67a514bcf50b7b0a933315d72953e34a79f94c2a4",
    "schema": {
     "year": "int32",
     "hs6": "string",
@@ -27874,8 +27874,8 @@
   "data/ai/candidates.parquet": {
    "path": "data/ai/candidates.parquet",
    "rows": 366240,
-   "bytes": 3183964,
-   "sha256": "07f272f234221103c9554dee3c5de452e35834a1f7e2905007dde818089d719e",
+   "bytes": 3853529,
+   "sha256": "2284fecfe71b5f702ee67dfceb7a2f4a9d6d036f45bd05143a61f26ef7d9dcb0",
    "schema": {
     "year": "int32",
     "country": "string",
@@ -27933,7 +27933,7 @@
    "goods_year": "data/ai/goods_year.parquet",
    "candidates": "data/ai/candidates.parquet"
   },
-  "built_utc": "2026-09-13T17:23:15Z",
+  "built_utc": "2026-09-13T17:31:08Z",
   "source": {
    "project": "Economic Complexity / Projects/AI Economic Complexity (notebooks 03_ai_enabling_goods_rca, 04_aeci_aiap_aecp)",
    "matrix": "Data/mat/Product_HS07_hs6 (CEPII BACI HS 2007, 6 digits, current thousand USD, 2007-2023), unscreened",
