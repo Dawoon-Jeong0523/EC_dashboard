@@ -92,3 +92,17 @@ export async function loadAiSpace(manifest) {
   const [nodes, edges, stats, country] = await Promise.all([f.space_nodes, f.space_edges, f.space_stats, f.space_country].map(readParquet));
   return {nodes, edges, stats, country};
 }
+let aiFigureCatalog;
+export function loadAiFigures() {
+  if (!aiFigureCatalog) {
+    aiFigureCatalog = (async () => {
+      const response = await fetch(assetURL('data/ai_figures.json'), {cache: 'no-cache'});
+      if (!response.ok) throw new Error(`Figure catalog: HTTP ${response.status}`);
+      const catalog = await response.json();
+      if (catalog.schema_version !== 1 || !Array.isArray(catalog.figures) || !catalog.figures.length || !Array.isArray(catalog.groups))
+        throw new Error('Figure catalog is incomplete');
+      return catalog;
+    })().catch(error => { aiFigureCatalog = null; throw error; });
+  }
+  return aiFigureCatalog;
+}

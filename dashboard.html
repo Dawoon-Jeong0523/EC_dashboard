@@ -62,6 +62,16 @@
   .ai-network-controls { flex-wrap: wrap; }
   .ai-network-controls .filters { max-width: 100%; }
   .ai-network-controls select { min-width: 0; max-width: 100%; }
+  .ai-view-switch { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+  .ai-gallery-controls { align-items: end; }
+  .ai-gallery-controls .f { min-width: 0; max-width: 100%; }
+  .ai-gallery-controls .ai-figure-choice { flex: 1 1 320px; }
+  .ai-gallery-controls select { min-width: 0; max-width: 100%; width: 100%; }
+  .ai-gallery-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
+  .ai-gallery-view { min-height: 180px; }
+  .ai-gallery-image { display: block; max-width: 100%; max-height: 82vh; width: auto; height: auto; margin: 0 auto; background: white; }
+  .ai-gallery-view iframe { display: block; width: 100%; background: white; }
+  .ai-gallery-load { padding: 28px 12px; text-align: center; background: var(--page); border: 1px solid var(--border); border-radius: 8px; }
   .tbl { display: none; overflow: auto; max-height: 520px; border-top: 1px solid var(--grid); margin-top: 6px; }
   .tbl.on { display: block; }
   table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
@@ -103,7 +113,7 @@
 </header>
 
 <main>
-<div class="card screening-card" style="margin-bottom:14px"><h3>Screened results</h3><p id="screeningSummary">Loading annual screening rules…</p><p class="note">All metrics and figures use the retained country–activity cohort in each year. Cohort changes affect comparisons over time. Screening removes small samples; it does not establish ranking stability or complete recent patent filing cohorts.</p></div>
+<div class="card screening-card" style="margin-bottom:14px"><h3>Screened results</h3><p id="screeningSummary">Loading annual screening rules…</p><p class="note">The screened tabs use the retained country–activity cohort in each year. The AI economic complexity tab presents separate unscreened results. Cohort changes affect comparisons over time. Screening removes small samples; it does not establish ranking stability or complete recent patent filing cohorts.</p></div>
 <details class="card" style="margin-bottom:14px"><summary style="cursor:pointer;font-weight:600">How to explore this dashboard · definitions and coverage</summary>
 <div id="screeningRules"></div><p><a id="screeningAudit" target="_blank" rel="noopener">View screening rules and cohort audit</a></p>
 <p>Start with <b>Country ECI</b> to compare countries and years; every domain has a dataset selector (Product: HS92 1995–2024, HS 2002 and HS 2007 nomenclatures; Technology and Knowledge: source, counting rule and year basis). The <b>AI economic complexity</b> tab shows the unscreened AECI / AIAP / AECP indices and the RCA of the WTO list of AI-enabling goods. Use <b>Activity complexity (PCI)</b> for products, technology classes and knowledge subfields. Explore annual networks in <b>Activity space</b>, for the latest two available years in each dataset, then inspect sorted country–activity matrices and null-model comparisons in <b>Nestedness</b>.</p>
@@ -238,6 +248,31 @@
   <div class="card" style="margin-bottom:14px"><h3>AI economic complexity · unscreened project indices</h3>
     <p class="note" id="aiMeta">Loading…</p>
     <p class="note"><b>AECI</b> = Σ over the 103 AI-enabling goods of M · q: the number of listed goods a country exports with RCA &gt; 1, each weighted by its normalised complexity q (PCI of all ~5,000 HS6 products rescaled to 0–1); reported as a z-score across the year's valid countries. <b>AIAP</b> places the goods a country does <i>not</i> yet hold by relatedness density ρ to its whole export portfolio and by q. <b>AECP</b> is the mean of ρ · q over those candidates (raw G in 0–1, z-score across countries): how favourable the remaining AI goods are on average. <b>Bundle RCA</b> is the RCA of the 103 goods taken as one product. Unlike the other tabs these values are computed on the raw BACI matrices (no screening) and use the strict RCA &gt; 1 rule; highlighted countries are the ones selected in the Country ECI tab.</p></div>
+  <div class="ai-view-switch" role="group" aria-label="AI content">
+    <button class="btn on" id="aiDashboardButton" aria-pressed="true" aria-controls="aiDashboardPanel">Interactive dashboard</button>
+    <button class="btn" id="aiGalleryButton" aria-pressed="false" aria-controls="aiGalleryPanel">Project visualizations</button>
+  </div>
+  <div id="aiGalleryPanel" hidden>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Original project visualizations</h3>
+      <p class="note">Figures from the AI-Economic-Complexity branch: AI-enabling trade, complexity indices, product-space networks, patent–product concordance, and the analysis report. These unscreened results retain the notebooks' country and year selections. Interactive figures have their own controls.</p>
+      <p class="note">Indices use strict RCA &gt; 1; product-space holdings and concordance use RCA ≥ 1. AIAP charts distinguish normalized complexity q from PCI. Report comparisons are descriptive, and use the product domain only.</p>
+      <p class="note" id="aiGalleryMeta" role="status">The figure catalog loads when this view opens.</p>
+    </div>
+    <div class="filters ai-gallery-controls">
+      <div class="f"><span>Analysis</span><select id="aiFigureGroup" aria-label="Figure analysis" disabled></select></div>
+      <div class="f ai-figure-choice"><span>Figure</span><select id="aiFigureSelect" aria-label="Project figure" disabled></select></div>
+      <button class="btn" id="aiFigurePrevious" aria-label="Previous figure" disabled>Previous</button>
+      <button class="btn" id="aiFigureNext" aria-label="Next figure" disabled>Next</button>
+    </div>
+    <div class="card">
+      <h3 id="aiFigureTitle">Project figure</h3>
+      <p class="note" id="aiFigureDescription"></p>
+      <div class="ai-gallery-toolbar" id="aiFigureLinks"></div>
+      <div class="ai-gallery-view" id="aiFigureViewer"></div>
+    </div>
+  </div>
+  <div id="aiDashboardPanel">
   <div class="filters">
     <div class="f"><span>Year</span><div class="yr"><input type="range" id="aiYear"><b id="aiYearLbl"></b></div></div>
     <div class="f"><span>Country for the opportunity map</span><select id="aiCountry"></select></div>
@@ -279,11 +314,12 @@
       <div><input type="search" id="aiTblQ" placeholder="Search" style="font:inherit;font-size:12.5px;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--page);color:var(--text1)"> <button class="btn" data-toggle="aiTbl">Show table</button></div></div>
     <div class="tbl" id="aiTbl"></div>
   </div>
+  </div>
 </section>
 </main>
 <footer id="foot"></footer>
 
-<script src="assets/dashboard.bundle.js?v=84ded70dcf55b2e9"></script>
+<script src="assets/dashboard.bundle.js?v=c76087c5ec855fe7"></script>
 <noscript>This dashboard requires JavaScript to read Parquet data and render the charts.</noscript>
 </body>
 </html>

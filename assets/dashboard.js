@@ -1,4 +1,4 @@
-import { loadDashboard, assetURL, loadAiCandidates, loadAiSpace } from './data.js';
+import { loadDashboard, assetURL, loadAiCandidates, loadAiSpace, loadAiFigures } from './data.js';
 let D;
 try { D = await loadDashboard(); }
 catch (error) {
@@ -117,7 +117,7 @@ const S = {
   spTree: "Product", spYear: null, spFig: "space",
   nMeasure: "NODF", nTree: "Product", nFig: "matrix_sorted", nYear: Math.min(2020, YMAX),
   xYear: Math.min(...D.trees.map(t => P[t].years.at(-1))),
-  ai: { year: null, country: "KR", cands: null, level: "hs4", view: "group", space: null },
+  ai: { year: null, country: "KR", cands: null, level: "hs4", view: "group", space: null, panel: "dashboard", gallery: null, figureGroup: "report", figure: null },
 };
 // colour follows the entity: a slot is handed out once and kept while the entity stays selected
 function slotFor(map, key, list) {
@@ -560,6 +560,7 @@ function aiRankBar(id, m, note, color, sel, t, valueLabel) {
 }
 function aiSeries(c, key) { const x = [], y = []; AI.rows.filter(r => r.country === c).sort((a, b) => a.year - b.year).forEach(r => { x.push(r.year); y.push(num(r[key])); }); return { x, y }; }
 function renderAi() {
+  if (S.ai.panel === "gallery") { renderAiGallery(); return; }
   const kpi = document.getElementById("aiKpi");
   if (!AI) { kpi.innerHTML = '<div class="card"><div class="v">–</div><div class="l">AI economic complexity tables are not included in this build (run scripts/export_ai_data.py).</div></div>'; return; }
   const t = tok(), y = S.ai.year, sel = new Set(S.countries), all = aiYearRows(y), valid = all.filter(r => num(r.valid) > 0), goods = aiGoodsOf(y);
@@ -627,7 +628,7 @@ function aiSpaceUnavailable(message) {   // the network and its two companion ca
   ["aiNet", "aiCoh", "aiComm"].forEach(id => { setNote(id + "-note", message); plot(id, [], {}); });
 }
 async function renderAiSpace() {
-  if (!AI) return;
+  if (!AI || active !== "ai" || S.ai.panel !== "dashboard") return;
   if (!AI_SPACE_KINDS.every(k => AI.meta.files?.[k])) { aiSpaceUnavailable("Product-space data are unavailable in this release."); return; }
   const t = tok(), y = S.ai.year, c = S.ai.country, level = S.ai.level, view = S.ai.view;
   if (!S.ai.space) {
@@ -636,7 +637,7 @@ async function renderAiSpace() {
   }
   // selection changed meanwhile: the control that changed it re-invokes this function. The country only matters to the
   // country view (the country select re-renders the network only in that view), so it must not invalidate the others.
-  if (S.ai.year !== y || S.ai.level !== level || S.ai.view !== view || (view === "country" && S.ai.country !== c)) return;
+  if (active !== "ai" || S.ai.panel !== "dashboard" || S.ai.year !== y || S.ai.level !== level || S.ai.view !== view || (view === "country" && S.ai.country !== c)) return;
   const sp = S.ai.space, nodes = sp.nodes.filter(n => n.level === level), edges = sp.edges.filter(e => e.level === level);
   const pos = new Map(nodes.map(n => [n.code, n])), goods = new Map(aiGoodsOf(y).map(g => [g.hs6, g]));
   const heldKey = level === "hs4" ? "hs4" : "hs6", held = new Set(sp.country.filter(r => r.year === y && r.country === c).map(r => r[heldKey]));
@@ -703,11 +704,11 @@ async function renderAiSpace() {
   setNote("aiComm-note", `${level.toUpperCase()} · ${hosts.length} of ${list.length} backbone communities contain at least one AI-enabling ${level === "hs4" ? "heading" : "good"}; colours match the community view of the network`);
 }
 async function renderAiap() {
-  if (!AI) return;
+  if (!AI || active !== "ai" || S.ai.panel !== "dashboard") return;
   const t = tok(), y = S.ai.year, c = S.ai.country;
   setNote("aiMap-note", "Loading candidate rows…");
   if (!S.ai.cands) { try { S.ai.cands = await loadAiCandidates(D.manifest); } catch (e) { setNote("aiMap-note", `Candidate table could not be loaded: ${e.message}`); plot("aiMap", [], {}); return; } }
-  if (S.ai.year !== y || S.ai.country !== c) return;   // selection changed meanwhile
+  if (active !== "ai" || S.ai.panel !== "dashboard" || S.ai.year !== y || S.ai.country !== c) return;   // selection changed meanwhile
   const rows = S.ai.cands.filter(r => r.year === y && r.country === c), names = new Map(aiGoodsOf(y).map(g => [g.hs6, g]));
   const cy = aiYearRows(y).find(r => r.country === c);
   rows.forEach(r => { r.rq = num(r.rho) * num(r.q); });
@@ -738,7 +739,108 @@ function renderAiTable() {
     { k: "brca", label: "Bundle RCA", num: true, d: 3 }, { k: "share", label: "AI share of exports %", num: true, d: 2 }, { k: "wshare", label: "share of world AI exports %", num: true, d: 3 },
     ...AI_GROUPS.map(([k, l]) => ({ k, label: `RCA ${l}`, num: true, d: 2 }))], rows, { k: "aeci", dir: -1 });
 }
+// Original figures exported from the research branch; independent of the dashboard's year/country controls.
+let aiGalleryVersion = 0;
+function setAiPanel(panel) {
+  S.ai.panel = panel;
+  document.getElementById("aiDashboardPanel").hidden = panel !== "dashboard";
+  document.getElementById("aiGalleryPanel").hidden = panel !== "gallery";
+  for (const [id, value] of [["aiDashboardButton", "dashboard"], ["aiGalleryButton", "gallery"]]) {
+    const button = document.getElementById(id), selected = panel === value;
+    button.classList.toggle("on", selected); button.setAttribute("aria-pressed", String(selected));
+  }
+  if (panel !== "gallery") releaseAiInteractiveFigure();
+  renderAi();
+}
+function releaseAiInteractiveFigure() {
+  const viewer = document.getElementById("aiFigureViewer");
+  if (viewer.querySelector("iframe")) { viewer.replaceChildren(); delete viewer.dataset.figure; }
+}
+function aiFigureURL(figure) {
+  // Raw GitHub serves HTML as text; standalone file previews open interactive figures on Pages.
+  if (figure.kind === "interactive" && location.protocol === "file:") {
+    const url = new URL(figure.path, "https://dawoon-jeong0523.github.io/EC_dashboard/");
+    url.searchParams.set("v", figure.sha256); return url.href;
+  }
+  return assetURL(figure.path, figure.sha256);
+}
+function aiFigureLink(text, href) {
+  const link = document.createElement("a"); link.className = "btn"; link.textContent = text;
+  link.href = href; link.target = "_blank"; link.rel = "noopener"; return link;
+}
+async function renderAiGallery() {
+  const version = ++aiGalleryVersion;
+  if (!S.ai.gallery) {
+    setNote("aiGalleryMeta", "Loading project visualizations…");
+    try { S.ai.gallery = await loadAiFigures(); }
+    catch (error) { if (version === aiGalleryVersion) setNote("aiGalleryMeta", `Figures could not be loaded: ${error.message}. Reopen this view to retry.`); return; }
+  }
+  if (version !== aiGalleryVersion || S.ai.panel !== "gallery" || active !== "ai") return;
+  const catalog = S.ai.gallery;
+  if (!catalog.groups.some(g => g.id === S.ai.figureGroup)) S.ai.figureGroup = catalog.groups[0].id;
+  fillSelect("aiFigureGroup", catalog.groups.map(g => g.id), S.ai.figureGroup,
+    id => { const group = catalog.groups.find(g => g.id === id); return `${group.label} (${catalog.figures.filter(f => f.group === id).length})`; });
+  document.getElementById("aiFigureGroup").disabled = false;
+  const counts = catalog.counts;
+  setNote("aiGalleryMeta", `${counts.figures} visualizations · ${counts.images} images · ${counts.interactive} interactive figures · ${counts.pdfs} PDF downloads · source ${catalog.source.ref} (${catalog.source.commit.slice(0, 7)})`);
+  document.getElementById("aiGalleryButton").textContent = `Project visualizations (${counts.figures})`;
+  showAiFigure();
+}
+function showAiFigure() {
+  const catalog = S.ai.gallery; if (!catalog) return;
+  const figures = catalog.figures.filter(f => f.group === S.ai.figureGroup);
+  if (!figures.some(f => f.id === S.ai.figure)) S.ai.figure = figures[0]?.id;
+  const index = figures.findIndex(f => f.id === S.ai.figure), figure = figures[index];
+  fillSelect("aiFigureSelect", figures.map(f => f.id), S.ai.figure, id => figures.find(f => f.id === id).title);
+  document.getElementById("aiFigureSelect").disabled = !figure;
+  document.getElementById("aiFigurePrevious").disabled = index <= 0;
+  document.getElementById("aiFigureNext").disabled = index < 0 || index >= figures.length - 1;
+  if (!figure) return;
+  const viewer = document.getElementById("aiFigureViewer");
+  if (viewer.dataset.figure === figure.id && viewer.childNodes.length) return;
+  viewer.replaceChildren(); viewer.dataset.figure = figure.id;
+  document.getElementById("aiFigureTitle").textContent = figure.title;
+  setNote("aiFigureDescription", figure.description);
+  const url = aiFigureURL(figure), links = document.getElementById("aiFigureLinks");
+  links.replaceChildren(aiFigureLink(figure.kind === "interactive" ? "Open interactive figure" : "Open full-size image", url));
+  if (figure.pdf) { const pdf = aiFigureLink("Download PDF", assetURL(figure.pdf.path, figure.pdf.sha256)); pdf.download = figure.pdf.path.split("/").at(-1); links.append(pdf); }
+  links.append(aiFigureLink("View source", figure.source_url));
+  const status = document.createElement("p"); status.className = "note"; status.setAttribute("role", "status");
+  if (figure.kind === "interactive") {
+    const placeholder = document.createElement("div"); placeholder.className = "ai-gallery-load";
+    status.textContent = `Interactive figure · ${(figure.bytes / 2**20).toFixed(1)} MB. Load to explore the original chart and its controls.`;
+    const button = document.createElement("button"); button.className = "btn"; button.textContent = "Load interactive figure";
+    button.onclick = () => {
+      button.disabled = true; status.textContent = "Loading interactive figure…";
+      const frame = document.createElement("iframe"); frame.title = figure.title;
+      frame.setAttribute("sandbox", "allow-scripts allow-downloads");
+      frame.style.height = `${(figure.height || 820) + 24}px`;
+      frame.onload = () => { if (viewer.contains(frame)) placeholder.remove(); };
+      frame.onerror = () => { if (viewer.contains(frame)) { frame.remove(); status.textContent = "This figure could not be loaded. Retry or open it in a new tab."; button.disabled = false; } };
+      frame.src = url; viewer.append(frame);
+    };
+    placeholder.append(status, button); viewer.append(placeholder);
+  } else {
+    status.textContent = "Loading figure…";
+    const image = new Image(); image.className = "ai-gallery-image"; image.alt = figure.title; image.decoding = "async";
+    if (figure.width && figure.height) { image.width = figure.width; image.height = figure.height; }
+    image.onload = () => { if (viewer.contains(image)) status.remove(); };
+    image.onerror = () => { if (viewer.contains(image)) { image.remove(); status.textContent = "This image could not be loaded. Open the full-size image to retry."; } };
+    viewer.append(status, image); image.src = url;
+  }
+}
+function stepAiFigure(delta) {
+  const figures = S.ai.gallery?.figures.filter(f => f.group === S.ai.figureGroup) || [];
+  const index = figures.findIndex(f => f.id === S.ai.figure), next = figures[index + delta];
+  if (next) { S.ai.figure = next.id; showAiFigure(); }
+}
 function setupAi() {
+  document.getElementById("aiDashboardButton").onclick = () => setAiPanel("dashboard");
+  document.getElementById("aiGalleryButton").onclick = () => setAiPanel("gallery");
+  document.getElementById("aiFigureGroup").onchange = e => { S.ai.figureGroup = e.target.value; S.ai.figure = null; showAiFigure(); };
+  document.getElementById("aiFigureSelect").onchange = e => { S.ai.figure = e.target.value; showAiFigure(); };
+  document.getElementById("aiFigurePrevious").onclick = () => stepAiFigure(-1);
+  document.getElementById("aiFigureNext").onclick = () => stepAiFigure(1);
   if (!AI) { document.getElementById("aiMeta").textContent = "AI economic complexity tables are not part of this build."; return; }
   S.ai.year = AI.meta.latest_year;
   bindRange("aiYear", "aiYearLbl", AI.years, S.ai.year, v => { S.ai.year = v; renderAi(); });
@@ -758,6 +860,7 @@ function setupAi() {
 const RENDER = { eci: renderEci, aci: renderAci, space: renderSpace, nest: renderNest, cross: renderCross, ai: renderAi };
 let active = "eci";
 function switchTab(name) {
+  if (name !== "ai") releaseAiInteractiveFigure();
   active = name;
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === name));
   document.querySelectorAll("section.tab").forEach(s => s.classList.toggle("on", s.id === "tab-" + name));

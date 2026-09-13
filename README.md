@@ -23,5 +23,10 @@ goods. It includes AECI, AIAP, AECP, HS4/HS6 product-space networks, country hol
 communities. Its seven files in `data/ai/` are `country_year`, `goods_year`, `candidates`, `space_nodes`, `space_edges`,
 `space_stats`, and `space_country` (`.parquet`); checksums and method details are recorded in `manifest.json`.
 
+Within that tab, **Project visualizations** presents all 44 original research-branch charts: 23 images, 21 interactive
+figures, and nine accompanying report PDFs. Browse AI trade, indices, product spaces, patent–product concordance,
+and the latest analysis report. The separate `data/ai_figures.json` records source commits, captions and checksums.
+Original interactive figures load only on request; their year/country selections are independent of dashboard controls.
+
 Third-party components: Plotly.js (MIT, loaded from its CDN) and hyparquet (MIT, vendored) — see
 `THIRD_PARTY_NOTICES.md`.

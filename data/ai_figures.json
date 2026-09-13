@@ -1,0 +1,859 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repo": "https://github.com/Dawoon-Jeong0523/EC",
+    "ref": "origin/AI-Economic-Complexity",
+    "commit": "2f4f52fd81d8581e2e4f99c5e27741e9d8329c88",
+    "project": "Projects/AI Economic Complexity",
+    "url": "https://github.com/Dawoon-Jeong0523/EC/tree/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity"
+  },
+  "selection": "All Figures PNG/HTML files and every PNG/PDF pair in each latest Results run.",
+  "latest_report_runs": {
+    "ai_economic_complexity": "20260911T231635Z"
+  },
+  "encoding": "Lossless WebP with identical decoded RGBA pixels; original HTML and PDF bytes preserved.",
+  "dependencies": [
+    "https://cdn.plot.ly/plotly-3.3.0.min.js"
+  ],
+  "groups": [
+    {
+      "id": "goods",
+      "label": "AI-enabling goods"
+    },
+    {
+      "id": "indices",
+      "label": "AECI, AIAP and AECP"
+    },
+    {
+      "id": "product_space",
+      "label": "Product space"
+    },
+    {
+      "id": "concordance",
+      "label": "Patent–product concordance"
+    },
+    {
+      "id": "report",
+      "label": "Analysis report"
+    }
+  ],
+  "figures": [
+    {
+      "id": "goods_focus_trajectories",
+      "group": "goods",
+      "title": "AI-goods RCA trajectories",
+      "description": "Bundle RCA of the largest AI-goods exporters, 2007–2023.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/ai_enabling_goods/focus_trajectories.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/ai_enabling_goods/focus_trajectories.png",
+      "source_sha256": "5d76c62ed730fe525416bccb535b29035a8f2b1be2e4c76a667a477c9952349e",
+      "source_bytes": 79108,
+      "width": 1310,
+      "height": 814,
+      "path": "figures/ai/goods/focus_trajectories.webp",
+      "sha256": "4e403f136a3d30bd15fa3636d94ff1b93db1fb55b0cfe062b70d4a468a39db14",
+      "bytes": 24244
+    },
+    {
+      "id": "goods_groups_2023",
+      "group": "goods",
+      "title": "RCA by AI-goods group, 2023",
+      "description": "Comparative advantage across electronics, computing, chemicals and materials, and instruments.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/ai_enabling_goods/groups_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/ai_enabling_goods/groups_2023.png",
+      "source_sha256": "8e4962a0504da454ab1f1e969438cc50fb638e5c7e4eaa3fe008b689c907a2f8",
+      "source_bytes": 38400,
+      "width": 1200,
+      "height": 430,
+      "path": "figures/ai/goods/groups_2023.webp",
+      "sha256": "c679e8544354b30b1ef3434facef80c20b7e800243233aea5dd9fb9152c512e3",
+      "bytes": 12004
+    },
+    {
+      "id": "goods_slope_2007_2023",
+      "group": "goods",
+      "title": "Changes in AI-goods RCA, 2007–2023",
+      "description": "Comparison of bundle RCA at the beginning and end of the study period.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/ai_enabling_goods/slope_2007_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/ai_enabling_goods/slope_2007_2023.png",
+      "source_sha256": "31a023a48ae4b14fa366bf286d1bc0096eb4867f3ef5283b503e431f5715e018",
+      "source_bytes": 39390,
+      "width": 760,
+      "height": 705,
+      "path": "figures/ai/goods/slope_2007_2023.webp",
+      "sha256": "754f006ec7815b3816c4a8fdbd25853b533f71e7dfc3e16602fddc4dd45d5c08",
+      "bytes": 10066
+    },
+    {
+      "id": "goods_world_share_concentration",
+      "group": "goods",
+      "title": "World export share and concentration",
+      "description": "AI-enabling goods as a share of world exports and the concentration of their exporters.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/ai_enabling_goods/world_share_concentration.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/ai_enabling_goods/world_share_concentration.png",
+      "source_sha256": "8118ceea18c01fefa5dad2e7e0b0ed35dd210e9b5705afc15109435df62cb95f",
+      "source_bytes": 53125,
+      "width": 1187,
+      "height": 386,
+      "path": "figures/ai/goods/world_share_concentration.webp",
+      "sha256": "e2461002447d0aa99958c85bea541d34f4f19af729fccf8edf5d41ccb87c7ed8",
+      "bytes": 20756
+    },
+    {
+      "id": "indices_aeci_trajectories",
+      "group": "indices",
+      "title": "AECI trajectories",
+      "description": "Historical AECI for countries with the highest index values in 2023. Index specialisation uses strict RCA > 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/aeci/aeci_trajectories.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/aeci/aeci_trajectories.png",
+      "source_sha256": "7150447dd42647fd035e71cc0eb68c64813fcbc4552babe1c4ff07fa9d222a45",
+      "source_bytes": 93104,
+      "width": 1310,
+      "height": 782,
+      "path": "figures/ai/indices/aeci_trajectories.webp",
+      "sha256": "69c7bbbc1eedd5482683ee5a8ba5d4b5bc3a4cf52ce457879fc3a005277e9b1c",
+      "bytes": 27934
+    },
+    {
+      "id": "indices_aeci_vs_aecp_2023",
+      "group": "indices",
+      "title": "AECI and AECP, 2023",
+      "description": "Current AI portfolio complexity and adjacent-possible potential across countries. Index specialisation uses strict RCA > 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/aeci/aeci_vs_aecp_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/aeci/aeci_vs_aecp_2023.png",
+      "source_sha256": "9d27e0abd69034449994c8784dc92d51d6e2a36af78a3c834f0cd097abc0b1a9",
+      "source_bytes": 40649,
+      "width": 760,
+      "height": 595,
+      "path": "figures/ai/indices/aeci_vs_aecp_2023.webp",
+      "sha256": "07fd8b9563de2b25a042053db79c34282d80355b48bede51f99bda2578ff994b",
+      "bytes": 13814
+    },
+    {
+      "id": "indices_aiap_maps_2023",
+      "group": "indices",
+      "title": "AI adjacent-possible maps, 2023",
+      "description": "Unspecialised AI goods positioned by relatedness density and scaled product complexity. Index specialisation uses strict RCA > 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/aeci/aiap_maps_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/aeci/aiap_maps_2023.png",
+      "source_sha256": "a2d401eb33e31cf2012648ae42e10f4c5bfeecaac9dec13377f3a0b436d1f870",
+      "source_bytes": 113126,
+      "width": 1199,
+      "height": 922,
+      "path": "figures/ai/indices/aiap_maps_2023.webp",
+      "sha256": "3d84bce7350c731e4c410d3570f157ad0a978a26b0590d3bf076f0611dc10900",
+      "bytes": 29940
+    },
+    {
+      "id": "indices_decomposition_2023",
+      "group": "indices",
+      "title": "AECI portfolio decomposition, 2023",
+      "description": "AI specialisation counts and mean complexity for the countries with the highest raw AECI. Index specialisation uses strict RCA > 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/aeci/decomposition_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/aeci/decomposition_2023.png",
+      "source_sha256": "474c05b35d6ca50ec17dd87ddec086b7b540200c5a87dc8306c4c67cf5ecc5a4",
+      "source_bytes": 39116,
+      "width": 1090,
+      "height": 430,
+      "path": "figures/ai/indices/decomposition_2023.webp",
+      "sha256": "495ee1358dcca7f071c98d5f64ce820a876d8584966cecfb39e4d4835960fd9d",
+      "bytes": 10414
+    },
+    {
+      "id": "product_space_ai_goods_cohesion_by_year",
+      "group": "product_space",
+      "title": "AI-goods cohesion over time",
+      "description": "Interactive comparison of proximity within AI goods, between AI and other goods, and within other goods. The product-space network uses RCA ≥ 1.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/ai_goods_cohesion_by_year.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/ai_goods_cohesion_by_year.html",
+      "source_sha256": "dda41535e3c5a00c65fb6a5692b54739ec58cae9c7b4f45d74b12de1b85290e9",
+      "source_bytes": 10704,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 480,
+      "path": "figures/ai/product_space/ai_goods_cohesion_by_year.html",
+      "sha256": "dda41535e3c5a00c65fb6a5692b54739ec58cae9c7b4f45d74b12de1b85290e9",
+      "bytes": 10704
+    },
+    {
+      "id": "product_space_ai_goods_position_by_year",
+      "group": "product_space",
+      "title": "AI goods in the product space over time",
+      "description": "Mean proximity, product complexity and ubiquity of AI-enabling goods. The product-space network uses RCA ≥ 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/ai_goods_position_by_year.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/ai_goods_position_by_year.png",
+      "source_sha256": "7eca7e5796c56d5e7a3112cce0098d24c8f36ed26b4375352cd4213368652950",
+      "source_bytes": 84487,
+      "width": 1420,
+      "height": 408,
+      "path": "figures/ai/product_space/ai_goods_position_by_year.webp",
+      "sha256": "4d3db62afd01e1b3e17069daecf4e6f3d02f4d2fff2fb8d5a218fdc8918d2be6",
+      "bytes": 29998
+    },
+    {
+      "id": "product_space_ai_neighbourhood_hs4",
+      "group": "product_space",
+      "title": "AI-goods neighbourhood — HS4",
+      "description": "Interactive product-space map with a year slider and AI-enabling goods highlighted. The product-space network uses RCA ≥ 1.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/ai_neighbourhood_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/ai_neighbourhood_hs4.html",
+      "source_sha256": "6227b3b8938ce7aec7c344e0dccabdf2e709470a93ebc2ce7b7336dfcf1b0f6e",
+      "source_bytes": 925174,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/ai_neighbourhood_hs4.html",
+      "sha256": "6227b3b8938ce7aec7c344e0dccabdf2e709470a93ebc2ce7b7336dfcf1b0f6e",
+      "bytes": 925174
+    },
+    {
+      "id": "product_space_ai_neighbourhood_hs6",
+      "group": "product_space",
+      "title": "AI-goods neighbourhood — HS6",
+      "description": "Interactive product-space map with a year slider and AI-enabling goods highlighted. The product-space network uses RCA ≥ 1.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/ai_neighbourhood_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/ai_neighbourhood_hs6.html",
+      "source_sha256": "5c47b40b2eb07dc745c91532af155366ee4a0e19a02ee8202b30e59edc73f565",
+      "source_bytes": 1805437,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/ai_neighbourhood_hs6.html",
+      "sha256": "5c47b40b2eb07dc745c91532af155366ee4a0e19a02ee8202b30e59edc73f565",
+      "bytes": 1805437
+    },
+    {
+      "id": "product_space_country_CN_hs4",
+      "group": "product_space",
+      "title": "China specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_CN_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_CN_hs4.html",
+      "source_sha256": "fbeb9e61d1591ad0b082a28edcece852d3f87b997c73544d9d8a583f3923f8c5",
+      "source_bytes": 2649512,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_CN_hs4.html",
+      "sha256": "fbeb9e61d1591ad0b082a28edcece852d3f87b997c73544d9d8a583f3923f8c5",
+      "bytes": 2649512
+    },
+    {
+      "id": "product_space_country_CN_hs6",
+      "group": "product_space",
+      "title": "China specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_CN_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_CN_hs6.html",
+      "source_sha256": "e7ca2f801cf248c9d573500fe75691f1da63c2ba3b0ce0505c39cd8cd6533d27",
+      "source_bytes": 10985420,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_CN_hs6.html",
+      "sha256": "e7ca2f801cf248c9d573500fe75691f1da63c2ba3b0ce0505c39cd8cd6533d27",
+      "bytes": 10985420
+    },
+    {
+      "id": "product_space_country_DE_hs4",
+      "group": "product_space",
+      "title": "Germany specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_DE_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_DE_hs4.html",
+      "source_sha256": "f2381ef602697352d89928c03356f79da587b944221354c1949d8e813a964c13",
+      "source_bytes": 2649230,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_DE_hs4.html",
+      "sha256": "f2381ef602697352d89928c03356f79da587b944221354c1949d8e813a964c13",
+      "bytes": 2649230
+    },
+    {
+      "id": "product_space_country_DE_hs6",
+      "group": "product_space",
+      "title": "Germany specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_DE_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_DE_hs6.html",
+      "source_sha256": "5afda9bdb86fc5a11e85ad25431cf5e7e72a9da4c10e82ae3421a0c360da774e",
+      "source_bytes": 10985710,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_DE_hs6.html",
+      "sha256": "5afda9bdb86fc5a11e85ad25431cf5e7e72a9da4c10e82ae3421a0c360da774e",
+      "bytes": 10985710
+    },
+    {
+      "id": "product_space_country_JP_hs4",
+      "group": "product_space",
+      "title": "Japan specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_JP_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_JP_hs4.html",
+      "source_sha256": "f7b925f4890ba540ba033e1896bda2386947f77e25b083a1d1593796df9a7f67",
+      "source_bytes": 2649767,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_JP_hs4.html",
+      "sha256": "f7b925f4890ba540ba033e1896bda2386947f77e25b083a1d1593796df9a7f67",
+      "bytes": 2649767
+    },
+    {
+      "id": "product_space_country_JP_hs6",
+      "group": "product_space",
+      "title": "Japan specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_JP_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_JP_hs6.html",
+      "source_sha256": "dd4cf44d3bda6889f7f8cbf48577f144a19a21b120151d1aee3de929953b702c",
+      "source_bytes": 10985729,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_JP_hs6.html",
+      "sha256": "dd4cf44d3bda6889f7f8cbf48577f144a19a21b120151d1aee3de929953b702c",
+      "bytes": 10985729
+    },
+    {
+      "id": "product_space_country_KR_hs4",
+      "group": "product_space",
+      "title": "South Korea specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_KR_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_KR_hs4.html",
+      "source_sha256": "6fa49cbc49831029ff2d647086489137403225df392b98ff00994fc904315329",
+      "source_bytes": 2649710,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_KR_hs4.html",
+      "sha256": "6fa49cbc49831029ff2d647086489137403225df392b98ff00994fc904315329",
+      "bytes": 2649710
+    },
+    {
+      "id": "product_space_country_KR_hs6",
+      "group": "product_space",
+      "title": "South Korea specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_KR_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_KR_hs6.html",
+      "source_sha256": "9594ede924e898dd265bc996fee2bef85d6fbe811ab3b310253e45ad2ad4d76c",
+      "source_bytes": 10985432,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_KR_hs6.html",
+      "sha256": "9594ede924e898dd265bc996fee2bef85d6fbe811ab3b310253e45ad2ad4d76c",
+      "bytes": 10985432
+    },
+    {
+      "id": "product_space_country_MY_hs4",
+      "group": "product_space",
+      "title": "Malaysia specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_MY_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_MY_hs4.html",
+      "source_sha256": "22dc99c617faef7ca526a0fc78c0f6e0274e7cdd319c0542661d88a05077cdff",
+      "source_bytes": 2649274,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_MY_hs4.html",
+      "sha256": "22dc99c617faef7ca526a0fc78c0f6e0274e7cdd319c0542661d88a05077cdff",
+      "bytes": 2649274
+    },
+    {
+      "id": "product_space_country_MY_hs6",
+      "group": "product_space",
+      "title": "Malaysia specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_MY_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_MY_hs6.html",
+      "source_sha256": "f0eb535fc98a180fd7235e14fbae56dde8e1b20e2c67ba469395be4f5f0d59b5",
+      "source_bytes": 10985094,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_MY_hs6.html",
+      "sha256": "f0eb535fc98a180fd7235e14fbae56dde8e1b20e2c67ba469395be4f5f0d59b5",
+      "bytes": 10985094
+    },
+    {
+      "id": "product_space_country_SG_hs4",
+      "group": "product_space",
+      "title": "Singapore specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_SG_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_SG_hs4.html",
+      "source_sha256": "5a7f90d3a9ceb3408e7d5336154a8ba718700ee3ffcfb651b54944104ef7d999",
+      "source_bytes": 2649844,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_SG_hs4.html",
+      "sha256": "5a7f90d3a9ceb3408e7d5336154a8ba718700ee3ffcfb651b54944104ef7d999",
+      "bytes": 2649844
+    },
+    {
+      "id": "product_space_country_SG_hs6",
+      "group": "product_space",
+      "title": "Singapore specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_SG_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_SG_hs6.html",
+      "source_sha256": "38ad6cfb93a335590df6831662dac36ca9439823be00075d6fde10e0b9136f6e",
+      "source_bytes": 10986210,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_SG_hs6.html",
+      "sha256": "38ad6cfb93a335590df6831662dac36ca9439823be00075d6fde10e0b9136f6e",
+      "bytes": 10986210
+    },
+    {
+      "id": "product_space_country_TW_hs4",
+      "group": "product_space",
+      "title": "Taiwan specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_TW_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_TW_hs4.html",
+      "source_sha256": "3f1aed3e767aa5b1a9bdedd6412782039f8a3a44dd45728340f5e657d2d0dad9",
+      "source_bytes": 2649711,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_TW_hs4.html",
+      "sha256": "3f1aed3e767aa5b1a9bdedd6412782039f8a3a44dd45728340f5e657d2d0dad9",
+      "bytes": 2649711
+    },
+    {
+      "id": "product_space_country_TW_hs6",
+      "group": "product_space",
+      "title": "Taiwan specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_TW_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_TW_hs6.html",
+      "source_sha256": "176ceac74684e05d48fc46f997bbd0c8d7f9e5dcabeca2a36b48f99318ba3e90",
+      "source_bytes": 10984753,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_TW_hs6.html",
+      "sha256": "176ceac74684e05d48fc46f997bbd0c8d7f9e5dcabeca2a36b48f99318ba3e90",
+      "bytes": 10984753
+    },
+    {
+      "id": "product_space_country_US_hs4",
+      "group": "product_space",
+      "title": "United States specialisation — HS4",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_US_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_US_hs4.html",
+      "source_sha256": "31e6308cd2fdf649eecb19197c565f1988f1b736e8542a73ee2f5865aec13afb",
+      "source_bytes": 2649261,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_US_hs4.html",
+      "sha256": "31e6308cd2fdf649eecb19197c565f1988f1b736e8542a73ee2f5865aec13afb",
+      "bytes": 2649261
+    },
+    {
+      "id": "product_space_country_US_hs6",
+      "group": "product_space",
+      "title": "United States specialisation — HS6",
+      "description": "All specialised products at this HS level, with AI goods distinguished from other products. Specialisation uses RCA ≥ 1 at the selected HS level; includes a year slider.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/country_US_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/country_US_hs6.html",
+      "source_sha256": "b47d602623326bca1b073486bbc7d2d283a4c00f9d0529066c02d79838651b12",
+      "source_bytes": 10985215,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/country_US_hs6.html",
+      "sha256": "b47d602623326bca1b073486bbc7d2d283a4c00f9d0529066c02d79838651b12",
+      "bytes": 10985215
+    },
+    {
+      "id": "product_space_product_space_hs4",
+      "group": "product_space",
+      "title": "Full product space — HS4",
+      "description": "Interactive product-space map with a year slider and AI-enabling goods highlighted. The product-space network uses RCA ≥ 1.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/product_space_hs4.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/product_space_hs4.html",
+      "source_sha256": "6e1a388466fa5d6c7ac7ae641ae5ed3d0a4fbe95b1e2ba0f050e43171b68aaf0",
+      "source_bytes": 7943985,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/product_space_hs4.html",
+      "sha256": "6e1a388466fa5d6c7ac7ae641ae5ed3d0a4fbe95b1e2ba0f050e43171b68aaf0",
+      "bytes": 7943985
+    },
+    {
+      "id": "product_space_product_space_hs4_2023",
+      "group": "product_space",
+      "title": "Full product space — HS4, 2023",
+      "description": "AI-enabling goods highlighted on the product-space backbone. The product-space network uses RCA ≥ 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/product_space_hs4_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/product_space_hs4_2023.png",
+      "source_sha256": "8cedd2110f606c1ab74f8a327f82fc53f63937b20602280ec9dab0eca395b709",
+      "source_bytes": 250659,
+      "width": 1483,
+      "height": 1244,
+      "path": "figures/ai/product_space/product_space_hs4_2023.webp",
+      "sha256": "4b708785cb060e65148fb3eb2190e381e2e0a2f3fbd4d20e8dc418c0570753f3",
+      "bytes": 90306
+    },
+    {
+      "id": "product_space_product_space_hs6",
+      "group": "product_space",
+      "title": "Full product space — HS6",
+      "description": "Interactive product-space map with a year slider and AI-enabling goods highlighted. The product-space network uses RCA ≥ 1.",
+      "kind": "interactive",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/product_space_hs6.html",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/product_space_hs6.html",
+      "source_sha256": "67c45f4e7692f2e0e2c7e328e611c9a97349f42c2d53dd73a45b7d4dec3775e5",
+      "source_bytes": 32944821,
+      "dependencies": [
+        "https://cdn.plot.ly/plotly-3.3.0.min.js"
+      ],
+      "height": 820,
+      "path": "figures/ai/product_space/product_space_hs6.html",
+      "sha256": "67c45f4e7692f2e0e2c7e328e611c9a97349f42c2d53dd73a45b7d4dec3775e5",
+      "bytes": 32944821
+    },
+    {
+      "id": "product_space_product_space_hs6_2023",
+      "group": "product_space",
+      "title": "Full product space — HS6, 2023",
+      "description": "AI-enabling goods highlighted on the product-space backbone. The product-space network uses RCA ≥ 1.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/product_space/product_space_hs6_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/product_space/product_space_hs6_2023.png",
+      "source_sha256": "00fd4e0f2917a488742eda3cf896f986b093c3ada62be1c6cb9eb187e112e449",
+      "source_bytes": 519524,
+      "width": 1483,
+      "height": 1244,
+      "path": "figures/ai/product_space/product_space_hs6_2023.webp",
+      "sha256": "40df64cdcafa0a53ded3233106ffc7151b1cba22ed3e54fff5ac01379614e2bf",
+      "bytes": 192066
+    },
+    {
+      "id": "concordance_country_profile_2015",
+      "group": "concordance",
+      "title": "Country concordance profiles, 2015",
+      "description": "Comparison of patent-implied product profiles with observed product exports.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/concordance_validation/country_profile_2015.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/concordance_validation/country_profile_2015.png",
+      "source_sha256": "d842fd545626745214371e252dbd6a96e5ea1eb4c24c5e0ea7dc40f001927a5e",
+      "source_bytes": 32776,
+      "width": 705,
+      "height": 430,
+      "path": "figures/ai/concordance/country_profile_2015.webp",
+      "sha256": "89af77e4531e360b4e926c63a1ba26e7de0440ec7ce4910753306954cdfe0bbf",
+      "bytes": 10478
+    },
+    {
+      "id": "concordance_lag_sweep",
+      "group": "concordance",
+      "title": "Patent–product concordance by lag",
+      "description": "Concordance validation metrics across patent-to-export time lags.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/concordance_validation/lag_sweep.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/concordance_validation/lag_sweep.png",
+      "source_sha256": "ade40d6783380808481d8cd6ff963458865c45264be136b89259dda77e3694f7",
+      "source_bytes": 41652,
+      "width": 698,
+      "height": 386,
+      "path": "figures/ai/concordance/lag_sweep.webp",
+      "sha256": "b4b5bad8cdbc703d7f3312841fb09b4e730935f6d6da61a3a2045fdfb40c7b1a",
+      "bytes": 19990
+    },
+    {
+      "id": "concordance_yearly_vs_baselines",
+      "group": "concordance",
+      "title": "Concordance validation and baselines",
+      "description": "Yearly validation of the patent–product crosswalk against uniform and permuted concordances.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Figures/concordance_validation/yearly_vs_baselines.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Figures/concordance_validation/yearly_vs_baselines.png",
+      "source_sha256": "cabba1a32f1ed659706fa1db2a7517c661e6061801a5062905739689e71f47b8",
+      "source_bytes": 109957,
+      "width": 1299,
+      "height": 415,
+      "path": "figures/ai/concordance/yearly_vs_baselines.webp",
+      "sha256": "b011d43974bf0a887b475cb55bd4cc52ebcee08ebe9d12e016478b6134496368",
+      "bytes": 43418
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_01_ai_activity_scale",
+      "group": "report",
+      "title": "AI activity scale",
+      "description": "Report figure on the scale and export share of AI-enabling activities.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.png",
+      "source_sha256": "bc9e09218e7161344ad698bf70a9612fef7e8639ea049ab9c4be98b0445f9b42",
+      "source_bytes": 102429,
+      "width": 1843,
+      "height": 562,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.webp",
+      "sha256": "e38b2659e8c7359b1e96e237459bc82382c6db1931d68ea6b54b16e6cd127afe",
+      "bytes": 36636,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.pdf",
+        "sha256": "3c7506ad151ed2624207d7f4992e1109334346d46b4437ad32ff01bcfa340f5b",
+        "bytes": 22943,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_ai_activity_scale.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_01_complexity_distribution_2023",
+      "group": "report",
+      "title": "AI product complexity distribution, 2023",
+      "description": "Product complexity of AI-enabling goods compared with all products.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.png",
+      "source_sha256": "fd1b876bc5ae27cfd4915df029ed72abc2fb993a76154db293dad676514ba035",
+      "source_bytes": 82836,
+      "width": 1780,
+      "height": 588,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.webp",
+      "sha256": "b92045c3f89bf5e6c1fead2baa8adb03bda316638cddff3b80cd922d011b7fbe",
+      "bytes": 24904,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.pdf",
+        "sha256": "d413d049ba3640c78afffad76f78349db584ec4facca1c6e2656e1f5a04af569",
+        "bytes": 35857,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/01_complexity_distribution_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_02_aeci_rank_trajectories",
+      "group": "report",
+      "title": "AECI rank trajectories",
+      "description": "Report comparison of country AECI rankings over time.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.png",
+      "source_sha256": "a647be5a7a046ae17d465dc4008278e68ae29a71eb64e062354f98e42b3b6fbf",
+      "source_bytes": 81811,
+      "width": 1323,
+      "height": 605,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.webp",
+      "sha256": "1ad8b2cf2e679755bce72cf7d5f329f9208b2f8baea8544e65f1a21db62504c5",
+      "bytes": 28758,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.pdf",
+        "sha256": "80976adb040c9e41e008ef05a27fd90c7615ce186dcd8e1a45f4587882fbe92b",
+        "bytes": 19881,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_rank_trajectories.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_02_aeci_vs_gdp_eci_2023",
+      "group": "report",
+      "title": "AECI, GDP per capita and ECI, 2023",
+      "description": "Cross-country comparisons of AECI with income and whole-product-space economic complexity.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.png",
+      "source_sha256": "bbaa5b8136bcd27d764767568a9b3f0a8cac9e4c17333f35c846a724571d00f3",
+      "source_bytes": 97052,
+      "width": 1899,
+      "height": 614,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.webp",
+      "sha256": "0c4901b602b3b5ba63f5ac0fb64a35f48987660c9efcfbf08ba5c82e3ff78a82",
+      "bytes": 31294,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.pdf",
+        "sha256": "2b5c119a8a5f95dc8a01e0a6caced7e1a6cbd120250387f48ea343abf8170e31",
+        "bytes": 25775,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/02_aeci_vs_gdp_eci_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_04_aiap_maps_pci_2023",
+      "group": "report",
+      "title": "AI opportunity maps using PCI, 2023",
+      "description": "Unspecialised AI goods positioned by relatedness density and product complexity index.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.png",
+      "source_sha256": "782ccfae6e329cef81f852e42419ded1c6faef786356f45b3ad92d01382fc8f4",
+      "source_bytes": 108120,
+      "width": 2283,
+      "height": 614,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.webp",
+      "sha256": "01f4063e22e3e532435e5266baed9569c0461acf6f99ced37977c7635766acec",
+      "bytes": 31672,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.pdf",
+        "sha256": "f9ee1876931db4b59de70e95afca0d27d195cc1301da21e049f87dcf3beebab6",
+        "bytes": 75804,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_pci_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_04_aiap_maps_q_2023",
+      "group": "report",
+      "title": "AI opportunity maps using scaled complexity, 2023",
+      "description": "Unspecialised AI goods positioned by relatedness density and min–max scaled complexity.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.png",
+      "source_sha256": "536a176e67d0df89bd923d75afa58d3fcaae9b7d1526338564ca4fd9fb457a45",
+      "source_bytes": 124944,
+      "width": 2283,
+      "height": 614,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.webp",
+      "sha256": "f80ec84277a7866c1a4d0c63c01fd42f440588d3727dc67755300c61d0fe7b5c",
+      "bytes": 35042,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.pdf",
+        "sha256": "9b8159ff231dc8d046d8aa00867d1232ca8141f9bf447f9aa341ac7cc430156c",
+        "bytes": 107231,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/04_aiap_maps_q_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_05A_aeci_vs_aecp_2023",
+      "group": "report",
+      "title": "Report: AECI and AECP, 2023",
+      "description": "Report comparison of current AI portfolio complexity with adjacent-possible potential.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.png",
+      "source_sha256": "562de1c340939ca98d01679e21461b212cd49de5ec3c7a9cbe335f72d2c0e63e",
+      "source_bytes": 89743,
+      "width": 1431,
+      "height": 641,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.webp",
+      "sha256": "f622822c2e535a997af6507421e21c30dd05ebda883780b0dec3a33e6e2bbfed",
+      "bytes": 27678,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.pdf",
+        "sha256": "6b1bfe0086708d9ffe6d50935df4d06a0533dc3ab830d8a2fb56ffc967bc9477",
+        "bytes": 25277,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/05A_aeci_vs_aecp_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_07_ai_subspace_complexity_2023",
+      "group": "report",
+      "title": "AI subspace by complexity, 2023",
+      "description": "Stored product-space backbone restricted to AI-enabling goods, coloured by complexity.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.png",
+      "source_sha256": "f2fb05062392fb32e398dc51925c1aa454b9c18b0a71d1248f4be734728011a5",
+      "source_bytes": 86325,
+      "width": 1412,
+      "height": 865,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.webp",
+      "sha256": "0c11a7bb94994fcf19cfbda64ec8b0f7fc4dedc3264da0b4f85df985c30b09ad",
+      "bytes": 36164,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.pdf",
+        "sha256": "8f19167b01352e8b133276105cfa908ad7386597754da20b10646e5cf3d61a5f",
+        "bytes": 22056,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_complexity_2023.pdf"
+      }
+    },
+    {
+      "id": "report_Product_product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid_figures_07_ai_subspace_countries_2023",
+      "group": "report",
+      "title": "Country specialisation in the AI subspace, 2023",
+      "description": "Stored AI-goods network showing specialisation for the report's example countries.",
+      "kind": "image",
+      "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.png",
+      "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.png",
+      "source_sha256": "8a15271ba16ff68374542a1e6c3d1b669f1d8739918a5c49f141be1270a08042",
+      "source_bytes": 93789,
+      "width": 2379,
+      "height": 604,
+      "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.webp",
+      "sha256": "548e939632528c52945fa3174b3dda6373c941b189e4b96b4dbde17158af66eb",
+      "bytes": 26106,
+      "pdf": {
+        "path": "figures/ai/report/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.pdf",
+        "sha256": "68e1458f2ba8a6d87a02e1e1d3a4973edf04b163db20a1803444100f462e693e",
+        "bytes": 26664,
+        "source_path": "Projects/AI Economic Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.pdf",
+        "source_url": "https://github.com/Dawoon-Jeong0523/EC/blob/2f4f52fd81d8581e2e4f99c5e27741e9d8329c88/Projects/AI%20Economic%20Complexity/Results/ai_economic_complexity/20260911T231635Z/Product/product_hs07_hs6__ai_wto2025_H4__binary__rca_gt1__pci_pipeline__z_valid/figures/07_ai_subspace_countries_2023.pdf"
+      }
+    }
+  ],
+  "counts": {
+    "figures": 44,
+    "images": 23,
+    "interactive": 21,
+    "pdfs": 9
+  },
+  "total_bytes": 153885163,
+  "total_source_bytes": 155473603
+}
