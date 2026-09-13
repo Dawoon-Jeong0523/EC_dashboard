@@ -74,5 +74,14 @@ export async function loadDashboard() {
     D.space[meta.id]={years:space.map(r=>r.year),...Object.fromEntries(['nodes','edges','communities','density'].map(c=>[c,space.map(r=>r[c])]))};
     done++; document.getElementById('loadStatus').textContent=`Loading Parquet metrics… ${done} of ${manifest.datasets.length} datasets`;
   }));
+  if (manifest.ai?.files) {
+    // AI economic complexity tables (Projects/AI Economic Complexity, unscreened); small enough to load eagerly
+    const [rows, goods] = await Promise.all([readParquet(manifest.ai.files.country_year), readParquet(manifest.ai.files.goods_year)]);
+    D.ai = {meta: manifest.ai, rows, goods, years: unique(rows, 'year')};
+  }
   return D;
+}
+export function loadAiCandidates(manifest) {
+  // AIAP candidate rows (one per unspecialised AI good x country x year); loaded on first use of the opportunity map
+  return readParquet(manifest.ai.files.candidates);
 }

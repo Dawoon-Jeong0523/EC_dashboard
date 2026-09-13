@@ -84,7 +84,7 @@
 <header>
   <div class="brand">
     <h1>Economic Complexity Explorer <span class="screened-badge">Screened</span></h1>
-    <span class="sub">Product (BACI HS4) · Technology (PatentsView CPC) · Knowledge (OpenAlex subfield)</span>
+    <span class="sub">Product (BACI HS4, HS92 / HS02 / HS07) · Technology (PatentsView, PATSTAT CPC) · Knowledge (OpenAlex, Dimensions) · AI economic complexity (BACI HS6, unscreened)</span>
     <div class="right">
       <button class="btn" id="themeBtn" title="Light / dark">◐ Theme</button>
     </div>
@@ -95,6 +95,7 @@
     <button data-tab="space">Activity space</button>
     <button data-tab="nest">Nestedness</button>
     <button data-tab="cross">Cross-domain</button>
+    <button data-tab="ai">AI economic complexity</button>
   </nav>
 </header>
 
@@ -102,7 +103,7 @@
 <div class="card screening-card" style="margin-bottom:14px"><h3>Screened results</h3><p id="screeningSummary">Loading annual screening rules…</p><p class="note">All metrics and figures use the retained country–activity cohort in each year. Cohort changes affect comparisons over time. Screening removes small samples; it does not establish ranking stability or complete recent patent filing cohorts.</p></div>
 <details class="card" style="margin-bottom:14px"><summary style="cursor:pointer;font-weight:600">How to explore this dashboard · definitions and coverage</summary>
 <div id="screeningRules"></div><p><a id="screeningAudit" target="_blank" rel="noopener">View screening rules and cohort audit</a></p>
-<p>Start with <b>Country ECI</b> to compare countries and years. Use <b>Activity complexity (PCI)</b> for products, technology classes and knowledge subfields. Explore annual networks in <b>Activity space</b>, for the latest two available years in each dataset, then inspect sorted country–activity matrices and null-model comparisons in <b>Nestedness</b>.</p>
+<p>Start with <b>Country ECI</b> to compare countries and years; every domain has a dataset selector (Product: HS92 1995–2024, HS 2002 and HS 2007 nomenclatures; Technology and Knowledge: source, counting rule and year basis). The <b>AI economic complexity</b> tab shows the unscreened AECI / AIAP / AECP indices and the RCA of the WTO list of AI-enabling goods. Use <b>Activity complexity (PCI)</b> for products, technology classes and knowledge subfields. Explore annual networks in <b>Activity space</b>, for the latest two available years in each dataset, then inspect sorted country–activity matrices and null-model comparisons in <b>Nestedness</b>.</p>
 <p><b>ECI</b> describes country complexity in each domain. <b>PCI</b> is product complexity; this project stores the equivalent activity index for all three domains as <b>ACI</b>. Scores are relative to each dataset and year, so changes do not measure absolute capability growth. Missing observations remain missing. Knowledge corresponds to the Science datasets; technology reflects the project's PatentsView data coverage.</p>
 <p>Latest means latest available, not necessarily complete: recent patent and publication years can have incomplete coverage. Product activity descriptions are representative HS6 descriptions within each HS4 code.</p>
 <p><b>RCA ≥ 1</b> identifies specialization within the screened reference population. Diversity counts a country's specialized activities; ubiquity counts countries specialized in an activity. Activity-space links represent proximity; the displayed network uses a maximum spanning forest plus strong links. Detailed figures cover only the latest two available years per dataset: Product 2023–2024; Technology and Knowledge 2024–2025. Metric trajectories retain all available years.</p>
@@ -112,6 +113,7 @@
 <section class="tab on" id="tab-eci">
   <div class="filters">
     <div class="f"><span>Year</span><div class="yr"><input type="range" id="eciYear"><b id="eciYearLbl"></b></div></div>
+    <div class="f"><span>Product dataset</span><select id="eciProd"></select></div>
     <div class="f"><span>Technology dataset</span><select id="eciTech"></select></div>
     <div class="f"><span>Knowledge dataset</span><select id="eciSci"></select></div>
     <div class="f" style="flex:1"><span>Highlight countries (up to 8; enter a code or name)</span>
@@ -218,6 +220,7 @@
 <!-- ============================================================ 5. Cross-domain -->
 <section class="tab" id="tab-cross">
   <div class="filters">
+    <div class="f"><span>Product dataset</span><select id="xProd"></select></div>
     <div class="f"><span>Technology dataset</span><select id="xTech"></select></div>
     <div class="f"><span>Knowledge dataset</span><select id="xSci"></select></div>
     <div class="f"><span>Year</span><div class="yr"><input type="range" id="xYear"><b id="xYearLbl"></b></div></div>
@@ -227,10 +230,45 @@
     <div class="card"><h3>Cross-domain ECI in the selected year</h3><div class="note">Countries with ECI in all three selected domains; color shows knowledge ECI</div><div class="plot" id="xEci"></div></div>
   </div>
 </section>
+<!-- ============================================================ 6. AI economic complexity -->
+<section class="tab" id="tab-ai">
+  <div class="card" style="margin-bottom:14px"><h3>AI economic complexity · unscreened project indices</h3>
+    <p class="note" id="aiMeta">Loading…</p>
+    <p class="note"><b>AECI</b> = Σ over the 103 AI-enabling goods of M · q: the number of listed goods a country exports with RCA &gt; 1, each weighted by its normalised complexity q (PCI of all ~5,000 HS6 products rescaled to 0–1); reported as a z-score across the year's valid countries. <b>AIAP</b> places the goods a country does <i>not</i> yet hold by relatedness density ρ to its whole export portfolio and by q. <b>AECP</b> is the mean of ρ · q over those candidates (raw G in 0–1, z-score across countries): how favourable the remaining AI goods are on average. <b>Bundle RCA</b> is the RCA of the 103 goods taken as one product. Unlike the other tabs these values are computed on the raw BACI matrices (no screening) and use the strict RCA &gt; 1 rule; highlighted countries are the ones selected in the Country ECI tab.</p></div>
+  <div class="filters">
+    <div class="f"><span>Year</span><div class="yr"><input type="range" id="aiYear"><b id="aiYearLbl"></b></div></div>
+    <div class="f"><span>Country for the opportunity map</span><select id="aiCountry"></select></div>
+  </div>
+  <div class="kpi" id="aiKpi"></div>
+  <div class="grid three">
+    <div class="card"><h3>AECI rank</h3><div class="note" id="aiRkA-note"></div><div class="plot tall" id="aiRkA"></div></div>
+    <div class="card"><h3>AECP rank (potential)</h3><div class="note" id="aiRkP-note"></div><div class="plot tall" id="aiRkP"></div></div>
+    <div class="card"><h3>Bundle RCA rank</h3><div class="note" id="aiRkB-note"></div><div class="plot tall" id="aiRkB"></div></div>
+  </div>
+  <div class="grid three">
+    <div class="card"><h3>AECI over time</h3><div class="note">Selected countries (Country ECI tab)</div><div class="plot" id="aiTsA"></div></div>
+    <div class="card"><h3>Bundle RCA over time</h3><div class="note">Dotted line: RCA = 1</div><div class="plot" id="aiTsB"></div></div>
+    <div class="card"><h3>AI goods held over time</h3><div class="note">Number of the 103 goods with RCA &gt; 1</div><div class="plot" id="aiTsC"></div></div>
+  </div>
+  <div class="grid two">
+    <div class="card"><h3>Current portfolio vs potential</h3><div class="note" id="aiSc-note"></div><div class="plot" id="aiSc"></div></div>
+    <div class="card"><h3>AI adjacent possible (AIAP) of the selected country</h3><div class="note" id="aiMap-note"></div><div class="plot" id="aiMap"></div></div>
+  </div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="rowbar"><h3>Candidate goods of the selected country and year</h3><button class="btn" data-toggle="aiMapTbl">Show table</button></div>
+    <div class="tbl" id="aiMapTbl"></div>
+  </div>
+  <div class="card" style="margin-bottom:14px"><h3>The AI-enabling goods by complexity</h3><div class="note" id="aiGoods-note"></div><div class="plot tall" id="aiGoods"></div></div>
+  <div class="card">
+    <div class="rowbar"><h3>Country table for the selected year: AECI, AECP, bundle RCA, group RCAs</h3>
+      <div><input type="search" id="aiTblQ" placeholder="Search" style="font:inherit;font-size:12.5px;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--page);color:var(--text1)"> <button class="btn" data-toggle="aiTbl">Show table</button></div></div>
+    <div class="tbl" id="aiTbl"></div>
+  </div>
+</section>
 </main>
 <footer id="foot"></footer>
 
-<script src="assets/dashboard.bundle.js?v=0f032f36f18fb9c1"></script>
+<script src="assets/dashboard.bundle.js?v=ed283d1c506c61d8"></script>
 <noscript>This dashboard requires JavaScript to read Parquet data and render the charts.</noscript>
 </body>
 </html>

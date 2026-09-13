@@ -1,4 +1,4 @@
-import { loadDashboard, assetURL } from './data.js';
+import { loadDashboard, assetURL, loadAiCandidates } from './data.js';
 let D;
 try { D = await loadDashboard(); }
 catch (error) {
@@ -29,7 +29,7 @@ const tok = () => {
 };
 const famColor = tree => pal(FAM_SLOT[fam(tree)]);
 const treeColor = tree => pal(D.trees.indexOf(tree));
-const FAM_OF_ROOT = { Technology_PATSTAT: "Technology", Science_Dimensions: "Science" };   // same family, other source
+const FAM_OF_ROOT = { Technology_PATSTAT: "Technology", Science_Dimensions: "Science", Product_HS02: "Product", Product_HS07: "Product" };   // same family, other source / nomenclature
 const fam = tree => { const root = tree.split("/")[0]; return FAM_OF_ROOT[root] || root; };
 const tag = tree => tree.replace(/\//g, "-");
 const treeLabel = tree => META[tree]?.label || (tree === "Product" ? "Product (HS4)" : tree.replace("Technology_PATSTAT/", "Technology (PATSTAT) · ").replace("Science_Dimensions/", "Knowledge (Dimensions) · ").replace("Technology/", "Technology · ").replace("Science/", "Knowledge · ").replace(/\//g, " · "));
@@ -108,15 +108,16 @@ function spearman(xs, ys) {
 }
 const allYears = [...new Set(D.trees.flatMap(t => P[t].years))].sort((a, b) => a - b);
 const YMIN = allYears[0], YMAX = allYears[allYears.length - 1];
-const TECH = D.trees.filter(t => fam(t) === "Technology"), SCI = D.trees.filter(t => fam(t) === "Science");
+const PROD = D.trees.filter(t => fam(t) === "Product"), TECH = D.trees.filter(t => fam(t) === "Technology"), SCI = D.trees.filter(t => fam(t) === "Science");
 
 // ------------------------------------------------------------------ state
 const S = {
-  year: Math.min(...D.trees.map(t => P[t].years.at(-1))), tech: TECH[0], sci: SCI[0], countries: [...D.countries_default], cslot: new Map(),
+  year: Math.min(...D.trees.map(t => P[t].years.at(-1))), prod: PROD.includes("Product") ? "Product" : PROD[0], tech: TECH[0], sci: SCI[0], countries: [...D.countries_default], cslot: new Map(),
   aTree: "Product", aYear: A.Product.years.at(-1), acts: [], aslot: new Map(),
   spTree: "Product", spYear: null, spFig: "space",
   nMeasure: "NODF", nTree: "Product", nFig: "matrix_sorted", nYear: Math.min(2020, YMAX),
   xYear: Math.min(...D.trees.map(t => P[t].years.at(-1))),
+  ai: { year: null, country: "KR", cands: null },
 };
 // colour follows the entity: a slot is handed out once and kept while the entity stays selected
 function slotFor(map, key, list) {
@@ -169,7 +170,7 @@ document.querySelectorAll("[data-toggle]").forEach(b => b.onclick = () => {
 });
 
 // ================================================================== 1. Country ECI
-function domainTrees() { return { P: "Product", T: S.tech, S: S.sci }; }
+function domainTrees() { return { P: S.prod, T: S.tech, S: S.sci }; }
 function renderEci() {
   const t = tok(), y = S.year, trees = domainTrees(), sel = new Set(S.countries);
   const maps = { P: eciAt(trees.P, y), T: eciAt(trees.T, y), S: eciAt(trees.S, y) };
@@ -263,7 +264,8 @@ function renderEciTable() {
 }
 function setupEci() {
   bindRange("eciYear", "eciYearLbl", allYears, S.year, v => { S.year = v; renderEci(); });
-  fillSelect("eciTech", TECH, S.tech, treeLabel); fillSelect("eciSci", SCI, S.sci, treeLabel);
+  fillSelect("eciProd", PROD, S.prod, treeLabel); fillSelect("eciTech", TECH, S.tech, treeLabel); fillSelect("eciSci", SCI, S.sci, treeLabel);
+  document.getElementById("eciProd").onchange = e => { S.prod = e.target.value; document.getElementById("xProd").value = S.prod; renderEci(); };
   document.getElementById("eciTech").onchange = e => { S.tech = e.target.value; document.getElementById("xTech").value = S.tech; renderEci(); };
   document.getElementById("eciSci").onchange = e => { S.sci = e.target.value; document.getElementById("xSci").value = S.sci; renderEci(); };
   const dl = document.getElementById("countryList");
@@ -493,7 +495,7 @@ function renderMatrix() {
 // ================================================================== 5. Cross-domain
 function renderCross() {
   const t = tok(), y = S.xYear;
-  const pairs = [["Product", S.tech], ["Product", S.sci], [S.tech, S.sci]];
+  const pairs = [[S.prod, S.tech], [S.prod, S.sci], [S.tech, S.sci]];
   const traces = pairs.map(([a, b], i) => {
     const ys = P[a].years.filter(yy => P[b].years.includes(yy)), rho = [];
     ys.forEach(yy => { const ma = eciAt(a, yy), mb = eciAt(b, yy); const cs = [...ma.keys()].filter(c => mb.has(c)); rho.push(cs.length >= 20 ? spearman(cs.map(c => ma.get(c)), cs.map(c => mb.get(c))) : null); });
@@ -502,7 +504,7 @@ function renderCross() {
   });
   plot("xRho", traces, lay({ showlegend: true, hovermode: "x unified", margin: { t: 6 }, yaxis: { title: { text: "Spearman ρ (ECI, country ranks)" }, range: [-1, 1], zeroline: true },
                              shapes: [{ type: "line", x0: y, x1: y, y0: 0, y1: 1, yref: "paper", line: { color: t.axis, width: 1 } }] }));
-  const trees = ['Product', S.tech, S.sci], pair = [eciAt(trees[0], y), eciAt(trees[1], y), eciAt(trees[2], y)];
+  const trees = [S.prod, S.tech, S.sci], pair = [eciAt(trees[0], y), eciAt(trees[1], y), eciAt(trees[2], y)];
   const cs = pair.every(Boolean) ? [...pair[0].keys()].filter(c=>pair[1].has(c)&&pair[2].has(c)) : [];
   plot('xEci', cs.length ? [{type:'scatter',mode:'markers', x:cs.map(c=>pair[0].get(c)),y:cs.map(c=>pair[1].get(c)),text:cs.map(c=>cname(c)), customdata:cs.map(c=>pair[2]?.get(c)),
     marker:{size:9,color:cs.map(c=>pair[2]?.get(c)??0),colorscale:DIVERGING[theme()],cmid:0,colorbar:{title:{text:'Knowledge ECI'}}},
@@ -510,7 +512,8 @@ function renderCross() {
 
 }
 function setupCross() {
-  fillSelect("xTech", TECH, S.tech, treeLabel); fillSelect("xSci", SCI, S.sci, treeLabel);
+  fillSelect("xProd", PROD, S.prod, treeLabel); fillSelect("xTech", TECH, S.tech, treeLabel); fillSelect("xSci", SCI, S.sci, treeLabel);
+  document.getElementById("xProd").onchange = e => { S.prod = e.target.value; document.getElementById("eciProd").value = S.prod; renderCross(); };
   document.getElementById("xTech").onchange = e => { S.tech = e.target.value; document.getElementById("eciTech").value = S.tech; renderCross(); };
   document.getElementById("xSci").onchange = e => { S.sci = e.target.value; document.getElementById("eciSci").value = S.sci; renderCross(); };
   bindRange("xYear", "xYearLbl", allYears, S.xYear, v => { S.xYear = v; renderCross(); });
@@ -534,8 +537,128 @@ function setupScreening() {
   document.getElementById('screeningAudit').href=assetURL(D.manifest.screening_audit);
 }
 
+
+// ================================================================== 6. AI economic complexity (unscreened; Projects/AI Economic Complexity)
+const AI = D.ai || null;
+const AI_GROUPS = [["bundle_rca_electrical_electronic_85", "Electrical & electronic (85)"], ["bundle_rca_computing_machinery_84", "Computing & machinery (84)"],
+                   ["bundle_rca_chemicals_materials_28_40", "Chemicals & materials (28-40)"], ["bundle_rca_optical_instruments_90", "Optical & instruments (90)"], ["bundle_rca_other", "Other"]];
+const num = v => (v == null || Number.isNaN(Number(v))) ? null : Number(v);
+function aiYearRows(y) { return AI ? AI.rows.filter(r => r.year === y) : []; }
+function aiMapOf(rows, key) { const m = new Map(); rows.forEach(r => { const v = num(r[key]); if (v != null) m.set(r.country, v); }); return m; }
+function aiGoodsOf(y) { return AI ? AI.goods.filter(g => g.year === y) : []; }
+function aiRankBar(id, m, note, color, sel, t, valueLabel) {
+  setNote(id + "-note", note);
+  if (!m || !m.size) { plot(id, [], {}); return; }
+  const rows = [...m.entries()].sort((a, b) => b[1] - a[1]);
+  const top = rows.slice(0, 25), extra = S.countries.filter(c => m.has(c) && !top.some(r => r[0] === c)).map(c => [c, m.get(c)]);
+  const all = top.concat(extra), rk = rank(m);
+  plot(id, [{ type: "bar", orientation: "h", x: all.map(r => r[1]), y: all.map(([c]) => `${c}  ${cname(c).slice(0, 20)}`),
+    marker: { color: all.map(([c]) => sel.has(c) ? color : t.axis), line: { width: 0 } }, customdata: all.map(([c]) => [cname(c), rk.get(c)]),
+    hovertemplate: `<b>%{customdata[0]}</b><br>${valueLabel} %{x:.3f} · rank %{customdata[1]} / ${m.size}<extra></extra>` }],
+    lay({ margin: { l: 150, t: 4 }, height: Math.max(460, 16 * all.length + 60), bargap: 0.25, xaxis: { title: { text: valueLabel }, zeroline: true },
+          yaxis: { autorange: "reversed", tickfont: { size: 10.5, color: t.text2 }, gridcolor: "rgba(0,0,0,0)" } }));
+}
+function aiSeries(c, key) { const x = [], y = []; AI.rows.filter(r => r.country === c).sort((a, b) => a.year - b.year).forEach(r => { x.push(r.year); y.push(num(r[key])); }); return { x, y }; }
+function renderAi() {
+  const kpi = document.getElementById("aiKpi");
+  if (!AI) { kpi.innerHTML = '<div class="card"><div class="v">–</div><div class="l">AI economic complexity tables are not included in this build (run scripts/export_ai_data.py).</div></div>'; return; }
+  const t = tok(), y = S.ai.year, sel = new Set(S.countries), all = aiYearRows(y), valid = all.filter(r => num(r.valid) > 0), goods = aiGoodsOf(y);
+  const aeci = aiMapOf(valid, "aeci_z"), aecp = aiMapOf(valid, "aecp_z"), brca = aiMapOf(all.filter(r => num(r.total_exports) >= 1e6), "bundle_rca");
+  const worldAi = all.reduce((s_, r) => s_ + (num(r.ai_exports) || 0), 0), world = all.reduce((s_, r) => s_ + (num(r.total_exports) || 0), 0);
+  const topA = [...aeci.entries()].sort((a, b) => b[1] - a[1])[0], topP = [...aecp.entries()].sort((a, b) => b[1] - a[1])[0];
+  kpi.innerHTML = [
+    `<div class="card"><div class="v">${AI.meta.n_goods}</div><div class="l">AI-enabling goods (HS6, WTO 2025 list)</div></div>`,
+    `<div class="card"><div class="v">${world ? (100 * worldAi / world).toFixed(1) + "%" : "–"}</div><div class="l">${y} · share of world exports</div></div>`,
+    `<div class="card"><div class="v">${aeci.size}</div><div class="l">${y} · countries with AECI (valid set: ≥ US$1 bn exports, ≥ 1 specialisation)</div></div>`,
+    `<div class="card"><div class="v" style="font-size:16px">${topA ? `${topA[0]} ${cname(topA[0])}` : "–"}</div><div class="l">Highest AECI${topA ? ` · ${fmt(topA[1])}` : ""}</div></div>`,
+    `<div class="card"><div class="v" style="font-size:16px">${topP ? `${topP[0]} ${cname(topP[0])}` : "–"}</div><div class="l">Highest AECP (potential)${topP ? ` · ${fmt(topP[1])}` : ""}</div></div>`,
+  ].join("");
+  aiRankBar("aiRkA", aeci, `${y} · Top 25 countries by AECI (standardised); selected countries highlighted`, pal(0), sel, t, "AECI (z-score)");
+  aiRankBar("aiRkP", aecp, `${y} · Top 25 countries by AECP (standardised potential)`, pal(1), sel, t, "AECP (z-score)");
+  aiRankBar("aiRkB", brca, `${y} · Top 25 countries by bundle RCA of the 103 goods (countries with ≥ US$1 bn exports)`, pal(2), sel, t, "Bundle RCA");
+  // AECI vs AECP
+  const cs = [...aeci.keys()].filter(c => aecp.has(c)), rho = spearman(cs.map(c => aeci.get(c)), cs.map(c => aecp.get(c)));
+  setNote("aiSc-note", `${y} · ${cs.length} countries · Spearman ρ = ${fmt(rho)} · both indices use the same specialisation matrix`);
+  const base = cs.filter(c => !sel.has(c)), hi = cs.filter(c => sel.has(c));
+  plot("aiSc", [
+    { type: "scatter", mode: "markers", x: base.map(c => aeci.get(c)), y: base.map(c => aecp.get(c)), text: base.map(c => `${c} ${cname(c)}`), marker: { color: t.axis, size: 7, line: { color: t.surface, width: 1 } }, hovertemplate: "<b>%{text}</b><br>AECI %{x:.2f} · AECP %{y:.2f}<extra></extra>" },
+    { type: "scatter", mode: "markers+text", x: hi.map(c => aeci.get(c)), y: hi.map(c => aecp.get(c)), text: hi, textposition: "top center", textfont: { size: 10, color: t.text2 },
+      marker: { color: hi.map(c => pal(slotFor(S.cslot, c))), size: 11, line: { color: t.surface, width: 2 } }, customdata: hi.map(c => cname(c)), hovertemplate: "<b>%{customdata}</b><br>AECI %{x:.2f} · AECP %{y:.2f}<extra></extra>" },
+  ], lay({ hovermode: "closest", margin: { t: 6 }, xaxis: { title: { text: "AECI (current AI portfolio, z-score)" }, zeroline: true }, yaxis: { title: { text: "AECP (adjacent-possible potential, z-score)" }, zeroline: true } }));
+  // trajectories of the selected countries
+  const few = S.countries.length <= 4;
+  [["aiTsA", "aeci_z", "AECI (z-score)"], ["aiTsB", "bundle_rca", "Bundle RCA"], ["aiTsC", "ai_diversity", "AI goods with RCA > 1"]].forEach(([id, key, label]) => {
+    const traces = [], ann = [];
+    S.countries.forEach(c => {
+      const s_ = aiSeries(c, key); if (!s_.x.length || s_.y.every(v => v == null)) return;
+      const col = pal(slotFor(S.cslot, c));
+      traces.push({ type: "scatter", mode: "lines", x: s_.x, y: s_.y, name: `${c} ${cname(c)}`, line: { color: col, width: 2 }, connectgaps: false, hovertemplate: `<b>${c} ${cname(c)}</b> %{x}<br>${label} %{y:.3f}<extra></extra>` });
+      if (few) ann.push({ x: s_.x.at(-1), y: s_.y.at(-1), text: c, showarrow: false, xanchor: "left", xshift: 4, font: { size: 10, color: col } });
+    });
+    const shapes = [{ type: "line", x0: y, x1: y, y0: 0, y1: 1, yref: "paper", line: { color: t.axis, width: 1 } }];
+    if (key === "bundle_rca") shapes.push({ type: "line", x0: 0, x1: 1, xref: "paper", y0: 1, y1: 1, line: { color: t.muted, width: 1, dash: "dot" } });
+    plot(id, traces, lay({ showlegend: true, hovermode: "x unified", annotations: ann, margin: { t: 6, r: 30 }, yaxis: { title: { text: label }, zeroline: true }, shapes }));
+  });
+  // goods: complexity and ubiquity in the selected year
+  const gs = goods.filter(g => num(g.pci) != null).sort((a, b) => b.pci - a.pci);
+  const glab = g => `${g.hs6}  ${(g.description || "").slice(0, 34)}`;
+  plot("aiGoods", gs.length ? [{ type: "bar", orientation: "h", x: gs.map(g => g.pci), y: gs.map(glab), marker: { color: gs.map(g => pal(AI_GROUPS.findIndex(([, l]) => l === g.group) < 0 ? 4 : AI_GROUPS.findIndex(([, l]) => l === g.group))), line: { width: 0 } },
+    customdata: gs.map(g => [g.description, g.group, g.ubiquity, (num(g.world_exports) || 0) / 1e6]), hovertemplate: "<b>%{y}</b><br>%{customdata[0]}<br>%{customdata[1]} · PCI %{x:.2f} · ubiquity %{customdata[2]} · world exports %{customdata[3]:.1f} bn USD<extra></extra>" }] : [],
+    lay({ margin: { l: 250, t: 4 }, height: Math.max(600, 13 * gs.length + 60), bargap: 0.2, xaxis: { title: { text: "PCI (pipeline aci, z-score over all HS6 products)" }, zeroline: true }, yaxis: { autorange: "reversed", tickfont: { size: 9.5, color: t.text2 }, gridcolor: "rgba(0,0,0,0)" } }));
+  setNote("aiGoods-note", `${y} · the ${gs.length} listed goods ordered by complexity; colour = product group (${AI_GROUPS.map(([, l]) => l).join(", ")})`);
+  renderAiap(); renderAiTable();
+}
+async function renderAiap() {
+  if (!AI) return;
+  const t = tok(), y = S.ai.year, c = S.ai.country;
+  setNote("aiMap-note", "Loading candidate rows…");
+  if (!S.ai.cands) { try { S.ai.cands = await loadAiCandidates(D.manifest); } catch (e) { setNote("aiMap-note", `Candidate table could not be loaded: ${e.message}`); plot("aiMap", [], {}); return; } }
+  if (S.ai.year !== y || S.ai.country !== c) return;   // selection changed meanwhile
+  const rows = S.ai.cands.filter(r => r.year === y && r.country === c), names = new Map(aiGoodsOf(y).map(g => [g.hs6, g]));
+  const cy = aiYearRows(y).find(r => r.country === c);
+  rows.forEach(r => { r.rq = num(r.rho) * num(r.q); });
+  const top = new Set([...rows].sort((a, b) => b.rq - a.rq).slice(0, 8).map(r => r.hs6));
+  const held = AI.meta.n_goods - rows.length;
+  setNote("aiMap-note", cy ? `${c} ${cname(c)} · ${y} · ${rows.length} unspecialised AI goods (${held} already held) · AECP raw G = ${fmt(num(cy.aecp_raw), 3)} · AECP z = ${fmt(num(cy.aecp_z))} · AECI z = ${fmt(num(cy.aeci_z))}${num(cy.valid) > 0 ? "" : " · country outside the valid set (< US$1 bn exports)"}` : `${c} · ${y}: no data`);
+  const base = rows.filter(r => !top.has(r.hs6)), hi = rows.filter(r => top.has(r.hs6));
+  const hover = r => { const g = names.get(r.hs6); return `<b>${r.hs6}</b> ${(g?.description || "").slice(0, 60)}<br>${g?.group || ""}<br>density ρ ${fmt(r.rho, 3)} · complexity q ${fmt(r.q, 3)} · ρ·q ${fmt(r.rq, 3)}`; };
+  plot("aiMap", rows.length ? [
+    { type: "scatter", mode: "markers", x: base.map(r => r.rho), y: base.map(r => r.q), text: base.map(hover), marker: { color: t.axis, size: 8, line: { color: t.surface, width: 1 } }, hovertemplate: "%{text}<extra></extra>" },
+    { type: "scatter", mode: "markers+text", x: hi.map(r => r.rho), y: hi.map(r => r.q), text: hi.map(r => r.hs6), textposition: "top center", textfont: { size: 10, color: t.text2 },
+      marker: { color: pal(1), size: 11, line: { color: t.surface, width: 2 } }, customdata: hi.map(hover), hovertemplate: "%{customdata}<extra></extra>" },
+  ] : [], lay({ hovermode: "closest", margin: { t: 6 }, xaxis: { title: { text: "relatedness density ρ to the country's whole export portfolio" }, rangemode: "tozero" }, yaxis: { title: { text: "normalised complexity q (PCI rescaled 0–1, all products)" }, range: [0, 1] } }));
+  // candidate table
+  const tbl = rows.sort((a, b) => b.rq - a.rq).map((r, i) => { const g = names.get(r.hs6); return { rank: i + 1, hs6: r.hs6, name: g?.description || "", group: g?.group || "", rho: num(r.rho), q: num(r.q), rq: r.rq, pci: num(g?.pci), ubiquity: num(g?.ubiquity) }; });
+  table("aiMapTbl", [{ k: "rank", label: "rank (ρ·q)", num: true, d: 0 }, { k: "hs6", label: "HS6" }, { k: "name", label: "Description" }, { k: "group", label: "Group" }, { k: "rho", label: "density ρ", num: true, d: 3 }, { k: "q", label: "q", num: true, d: 3 }, { k: "rq", label: "ρ·q", num: true, d: 3 }, { k: "pci", label: "PCI", num: true, d: 2 }, { k: "ubiquity", label: "Ubiquity", num: true, d: 0 }], tbl, { k: "rank", dir: 1 });
+}
+function renderAiTable() {
+  if (!AI) return;
+  const y = S.ai.year, q = (document.getElementById("aiTblQ").value || "").toLowerCase(), all = aiYearRows(y), valid = all.filter(r => num(r.valid) > 0);
+  const rA = rank(aiMapOf(valid, "aeci_z")), rP = rank(aiMapOf(valid, "aecp_z"));
+  const rows = all.map(r => ({ code: r.country, name: cname(r.country), valid: num(r.valid) > 0 ? "yes" : "no", F: num(r.aeci_raw), aeci: num(r.aeci_z), rA: rA.get(r.country) ?? null, div: num(r.ai_diversity), qbar: num(r.ai_mean_q),
+    G: num(r.aecp_raw), aecp: num(r.aecp_z), rP: rP.get(r.country) ?? null, ncand: num(r.n_candidates), brca: num(r.bundle_rca), share: num(r.ai_share) == null ? null : 100 * num(r.ai_share), wshare: num(r.world_ai_share) == null ? null : 100 * num(r.world_ai_share),
+    ...Object.fromEntries(AI_GROUPS.map(([k]) => [k, num(r[k])])) }))
+    .filter(r => !q || r.code.toLowerCase().includes(q) || r.name.toLowerCase().includes(q));
+  table("aiTbl", [{ k: "code", label: "Code" }, { k: "name", label: "Country" }, { k: "valid", label: "Valid set" }, { k: "F", label: "F (AECI raw)", num: true, d: 2 }, { k: "aeci", label: "AECI z", num: true, d: 3 }, { k: "rA", label: "rank", num: true, d: 0 },
+    { k: "div", label: "AI goods RCA>1", num: true, d: 0 }, { k: "qbar", label: "mean q", num: true, d: 3 }, { k: "G", label: "G (AECP raw)", num: true, d: 4 }, { k: "aecp", label: "AECP z", num: true, d: 3 }, { k: "rP", label: "rank", num: true, d: 0 }, { k: "ncand", label: "candidates", num: true, d: 0 },
+    { k: "brca", label: "Bundle RCA", num: true, d: 3 }, { k: "share", label: "AI share of exports %", num: true, d: 2 }, { k: "wshare", label: "share of world AI exports %", num: true, d: 3 },
+    ...AI_GROUPS.map(([k, l]) => ({ k, label: `RCA ${l}`, num: true, d: 2 }))], rows, { k: "aeci", dir: -1 });
+}
+function setupAi() {
+  if (!AI) { document.getElementById("aiMeta").textContent = "AI economic complexity tables are not part of this build."; return; }
+  S.ai.year = AI.meta.latest_year;
+  bindRange("aiYear", "aiYearLbl", AI.years, S.ai.year, v => { S.ai.year = v; renderAi(); });
+  const countries = [...new Set(AI.rows.map(r => r.country))].sort((a, b) => cname(a).localeCompare(cname(b)));
+  if (!countries.includes(S.ai.country)) S.ai.country = countries[0];
+  fillSelect("aiCountry", countries, S.ai.country, c => `${c} ${cname(c)}`);
+  document.getElementById("aiCountry").onchange = e => { S.ai.country = e.target.value; renderAiap(); };
+  document.getElementById("aiTblQ").oninput = renderAiTable;
+  const m = AI.meta, src = m.source || {};
+  document.getElementById("aiMeta").textContent = `Unscreened · ${src.matrix || ""} · ${src.ai_goods || ""} · ${src.specialization_rule || ""} · ${src.standardisation || ""} · built ${m.built_utc}`;
+}
+
 // ================================================================== tabs, theme, boot
-const RENDER = { eci: renderEci, aci: renderAci, space: renderSpace, nest: renderNest, cross: renderCross };
+const RENDER = { eci: renderEci, aci: renderAci, space: renderSpace, nest: renderNest, cross: renderCross, ai: renderAi };
 let active = "eci";
 function switchTab(name) {
   active = name;
@@ -553,7 +676,7 @@ document.getElementById("themeBtn").onclick = () => {
   let stored; try { stored = localStorage.getItem("ec-dash-theme"); } catch (_) {}
   const saved = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   document.documentElement.dataset.theme = saved;
-  setupScreening(); setupEci(); setupAci(); setupSpace(); setupNest(); setupCross();
+  setupScreening(); setupEci(); setupAci(); setupSpace(); setupNest(); setupCross(); setupAi();
   document.querySelectorAll("iframe").forEach(f => { f.title = "Interactive economic complexity visualization"; });
   document.querySelectorAll(".f input, .f select").forEach(el => { el.setAttribute("aria-label", el.closest(".f").querySelector("span")?.textContent || el.id); });
   document.querySelectorAll("[data-toggle]").forEach(toggle => {
