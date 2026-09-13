@@ -27883,6 +27883,70 @@
     "rho": "double",
     "q": "double"
    }
+  },
+  "data/ai/space_nodes.parquet": {
+   "path": "data/ai/space_nodes.parquet",
+   "rows": 6268,
+   "bytes": 419668,
+   "sha256": "0e13102cc37458d4201c23fdcd0c281b00c6cf438d3517bb83ea8f4d0fe7c280",
+   "schema": {
+    "level": "string",
+    "code": "string",
+    "x": "double",
+    "y": "double",
+    "description": "string",
+    "chapter": "string",
+    "community": "int32",
+    "backbone_degree": "int32",
+    "pagerank": "double",
+    "ai": "int32",
+    "ai_group": "string",
+    "ai_coverage": "double"
+   }
+  },
+  "data/ai/space_edges.parquet": {
+   "path": "data/ai/space_edges.parquet",
+   "rows": 6608,
+   "bytes": 112560,
+   "sha256": "835ba494e76b821a6ab21f9cd4a0335f62302092451d2716e0d970cb226078e5",
+   "schema": {
+    "level": "string",
+    "source": "string",
+    "target": "string",
+    "phibar": "double"
+   }
+  },
+  "data/ai/space_stats.parquet": {
+   "path": "data/ai/space_stats.parquet",
+   "rows": 34,
+   "bytes": 10240,
+   "sha256": "0c4fdcdedbe2323261fc15510ae0ba74bc08320f694f7be0fd1fda0d3722f5bf",
+   "schema": {
+    "level": "string",
+    "year": "int32",
+    "n_ai": "int32",
+    "phi_ai_ai": "double",
+    "phi_ai_other": "double",
+    "phi_other_other": "double",
+    "ubiquity_ai_mean": "double",
+    "ubiquity_all_mean": "double",
+    "pci_ai_mean": "double",
+    "pci_all_mean": "double",
+    "pci_ai_share_top_quartile": "double",
+    "world_ai_export_share": "double"
+   }
+  },
+  "data/ai/space_country.parquet": {
+   "path": "data/ai/space_country.parquet",
+   "rows": 32988,
+   "bytes": 61822,
+   "sha256": "8afe1403d9cb634a246e315b7fd76f3cedd7337a50b9896d862d7b8e04c7520e",
+   "schema": {
+    "year": "int32",
+    "country": "string",
+    "hs6": "string",
+    "hs4": "string"
+   }
   }
  },
  "provenance": {
@@ -27931,12 +27995,40 @@
   "files": {
    "country_year": "data/ai/country_year.parquet",
    "goods_year": "data/ai/goods_year.parquet",
-   "candidates": "data/ai/candidates.parquet"
+   "candidates": "data/ai/candidates.parquet",
+   "space_nodes": "data/ai/space_nodes.parquet",
+   "space_edges": "data/ai/space_edges.parquet",
+   "space_stats": "data/ai/space_stats.parquet",
+   "space_country": "data/ai/space_country.parquet"
   },
-  "built_utc": "2026-09-13T17:31:08Z",
+  "space": {
+   "levels": {
+    "hs4": {
+     "nodes": 1221,
+     "edges": 1315,
+     "ai_nodes": 52,
+     "communities": 34,
+     "communities_with_ai": 13
+    },
+    "hs6": {
+     "nodes": 5047,
+     "edges": 5293,
+     "ai_nodes": 103,
+     "communities": 71,
+     "communities_with_ai": 27
+    }
+   },
+   "trees": {
+    "hs4": "Product_HS07",
+    "hs6": "Product_HS07_hs6"
+   },
+   "construction": "phi_t = proximity of M_t = [RCA >= 1] per year; backbone = maximum spanning tree of the pooled proximity (mean over 2007-2023) plus the 4 strongest links >= 0.55 (HS4) / 0.60 (HS6) per product; spring layout and Louvain communities of the backbone, fixed across years (notebook 05_product_space_ai_goods)",
+   "country_rule": "country overlay: AI goods exported with RCA >= 1 (notebook 03 table); an HS4 heading counts as held when any of its listed HS6 goods is"
+  },
+  "built_utc": "2026-09-13T18:53:50Z",
   "source": {
-   "project": "Economic Complexity / Projects/AI Economic Complexity (notebooks 03_ai_enabling_goods_rca, 04_aeci_aiap_aecp)",
-   "matrix": "Data/mat/Product_HS07_hs6 (CEPII BACI HS 2007, 6 digits, current thousand USD, 2007-2023), unscreened",
+   "project": "Economic Complexity / Projects/AI Economic Complexity (notebooks 03_ai_enabling_goods_rca, 04_aeci_aiap_aecp, 05_product_space_ai_goods)",
+   "matrix": "Data/mat/Product_HS07_hs6 (CEPII BACI HS 2007, 6 digits, current thousand USD, 2007-2023) for the indices and the HS6 product space; Data/mat/Product_HS07 (4 digits) for the HS4 product space; unscreened",
    "ai_goods": "WTO World Trade Report 2025 list of AI-enabling goods, HS 2012 version, 103 HS6 codes",
    "specialization_rule": "M[c,p] = 1 when RCA[c,p] > 1 (strict) for AECI / AIAP / AECP; RCA >= 1 for the goods' ubiquity and bundle specialisation counts",
    "complexity": "PCI = pipeline aci of Product_HS07_hs6 (04_complexity_index, RCA >= 1 matrix), q = min-max over all products of the year",

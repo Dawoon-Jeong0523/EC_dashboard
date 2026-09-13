@@ -1,4 +1,4 @@
-import { loadDashboard, assetURL, loadAiCandidates } from './data.js';
+import { loadDashboard, assetURL, loadAiCandidates, loadAiSpace } from './data.js';
 let D;
 try { D = await loadDashboard(); }
 catch (error) {
@@ -68,9 +68,9 @@ function queuePlot(id, draw) {
 function clearPlot(id,message) {
   return queuePlot(id,el=>{Plotly.purge(el);el.innerHTML=`<div class="empty">${escapeHTML(message)}</div>`;});
 }
-function plot(id, traces, layout) {
+function plot(id, traces, layout, config = CFG) {
   if(!traces?.length)return clearPlot(id,'No data available for the selected year');
-  return queuePlot(id,async el=>{if(el.querySelector('.empty'))el.innerHTML='';await Plotly.react(el,traces,layout,CFG);if(el.getClientRects().length)await Plotly.Plots.resize(el);});
+  return queuePlot(id,async el=>{if(el.querySelector('.empty'))el.innerHTML='';await Plotly.react(el,traces,layout,config);if(el.getClientRects().length)await Plotly.Plots.resize(el);});
 }
 function setNote(id, text) { const el = document.getElementById(id); if (el) el.textContent = text; }
 
@@ -117,7 +117,7 @@ const S = {
   spTree: "Product", spYear: null, spFig: "space",
   nMeasure: "NODF", nTree: "Product", nFig: "matrix_sorted", nYear: Math.min(2020, YMAX),
   xYear: Math.min(...D.trees.map(t => P[t].years.at(-1))),
-  ai: { year: null, country: "KR", cands: null },
+  ai: { year: null, country: "KR", cands: null, level: "hs4", view: "group", space: null },
 };
 // colour follows the entity: a slot is handed out once and kept while the entity stays selected
 function slotFor(map, key, list) {
@@ -606,7 +606,101 @@ function renderAi() {
     customdata: gs.map(g => [g.description, g.group, g.ubiquity, (num(g.world_exports) || 0) / 1e6]), hovertemplate: "<b>%{y}</b><br>%{customdata[0]}<br>%{customdata[1]} · PCI %{x:.2f} · ubiquity %{customdata[2]} · world exports %{customdata[3]:.1f} bn USD<extra></extra>" }] : [],
     lay({ margin: { l: 250, t: 4 }, height: Math.max(600, 13 * gs.length + 60), bargap: 0.2, xaxis: { title: { text: "PCI (pipeline aci, z-score over all HS6 products)" }, zeroline: true }, yaxis: { autorange: "reversed", tickfont: { size: 9.5, color: t.text2 }, gridcolor: "rgba(0,0,0,0)" } }));
   setNote("aiGoods-note", `${y} · the ${gs.length} listed goods ordered by complexity; colour = product group (${AI_GROUPS.map(([, l]) => l).join(", ")})`);
-  renderAiap(); renderAiTable();
+  renderAiap(); renderAiSpace(); renderAiTable();
+}
+// ---- product space of the AI project (notebook 05): fixed backbone per HS level, AI goods highlighted
+const aiGroupColor = label => { const i = AI_GROUPS.findIndex(([, l]) => l === label); return pal(i < 0 ? 4 : i); };
+function aiCommunities(nodes) {
+  // communities of one level ranked by the number of AI goods they host; the first eight get a palette slot
+  const by = new Map();
+  nodes.forEach(n => {
+    if (!by.has(n.community)) by.set(n.community, { id: n.community, n: 0, ai: 0, chapters: new Map() });
+    const c = by.get(n.community); c.n++; if (num(n.ai) > 0) c.ai++;
+    c.chapters.set(n.chapter, (c.chapters.get(n.chapter) || 0) + 1);
+  });
+  const list = [...by.values()].map(c => ({ ...c, top: [...c.chapters.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(e => e[0]).join(" ") })).sort((a, b) => b.ai - a.ai || b.n - a.n);
+  const color = new Map(list.filter(c => c.ai > 0).slice(0, 8).map((c, i) => [c.id, pal(i)]));
+  return { list, color };
+}
+const AI_SPACE_KINDS = ["space_nodes", "space_edges", "space_stats", "space_country"];
+function aiSpaceUnavailable(message) {   // the network and its two companion cards share one explanation
+  ["aiNet", "aiCoh", "aiComm"].forEach(id => { setNote(id + "-note", message); plot(id, [], {}); });
+}
+async function renderAiSpace() {
+  if (!AI) return;
+  if (!AI_SPACE_KINDS.every(k => AI.meta.files?.[k])) { aiSpaceUnavailable("Product-space data are unavailable in this release."); return; }
+  const t = tok(), y = S.ai.year, c = S.ai.country, level = S.ai.level, view = S.ai.view;
+  if (!S.ai.space) {
+    setNote("aiNet-note", "Loading the product space…");
+    try { S.ai.space = await loadAiSpace(D.manifest); } catch (e) { aiSpaceUnavailable(`Product space could not be loaded: ${e.message}`); return; }
+  }
+  // selection changed meanwhile: the control that changed it re-invokes this function. The country only matters to the
+  // country view (the country select re-renders the network only in that view), so it must not invalidate the others.
+  if (S.ai.year !== y || S.ai.level !== level || S.ai.view !== view || (view === "country" && S.ai.country !== c)) return;
+  const sp = S.ai.space, nodes = sp.nodes.filter(n => n.level === level), edges = sp.edges.filter(e => e.level === level);
+  const pos = new Map(nodes.map(n => [n.code, n])), goods = new Map(aiGoodsOf(y).map(g => [g.hs6, g]));
+  const heldKey = level === "hs4" ? "hs4" : "hs6", held = new Set(sp.country.filter(r => r.year === y && r.country === c).map(r => r[heldKey]));
+  const aiNodes = nodes.filter(n => num(n.ai) > 0), rest = nodes.filter(n => !(num(n.ai) > 0));
+  const prMax = Math.max(...nodes.map(n => num(n.pagerank) || 0)) || 1;
+  const size = (n, lo, hi) => lo + (hi - lo) * Math.sqrt((num(n.pagerank) || 0) / prMax);
+  const hover = n => {
+    const g = level === "hs6" ? goods.get(n.code) : null;
+    return `<b>${n.code}</b> ${escapeHTML((n.description || "").slice(0, 70))}<br>chapter ${n.chapter} · community ${n.community} · backbone degree ${n.backbone_degree}`
+      + (num(n.ai) > 0 ? `<br><b>AI-enabling</b> · ${n.ai_group || ""}${level === "hs4" ? ` · ${(100 * (num(n.ai_coverage) || 0)).toFixed(0)}% of the heading's HS6 subheadings are on the WTO list` : ""}` : "")
+      + (g ? `<br>${y}: PCI ${fmt(num(g.pci))} · ubiquity ${num(g.ubiquity) ?? "–"} · world exports ${fmt((num(g.world_exports) || 0) / 1e6, 1)} bn USD` : "")
+      + (view === "country" && num(n.ai) > 0 ? `<br>${c}: ${held.has(n.code) ? "specialised (RCA ≥ 1)" : "not specialised"}` : "");
+  };
+  const mk = (list, name, marker, extra = {}) => ({ type: "scatter", mode: "markers", name, x: list.map(n => n.x), y: list.map(n => n.y), text: list.map(hover), hovertemplate: "%{text}<extra></extra>", marker, ...extra });
+  const ex = [], ey = [];
+  edges.forEach(e => { const a = pos.get(e.source), b = pos.get(e.target); if (a && b) { ex.push(a.x, b.x, null); ey.push(a.y, b.y, null); } });
+  const traces = [{ type: "scatter", mode: "lines", x: ex, y: ey, line: { color: t.grid, width: 0.7 }, hoverinfo: "skip", showlegend: false }];
+  const grey = { color: t.axis, opacity: 0.55, line: { width: 0 } };
+  let note;
+  if (view === "group") {
+    traces.push(mk(rest, "other products", { ...grey, size: rest.map(n => size(n, 3, 11)) }));
+    AI_GROUPS.forEach(([, label]) => {
+      const list = aiNodes.filter(n => n.ai_group === label); if (!list.length) return;
+      traces.push(mk(list, `${label} · ${list.length}`, { color: aiGroupColor(label), size: list.map(n => size(n, 9, 18)), line: { color: t.surface, width: 1.2 } }));
+    });
+    note = `${aiNodes.length} AI-enabling ${level === "hs4" ? "headings" : "goods"} among ${nodes.length.toLocaleString()} products · ${edges.length.toLocaleString()} backbone links · colour = HS chapter group of the listed good; grey = other products`;
+  } else if (view === "community") {
+    const { list, color } = aiCommunities(nodes);
+    const withAi = new Set(list.filter(k => k.ai > 0).map(k => k.id));
+    traces.push(mk(rest.filter(n => !withAi.has(n.community)), "communities without AI goods", { ...grey, size: rest.filter(n => !withAi.has(n.community)).map(n => size(n, 3, 10)) }));
+    const others = rest.filter(n => withAi.has(n.community) && !color.has(n.community));
+    if (others.length) traces.push(mk(others, "other communities with AI goods", { color: t.text2, opacity: 0.55, size: others.map(n => size(n, 3, 10)), line: { width: 0 } }));
+    list.filter(k => color.has(k.id)).forEach(k => {
+      const members = rest.filter(n => n.community === k.id);
+      traces.push(mk(members, `community ${k.id} · ${k.ai} AI / ${k.n} products · ch. ${k.top}`, { color: color.get(k.id), opacity: 0.85, size: members.map(n => size(n, 4, 12)), line: { width: 0 } }));
+    });
+    traces.push(mk(aiNodes, "AI-enabling good (outlined)", { color: aiNodes.map(n => color.get(n.community) || t.text2), size: aiNodes.map(n => size(n, 9, 18)), line: { color: t.text1, width: 1.6 } }));
+    note = `${withAi.size} of ${list.length} Louvain communities host AI goods; the eight hosting most are coloured (legend: AI goods / products · main HS chapters) · AI goods outlined`;
+  } else {
+    traces.push(mk(rest, "other products", { ...grey, size: rest.map(n => size(n, 3, 11)) }));
+    const yes = aiNodes.filter(n => held.has(n.code)), no = aiNodes.filter(n => !held.has(n.code));
+    traces.push(mk(no, `AI goods not held · ${no.length}`, { color: "rgba(0,0,0,0)", size: no.map(n => size(n, 9, 18)), line: { color: pal(1), width: 1.6 } }));
+    traces.push(mk(yes, `AI goods held with RCA ≥ 1 · ${yes.length}`, { color: pal(1), size: yes.map(n => size(n, 9, 18)), line: { color: t.surface, width: 1.2 } }));
+    note = `${c} ${cname(c)} · ${y}: exports ${yes.length} of ${aiNodes.length} AI-enabling ${level === "hs4" ? "headings with RCA ≥ 1 (a heading counts when any of its listed HS6 goods does)" : "goods with RCA ≥ 1"} · filled = held, hollow = not held · only the listed goods are country-specific here; the country's other specialisations are not drawn, and the indices above use the strict RCA > 1 rule`;
+  }
+  setNote("aiNet-note", note);
+  const ax = { visible: false, showgrid: false, zeroline: false };
+  plot("aiNet", traces, lay({ showlegend: true, hovermode: "closest", dragmode: "pan", margin: { l: 6, r: 6, t: 6, b: 6 },
+    legend: { orientation: "h", y: -0.01, yanchor: "top", x: 0, font: { size: 11, color: t.text2 }, itemsizing: "constant" },
+    xaxis: ax, yaxis: { ...ax, scaleanchor: "x", scaleratio: 1 } }), { ...CFG, scrollZoom: true });   // wheel zoom only on the network
+  // cohesion of the AI goods over the years at this level
+  const st = sp.stats.filter(r => r.level === level).sort((a, b) => a.year - b.year);
+  const series = [["phi_ai_ai", "among AI goods", pal(1)], ["phi_ai_other", "AI goods ↔ other products", pal(0)], ["phi_other_other", "among other products", t.text2]];
+  plot("aiCoh", st.length ? series.map(([k, name, col]) => ({ type: "scatter", mode: "lines+markers", name, x: st.map(r => r.year), y: st.map(r => num(r[k])), line: { color: col, width: 2 }, marker: { size: 5 }, hovertemplate: `<b>${name}</b> %{x}<br>mean φ %{y:.3f}<extra></extra>` })) : [],
+    lay({ showlegend: true, hovermode: "x unified", margin: { t: 6 }, yaxis: { title: { text: "mean proximity φ in the year" }, rangemode: "tozero" }, shapes: [{ type: "line", x0: y, x1: y, y0: 0, y1: 1, yref: "paper", line: { color: t.axis, width: 1 } }] }));
+  const cur = st.find(r => r.year === y);
+  const unit = level === "hs4" ? "AI-enabling headings" : "AI-enabling goods";
+  setNote("aiCoh-note", `${level.toUpperCase()} · yearly proximity φ_t of M_t = [RCA ≥ 1]${cur ? ` · ${y}: mean ubiquity of the ${unit} ${fmt(num(cur.ubiquity_ai_mean), 1)} vs ${fmt(num(cur.ubiquity_all_mean), 1)} for all products; mean PCI ${fmt(num(cur.pci_ai_mean))} vs ${fmt(num(cur.pci_all_mean))}; ${(100 * (num(cur.pci_ai_share_top_quartile) || 0)).toFixed(0)}% of them in the top PCI quartile` : ""}`);
+  // communities hosting AI goods
+  const { list, color } = aiCommunities(nodes), hosts = list.filter(k => k.ai > 0);
+  plot("aiComm", hosts.length ? [{ type: "bar", orientation: "h", x: hosts.map(k => k.ai), y: hosts.map(k => `community ${k.id} · ch. ${k.top}`), marker: { color: hosts.map(k => color.get(k.id) || t.text2), line: { width: 0 } },
+    customdata: hosts.map(k => [k.n, (100 * k.ai / k.n).toFixed(1)]), hovertemplate: "<b>%{y}</b><br>%{x} AI goods among %{customdata[0]} products (%{customdata[1]}%)<extra></extra>" }] : [],
+    lay({ margin: { l: 190, t: 4 }, height: Math.max(300, 18 * hosts.length + 60), bargap: 0.25, xaxis: { title: { text: "AI-enabling goods in the community" } }, yaxis: { autorange: "reversed", tickfont: { size: 10.5, color: t.text2 }, gridcolor: "rgba(0,0,0,0)" } }));
+  setNote("aiComm-note", `${level.toUpperCase()} · ${hosts.length} of ${list.length} backbone communities contain at least one AI-enabling ${level === "hs4" ? "heading" : "good"}; colours match the community view of the network`);
 }
 async function renderAiap() {
   if (!AI) return;
@@ -651,7 +745,10 @@ function setupAi() {
   const countries = [...new Set(AI.rows.map(r => r.country))].sort((a, b) => cname(a).localeCompare(cname(b)));
   if (!countries.includes(S.ai.country)) S.ai.country = countries[0];
   fillSelect("aiCountry", countries, S.ai.country, c => `${c} ${cname(c)}`);
-  document.getElementById("aiCountry").onchange = e => { S.ai.country = e.target.value; renderAiap(); };
+  document.getElementById("aiCountry").onchange = e => { S.ai.country = e.target.value; renderAiap(); if (S.ai.view === "country") renderAiSpace(); };
+  document.getElementById("aiNetLevel").onchange = e => { S.ai.level = e.target.value; renderAiSpace(); };
+  document.getElementById("aiNetView").onchange = e => { S.ai.view = e.target.value; renderAiSpace(); };
+  document.getElementById("aiNetLevel").value = S.ai.level; document.getElementById("aiNetView").value = S.ai.view;
   document.getElementById("aiTblQ").oninput = renderAiTable;
   const m = AI.meta, src = m.source || {};
   document.getElementById("aiMeta").textContent = `Unscreened · ${src.matrix || ""} · ${src.ai_goods || ""} · ${src.specialization_rule || ""} · ${src.standardisation || ""} · built ${m.built_utc}`;

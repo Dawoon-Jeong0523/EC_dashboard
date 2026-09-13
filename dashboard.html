@@ -59,6 +59,9 @@
   .plot.short { min-height: 240px; }
   .empty { color: var(--muted); font-size: 13px; padding: 40px 0; text-align: center; }
   .rowbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 2px 0 10px; }
+  .ai-network-controls { flex-wrap: wrap; }
+  .ai-network-controls .filters { max-width: 100%; }
+  .ai-network-controls select { min-width: 0; max-width: 100%; }
   .tbl { display: none; overflow: auto; max-height: 520px; border-top: 1px solid var(--grid); margin-top: 6px; }
   .tbl.on { display: block; }
   table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
@@ -255,6 +258,18 @@
     <div class="card"><h3>AI adjacent possible (AIAP) of the selected country</h3><div class="note" id="aiMap-note"></div><div class="plot" id="aiMap"></div></div>
   </div>
   <div class="card" style="margin-bottom:14px">
+    <div class="rowbar ai-network-controls"><h3>AI-enabling goods in the product space</h3>
+      <div class="filters" style="margin:0">
+        <div class="f"><span>HS level</span><select id="aiNetLevel"><option value="hs4">HS4 · 1,221 headings (readable)</option><option value="hs6">HS6 · 5,047 subheadings (faithful)</option></select></div>
+        <div class="f"><span>Colour</span><select id="aiNetView"><option value="group">AI goods by product group</option><option value="community">Communities hosting AI goods</option><option value="country">Selected country: AI goods held</option></select></div>
+      </div></div>
+    <p class="note">Products linked by proximity φ (the smaller of the two conditional probabilities of specialisation in one product given specialisation in the other, Hidalgo et al. 2007), computed on the raw BACI HS 2007 matrices. The drawn backbone is the maximum spanning tree of the proximity pooled over 2007–2023 plus the four strongest links at or above 0.55 (HS4) / 0.60 (HS6) per product; layout and Louvain communities are fixed across years, so only colours, hover values and the country overlay change with the year slider. Node size follows PageRank in the pooled proximity. Hover a node for its code, description, chapter and community; the listed goods at HS6 also show the year's PCI and ubiquity. Drag to pan, scroll to zoom, double-click to reset.</p>
+    <div class="note" id="aiNet-note"></div><div class="plot" id="aiNet" style="min-height:640px"></div></div>
+  <div class="grid two">
+    <div class="card"><h3>Cohesion of the AI goods over time</h3><div class="note" id="aiCoh-note"></div><div class="plot" id="aiCoh"></div></div>
+    <div class="card"><h3>Communities of the product space hosting AI goods</h3><div class="note" id="aiComm-note"></div><div class="plot" id="aiComm"></div></div>
+  </div>
+  <div class="card" style="margin-bottom:14px">
     <div class="rowbar"><h3>Candidate goods of the selected country and year</h3><button class="btn" data-toggle="aiMapTbl">Show table</button></div>
     <div class="tbl" id="aiMapTbl"></div>
   </div>
@@ -268,7 +283,7 @@
 </main>
 <footer id="foot"></footer>
 
-<script src="assets/dashboard.bundle.js?v=ed283d1c506c61d8"></script>
+<script src="assets/dashboard.bundle.js?v=84ded70dcf55b2e9"></script>
 <noscript>This dashboard requires JavaScript to read Parquet data and render the charts.</noscript>
 </body>
 </html>

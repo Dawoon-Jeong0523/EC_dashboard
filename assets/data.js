@@ -85,3 +85,10 @@ export function loadAiCandidates(manifest) {
   // AIAP candidate rows (one per unspecialised AI good x country x year); loaded on first use of the opportunity map
   return readParquet(manifest.ai.files.candidates);
 }
+export async function loadAiSpace(manifest) {
+  // product space of the AI project (HS4 and HS6 backbones with fixed layouts, yearly position statistics and the
+  // AI goods each country holds); loaded on first use of the network view
+  const f = manifest.ai.files;
+  const [nodes, edges, stats, country] = await Promise.all([f.space_nodes, f.space_edges, f.space_stats, f.space_country].map(readParquet));
+  return {nodes, edges, stats, country};
+}
